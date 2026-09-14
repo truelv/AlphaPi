@@ -1,0 +1,1609 @@
+mpy_source_file: board_dump/basic.mpy
+source_file: .\basic.py
+header: 4d:06:00:1f
+qstr_table[94]:
+    .\basic.py
+    <module>
+    time
+    random
+    math
+    DataStruct
+    wait_time
+    ticks_ms
+    ticks_diff
+    data_struct_random
+    IsInt
+    IntValue
+    randrange
+    FloatValue
+    data_struct_and
+    BoolValue
+    data_struct_or
+    data_struct_substring
+    StringValue
+    data_struct_normalization
+    DegreeToRadian
+    pi
+    RadianToDegree
+    ClampD
+    ClampBlock
+    FindDataInList
+    GetItemFromList
+    
+    version
+    __init__
+    SetValue
+    value
+    NumberValue
+    startswith
+    -
+    isdigit
+    floor
+    find
+    .
+    IsNumber
+    length
+    __round__
+    __add__
+    __radd__
+    __iadd__
+    __sub__
+    __mul__
+    __truediv__
+    __lt__
+    __gt__
+    __le__
+    __ge__
+    __eq__
+    __ne__
+    __mod__
+    __abs__
+    __ceil__
+    ceil
+    __floor__
+    contains
+    time_ms
+    __name__
+    __module__
+    __qualname__
+    v1
+    v2
+    v1_d
+    f_d
+    start_pos_d
+    end_pos_d
+    len
+    v_d
+    min1_d
+    max1_d
+    min2_d
+    max2_d
+    v
+    min_value
+    max_value
+    value_d
+    min_value_d
+    max_value_d
+    list_variable
+    data
+    index_data
+    self
+    type
+    str
+    int
+    float
+    bool
+    abs
+    other
+    n
+obj_table: [180.0, 'v_2022_11_30', 0.0, 0.5, 1.401298e-07]
+simple_name: <module>
+  raw bytecode: 113 10:3c:01:26:26:66:84:07:89:b8:84:0f:64:20:64:60:84:11:84:15:64:20:64:20:84:08:84:0b:84:08:84:07:80:51:1b:02:16:02:80:51:1b:03:16:03:80:51:1b:04:16:04:32:00:16:06:54:32:01:10:05:34:02:16:05:32:02:16:09:32:03:16:0e:32:04:16:10:32:05:16:11:32:06:16:13:32:07:16:14:32:08:16:16:32:09:16:17:32:0a:16:18:32:0b:16:19:32:0c:16:1a:32:0d:16:1c:51:63
+  prelude: (3, 0, 0, 0, 0, 0)
+  args: []
+  line info: 26:26:66:84:07:89:b8:84:0f:64:20:64:60:84:11:84:15:64:20:64:20:84:08:84:0b:84:08:84:07
+  80          LOAD_CONST_SMALL_INT 0 
+  51          LOAD_CONST_NONE 
+  1b:02       IMPORT_NAME time
+  16:02       STORE_NAME time
+  80          LOAD_CONST_SMALL_INT 0 
+  51          LOAD_CONST_NONE 
+  1b:03       IMPORT_NAME random
+  16:03       STORE_NAME random
+  80          LOAD_CONST_SMALL_INT 0 
+  51          LOAD_CONST_NONE 
+  1b:04       IMPORT_NAME math
+  16:04       STORE_NAME math
+  32:00       MAKE_FUNCTION 0
+  16:06       STORE_NAME wait_time
+  54          LOAD_BUILD_CLASS 
+  32:01       MAKE_FUNCTION 1
+  10:05       LOAD_CONST_STRING DataStruct
+  34:02       CALL_FUNCTION 2
+  16:05       STORE_NAME DataStruct
+  32:02       MAKE_FUNCTION 2
+  16:09       STORE_NAME data_struct_random
+  32:03       MAKE_FUNCTION 3
+  16:0e       STORE_NAME data_struct_and
+  32:04       MAKE_FUNCTION 4
+  16:10       STORE_NAME data_struct_or
+  32:05       MAKE_FUNCTION 5
+  16:11       STORE_NAME data_struct_substring
+  32:06       MAKE_FUNCTION 6
+  16:13       STORE_NAME data_struct_normalization
+  32:07       MAKE_FUNCTION 7
+  16:14       STORE_NAME DegreeToRadian
+  32:08       MAKE_FUNCTION 8
+  16:16       STORE_NAME RadianToDegree
+  32:09       MAKE_FUNCTION 9
+  16:17       STORE_NAME ClampD
+  32:0a       MAKE_FUNCTION 10
+  16:18       STORE_NAME ClampBlock
+  32:0b       MAKE_FUNCTION 11
+  16:19       STORE_NAME FindDataInList
+  32:0c       MAKE_FUNCTION 12
+  16:1a       STORE_NAME GetItemFromList
+  32:0d       MAKE_FUNCTION 13
+  16:1c       STORE_NAME version
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: ['wait_time', 'DataStruct', 'data_struct_random', 'data_struct_and', 'data_struct_or', 'data_struct_substring', 'data_struct_normalization', 'DegreeToRadian', 'RadianToDegree', 'ClampD', 'ClampBlock', 'FindDataInList', 'GetItemFromList', 'version']
+simple_name: wait_time
+  raw bytecode: 44 a9:40:0e:06:3c:60:60:27:22:34:12:02:14:07:36:00:c1:42:43:52:67:59:12:02:14:08:12:02:14:07:36:00:b1:36:02:b0:d7:43:2c:50:67:59:51:63
+  prelude: (6, 0, 1, 1, 0, 0)
+  args: ['time_ms']
+  line info: 60:60:27:22:34
+  12:02       LOAD_GLOBAL time
+  14:07       LOAD_METHOD ticks_ms
+  36:00       CALL_METHOD 0
+  c1          STORE_FAST 1 
+  42:43       JUMP 3
+  52          LOAD_CONST_TRUE 
+  67          YIELD_VALUE 
+  59          POP_TOP 
+  12:02       LOAD_GLOBAL time
+  14:08       LOAD_METHOD ticks_diff
+  12:02       LOAD_GLOBAL time
+  14:07       LOAD_METHOD ticks_ms
+  36:00       CALL_METHOD 0
+  b1          LOAD_FAST 1 
+  36:02       CALL_METHOD 2
+  b0          LOAD_FAST 0 
+  d7          BINARY_OP 0 __lt__ 
+  43:2c       POP_JUMP_IF_TRUE -20
+  50          LOAD_CONST_FALSE 
+  67          YIELD_VALUE 
+  59          POP_TOP 
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: []
+simple_name: DataStruct
+  raw bytecode: 189 08:6c:05:88:0d:43:64:64:60:84:0c:84:07:84:07:64:40:84:07:84:16:84:08:64:64:68:64:60:64:60:84:07:64:60:64:60:64:20:64:60:64:60:64:60:64:60:64:60:64:60:64:60:64:40:64:64:11:3d:16:3e:10:05:16:3f:80:16:1f:32:00:16:1d:32:01:16:1e:32:02:16:12:32:03:16:0b:32:04:16:0d:32:05:16:20:32:06:16:0f:32:07:16:0a:32:08:16:27:32:09:16:28:32:0a:16:25:51:2a:01:53:33:0b:16:29:32:0c:16:2a:32:0d:16:2b:32:0e:16:2c:32:0f:16:2d:32:10:16:2e:32:11:16:2f:32:12:16:30:32:13:16:31:32:14:16:32:32:15:16:33:32:16:16:34:32:17:16:35:32:18:16:36:32:19:16:37:32:1a:16:38:32:1b:16:3a:32:1c:16:3b:51:63
+  prelude: (2, 0, 0, 0, 0, 0)
+  args: []
+  line info: 88:0d:43:64:64:60:84:0c:84:07:84:07:64:40:84:07:84:16:84:08:64:64:68:64:60:64:60:84:07:64:60:64:60:64:20:64:60:64:60:64:60:64:60:64:60:64:60:64:60:64:40:64:64
+  11:3d       LOAD_NAME __name__
+  16:3e       STORE_NAME __module__
+  10:05       LOAD_CONST_STRING DataStruct
+  16:3f       STORE_NAME __qualname__
+  80          LOAD_CONST_SMALL_INT 0 
+  16:1f       STORE_NAME value
+  32:00       MAKE_FUNCTION 0
+  16:1d       STORE_NAME __init__
+  32:01       MAKE_FUNCTION 1
+  16:1e       STORE_NAME SetValue
+  32:02       MAKE_FUNCTION 2
+  16:12       STORE_NAME StringValue
+  32:03       MAKE_FUNCTION 3
+  16:0b       STORE_NAME IntValue
+  32:04       MAKE_FUNCTION 4
+  16:0d       STORE_NAME FloatValue
+  32:05       MAKE_FUNCTION 5
+  16:20       STORE_NAME NumberValue
+  32:06       MAKE_FUNCTION 6
+  16:0f       STORE_NAME BoolValue
+  32:07       MAKE_FUNCTION 7
+  16:0a       STORE_NAME IsInt
+  32:08       MAKE_FUNCTION 8
+  16:27       STORE_NAME IsNumber
+  32:09       MAKE_FUNCTION 9
+  16:28       STORE_NAME length
+  32:0a       MAKE_FUNCTION 10
+  16:25       STORE_NAME find
+  51          LOAD_CONST_NONE 
+  2a:01       BUILD_TUPLE 1
+  53          LOAD_NULL 
+  33:0b       MAKE_FUNCTION_DEFARGS 11
+  16:29       STORE_NAME __round__
+  32:0c       MAKE_FUNCTION 12
+  16:2a       STORE_NAME __add__
+  32:0d       MAKE_FUNCTION 13
+  16:2b       STORE_NAME __radd__
+  32:0e       MAKE_FUNCTION 14
+  16:2c       STORE_NAME __iadd__
+  32:0f       MAKE_FUNCTION 15
+  16:2d       STORE_NAME __sub__
+  32:10       MAKE_FUNCTION 16
+  16:2e       STORE_NAME __mul__
+  32:11       MAKE_FUNCTION 17
+  16:2f       STORE_NAME __truediv__
+  32:12       MAKE_FUNCTION 18
+  16:30       STORE_NAME __lt__
+  32:13       MAKE_FUNCTION 19
+  16:31       STORE_NAME __gt__
+  32:14       MAKE_FUNCTION 20
+  16:32       STORE_NAME __le__
+  32:15       MAKE_FUNCTION 21
+  16:33       STORE_NAME __ge__
+  32:16       MAKE_FUNCTION 22
+  16:34       STORE_NAME __eq__
+  32:17       MAKE_FUNCTION 23
+  16:35       STORE_NAME __ne__
+  32:18       MAKE_FUNCTION 24
+  16:36       STORE_NAME __mod__
+  32:19       MAKE_FUNCTION 25
+  16:37       STORE_NAME __abs__
+  32:1a       MAKE_FUNCTION 26
+  16:38       STORE_NAME __ceil__
+  32:1b       MAKE_FUNCTION 27
+  16:3a       STORE_NAME __floor__
+  32:1c       MAKE_FUNCTION 28
+  16:3b       STORE_NAME contains
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: ['__init__', 'SetValue', 'StringValue', 'IntValue', 'FloatValue', 'NumberValue', 'BoolValue', 'IsInt', 'IsNumber', 'length', 'find', '__round__', '__add__', '__radd__', '__iadd__', '__sub__', '__mul__', '__truediv__', '__lt__', '__gt__', '__le__', '__ge__', '__eq__', '__ne__', '__mod__', '__abs__', '__ceil__', '__floor__', 'contains']
+simple_name: __init__
+  raw bytecode: 16 22:0a:1d:55:4c:80:10:b0:14:1e:b1:36:01:59:51:63
+  prelude: (5, 0, 0, 2, 0, 0)
+  args: ['self', 'v']
+  line info: 80:10
+  b0          LOAD_FAST 0 
+  14:1e       LOAD_METHOD SetValue
+  b1          LOAD_FAST 1 
+  36:01       CALL_METHOD 1
+  59          POP_TOP 
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: []
+simple_name: SetValue
+  raw bytecode: 33 1a:0e:1e:55:4c:80:13:2a:48:12:56:b1:34:01:12:05:de:44:48:b1:13:1f:b0:18:1f:42:44:b1:b0:18:1f:51:63
+  prelude: (4, 0, 0, 2, 0, 0)
+  args: ['self', 'v']
+  line info: 80:13:2a:48
+  12:56       LOAD_GLOBAL type
+  b1          LOAD_FAST 1 
+  34:01       CALL_FUNCTION 1
+  12:05       LOAD_GLOBAL DataStruct
+  de          BINARY_OP 7 <is> 
+  44:48       POP_JUMP_IF_FALSE 8
+  b1          LOAD_FAST 1 
+  13:1f       LOAD_ATTR value
+  b0          LOAD_FAST 0 
+  18:1f       STORE_ATTR value
+  42:44       JUMP 4
+  b1          LOAD_FAST 1 
+  b0          LOAD_FAST 0 
+  18:1f       STORE_ATTR value
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: []
+simple_name: StringValue
+  raw bytecode: 69 3d:16:12:55:80:19:23:22:2c:26:27:4c:49:10:1b:c1:49:2e:12:56:b0:13:1f:34:01:12:57:de:44:46:b0:13:1f:c1:42:5b:b0:14:0a:36:00:44:4c:12:57:b0:14:0b:36:00:34:01:c1:42:48:12:57:b0:13:1f:34:01:c1:51:b1:63:5d:51:63
+  prelude: (8, 1, 0, 1, 0, 0)
+  args: ['self']
+  line info: 80:19:23:22:2c:26:27:4c:49
+  10:1b       LOAD_CONST_STRING 
+  c1          STORE_FAST 1 
+  49:2e       SETUP_FINALLY 46
+  12:56       LOAD_GLOBAL type
+  b0          LOAD_FAST 0 
+  13:1f       LOAD_ATTR value
+  34:01       CALL_FUNCTION 1
+  12:57       LOAD_GLOBAL str
+  de          BINARY_OP 7 <is> 
+  44:46       POP_JUMP_IF_FALSE 6
+  b0          LOAD_FAST 0 
+  13:1f       LOAD_ATTR value
+  c1          STORE_FAST 1 
+  42:5b       JUMP 27
+  b0          LOAD_FAST 0 
+  14:0a       LOAD_METHOD IsInt
+  36:00       CALL_METHOD 0
+  44:4c       POP_JUMP_IF_FALSE 12
+  12:57       LOAD_GLOBAL str
+  b0          LOAD_FAST 0 
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  34:01       CALL_FUNCTION 1
+  c1          STORE_FAST 1 
+  42:48       JUMP 8
+  12:57       LOAD_GLOBAL str
+  b0          LOAD_FAST 0 
+  13:1f       LOAD_ATTR value
+  34:01       CALL_FUNCTION 1
+  c1          STORE_FAST 1 
+  51          LOAD_CONST_NONE 
+  b1          LOAD_FAST 1 
+  63          RETURN_VALUE 
+  5d          END_FINALLY 
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: []
+simple_name: IntValue
+  raw bytecode: 29 3d:0e:0b:55:80:25:22:22:4b:80:c1:49:0b:12:58:b0:14:0d:36:00:34:01:c1:51:b1:63:5d:51:63
+  prelude: (8, 1, 0, 1, 0, 0)
+  args: ['self']
+  line info: 80:25:22:22:4b
+  80          LOAD_CONST_SMALL_INT 0 
+  c1          STORE_FAST 1 
+  49:0b       SETUP_FINALLY 11
+  12:58       LOAD_GLOBAL int
+  b0          LOAD_FAST 0 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  34:01       CALL_FUNCTION 1
+  c1          STORE_FAST 1 
+  51          LOAD_CONST_NONE 
+  b1          LOAD_FAST 1 
+  63          RETURN_VALUE 
+  5d          END_FINALLY 
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: []
+simple_name: FloatValue
+  raw bytecode: 28 35:0e:0d:55:80:2c:23:22:49:23:02:c1:49:09:12:59:b0:13:1f:34:01:c1:51:b1:63:5d:51:63
+  prelude: (7, 1, 0, 1, 0, 0)
+  args: ['self']
+  line info: 80:2c:23:22:49
+  23:02       LOAD_CONST_OBJ 0.0
+  c1          STORE_FAST 1 
+  49:09       SETUP_FINALLY 9
+  12:59       LOAD_GLOBAL float
+  b0          LOAD_FAST 0 
+  13:1f       LOAD_ATTR value
+  34:01       CALL_FUNCTION 1
+  c1          STORE_FAST 1 
+  51          LOAD_CONST_NONE 
+  b1          LOAD_FAST 1 
+  63          RETURN_VALUE 
+  5d          END_FINALLY 
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: []
+simple_name: NumberValue
+  raw bytecode: 27 11:0c:20:55:80:33:27:26:b0:14:0a:36:00:44:46:b0:14:0b:36:00:63:b0:14:0d:36:00:63
+  prelude: (3, 0, 0, 1, 0, 0)
+  args: ['self']
+  line info: 80:33:27:26
+  b0          LOAD_FAST 0 
+  14:0a       LOAD_METHOD IsInt
+  36:00       CALL_METHOD 0
+  44:46       POP_JUMP_IF_FALSE 6
+  b0          LOAD_FAST 0 
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  63          RETURN_VALUE 
+  b0          LOAD_FAST 0 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  63          RETURN_VALUE 
+  children: []
+simple_name: BoolValue
+  raw bytecode: 27 35:0e:0f:55:80:38:22:22:49:50:c1:49:09:12:5a:b0:13:1f:34:01:c1:51:b1:63:5d:51:63
+  prelude: (7, 1, 0, 1, 0, 0)
+  args: ['self']
+  line info: 80:38:22:22:49
+  50          LOAD_CONST_FALSE 
+  c1          STORE_FAST 1 
+  49:09       SETUP_FINALLY 9
+  12:5a       LOAD_GLOBAL bool
+  b0          LOAD_FAST 0 
+  13:1f       LOAD_ATTR value
+  34:01       CALL_FUNCTION 1
+  c1          STORE_FAST 1 
+  51          LOAD_CONST_NONE 
+  b1          LOAD_FAST 1 
+  63          RETURN_VALUE 
+  5d          END_FINALLY 
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: []
+simple_name: IsInt
+  raw bytecode: 172 45:2a:0a:55:80:3f:2c:22:2c:2b:2d:28:2c:22:2c:38:28:2b:42:22:22:28:43:12:56:b0:13:1f:34:01:12:58:de:44:42:52:63:12:56:b0:13:1f:34:01:12:57:de:44:60:b0:13:1f:14:21:10:22:36:01:44:4d:b0:13:1f:81:51:2e:02:55:14:23:36:00:63:b0:13:1f:14:23:36:00:63:12:56:b0:13:1f:34:01:12:5a:de:44:42:52:63:12:56:b0:13:1f:34:01:12:59:de:44:58:12:5b:b0:13:1f:12:04:14:24:b0:13:1f:23:03:f2:36:01:f3:34:01:23:04:d7:63:12:57:b0:13:1f:34:01:c1:b1:14:25:10:26:36:01:7f:d8:44:42:50:63:50:c2:49:0b:12:58:b0:13:1f:34:01:59:52:c2:51:b2:63:5d:51:63
+  prelude: (9, 1, 0, 1, 0, 0)
+  args: ['self']
+  line info: 80:3f:2c:22:2c:2b:2d:28:2c:22:2c:38:28:2b:42:22:22:28:43
+  12:56       LOAD_GLOBAL type
+  b0          LOAD_FAST 0 
+  13:1f       LOAD_ATTR value
+  34:01       CALL_FUNCTION 1
+  12:58       LOAD_GLOBAL int
+  de          BINARY_OP 7 <is> 
+  44:42       POP_JUMP_IF_FALSE 2
+  52          LOAD_CONST_TRUE 
+  63          RETURN_VALUE 
+  12:56       LOAD_GLOBAL type
+  b0          LOAD_FAST 0 
+  13:1f       LOAD_ATTR value
+  34:01       CALL_FUNCTION 1
+  12:57       LOAD_GLOBAL str
+  de          BINARY_OP 7 <is> 
+  44:60       POP_JUMP_IF_FALSE 32
+  b0          LOAD_FAST 0 
+  13:1f       LOAD_ATTR value
+  14:21       LOAD_METHOD startswith
+  10:22       LOAD_CONST_STRING -
+  36:01       CALL_METHOD 1
+  44:4d       POP_JUMP_IF_FALSE 13
+  b0          LOAD_FAST 0 
+  13:1f       LOAD_ATTR value
+  81          LOAD_CONST_SMALL_INT 1 
+  51          LOAD_CONST_NONE 
+  2e:02       BUILD_SLICE 2
+  55          LOAD_SUBSCR 
+  14:23       LOAD_METHOD isdigit
+  36:00       CALL_METHOD 0
+  63          RETURN_VALUE 
+  b0          LOAD_FAST 0 
+  13:1f       LOAD_ATTR value
+  14:23       LOAD_METHOD isdigit
+  36:00       CALL_METHOD 0
+  63          RETURN_VALUE 
+  12:56       LOAD_GLOBAL type
+  b0          LOAD_FAST 0 
+  13:1f       LOAD_ATTR value
+  34:01       CALL_FUNCTION 1
+  12:5a       LOAD_GLOBAL bool
+  de          BINARY_OP 7 <is> 
+  44:42       POP_JUMP_IF_FALSE 2
+  52          LOAD_CONST_TRUE 
+  63          RETURN_VALUE 
+  12:56       LOAD_GLOBAL type
+  b0          LOAD_FAST 0 
+  13:1f       LOAD_ATTR value
+  34:01       CALL_FUNCTION 1
+  12:59       LOAD_GLOBAL float
+  de          BINARY_OP 7 <is> 
+  44:58       POP_JUMP_IF_FALSE 24
+  12:5b       LOAD_GLOBAL abs
+  b0          LOAD_FAST 0 
+  13:1f       LOAD_ATTR value
+  12:04       LOAD_GLOBAL math
+  14:24       LOAD_METHOD floor
+  b0          LOAD_FAST 0 
+  13:1f       LOAD_ATTR value
+  23:03       LOAD_CONST_OBJ 0.5
+  f2          BINARY_OP 27 __add__ 
+  36:01       CALL_METHOD 1
+  f3          BINARY_OP 28 __sub__ 
+  34:01       CALL_FUNCTION 1
+  23:04       LOAD_CONST_OBJ 1.401298e-07
+  d7          BINARY_OP 0 __lt__ 
+  63          RETURN_VALUE 
+  12:57       LOAD_GLOBAL str
+  b0          LOAD_FAST 0 
+  13:1f       LOAD_ATTR value
+  34:01       CALL_FUNCTION 1
+  c1          STORE_FAST 1 
+  b1          LOAD_FAST 1 
+  14:25       LOAD_METHOD find
+  10:26       LOAD_CONST_STRING .
+  36:01       CALL_METHOD 1
+  7f          LOAD_CONST_SMALL_INT -1 
+  d8          BINARY_OP 1 __gt__ 
+  44:42       POP_JUMP_IF_FALSE 2
+  50          LOAD_CONST_FALSE 
+  63          RETURN_VALUE 
+  50          LOAD_CONST_FALSE 
+  c2          STORE_FAST 2 
+  49:0b       SETUP_FINALLY 11
+  12:58       LOAD_GLOBAL int
+  b0          LOAD_FAST 0 
+  13:1f       LOAD_ATTR value
+  34:01       CALL_FUNCTION 1
+  59          POP_TOP 
+  52          LOAD_CONST_TRUE 
+  c2          STORE_FAST 2 
+  51          LOAD_CONST_NONE 
+  b2          LOAD_FAST 2 
+  63          RETURN_VALUE 
+  5d          END_FINALLY 
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: []
+simple_name: IsNumber
+  raw bytecode: 30 35:10:27:55:80:55:22:22:28:43:50:c1:49:0b:12:59:b0:13:1f:34:01:59:52:c1:51:b1:63:5d:51:63
+  prelude: (7, 1, 0, 1, 0, 0)
+  args: ['self']
+  line info: 80:55:22:22:28:43
+  50          LOAD_CONST_FALSE 
+  c1          STORE_FAST 1 
+  49:0b       SETUP_FINALLY 11
+  12:59       LOAD_GLOBAL float
+  b0          LOAD_FAST 0 
+  13:1f       LOAD_ATTR value
+  34:01       CALL_FUNCTION 1
+  59          POP_TOP 
+  52          LOAD_CONST_TRUE 
+  c1          STORE_FAST 1 
+  51          LOAD_CONST_NONE 
+  b1          LOAD_FAST 1 
+  63          RETURN_VALUE 
+  5d          END_FINALLY 
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: []
+simple_name: length
+  raw bytecode: 20 21:08:28:55:80:5d:12:05:12:46:b0:14:12:36:00:34:01:34:01:63
+  prelude: (5, 0, 0, 1, 0, 0)
+  args: ['self']
+  line info: 80:5d
+  12:05       LOAD_GLOBAL DataStruct
+  12:46       LOAD_GLOBAL len
+  b0          LOAD_FAST 0 
+  14:12       LOAD_METHOD StringValue
+  36:00       CALL_METHOD 0
+  34:01       CALL_FUNCTION 1
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: find
+  raw bytecode: 22 2a:0a:25:55:5c:80:60:b0:14:12:36:00:14:25:b1:14:12:36:00:36:01:63
+  prelude: (6, 0, 0, 2, 0, 0)
+  args: ['self', 'other']
+  line info: 80:60
+  b0          LOAD_FAST 0 
+  14:12       LOAD_METHOD StringValue
+  36:00       CALL_METHOD 0
+  14:25       LOAD_METHOD find
+  b1          LOAD_FAST 1 
+  14:12       LOAD_METHOD StringValue
+  36:00       CALL_METHOD 0
+  36:01       CALL_METHOD 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: __round__
+  raw bytecode: 18 a2:01:0a:29:55:5d:80:63:12:05:b0:14:0b:36:00:34:01:63
+  prelude: (5, 0, 0, 2, 0, 1)
+  args: ['self', 'n']
+  line info: 80:63
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: __add__
+  raw bytecode: 62 32:10:2a:55:5c:80:66:26:2e:30:12:05:b1:34:01:c2:b0:14:0a:36:00:44:57:b2:14:0a:36:00:44:50:12:05:b0:14:0b:36:00:b2:14:0b:36:00:f2:34:01:63:12:05:b0:14:0d:36:00:b2:14:0d:36:00:f2:34:01:63
+  prelude: (7, 0, 0, 2, 0, 0)
+  args: ['self', 'other']
+  line info: 80:66:26:2e:30
+  12:05       LOAD_GLOBAL DataStruct
+  b1          LOAD_FAST 1 
+  34:01       CALL_FUNCTION 1
+  c2          STORE_FAST 2 
+  b0          LOAD_FAST 0 
+  14:0a       LOAD_METHOD IsInt
+  36:00       CALL_METHOD 0
+  44:57       POP_JUMP_IF_FALSE 23
+  b2          LOAD_FAST 2 
+  14:0a       LOAD_METHOD IsInt
+  36:00       CALL_METHOD 0
+  44:50       POP_JUMP_IF_FALSE 16
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  f2          BINARY_OP 27 __add__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  f2          BINARY_OP 27 __add__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: __radd__
+  raw bytecode: 62 32:10:2b:55:5c:80:6c:26:2e:30:12:05:b1:34:01:c2:b0:14:0a:36:00:44:57:b2:14:0a:36:00:44:50:12:05:b0:14:0b:36:00:b2:14:0b:36:00:f2:34:01:63:12:05:b0:14:0d:36:00:b2:14:0d:36:00:f2:34:01:63
+  prelude: (7, 0, 0, 2, 0, 0)
+  args: ['self', 'other']
+  line info: 80:6c:26:2e:30
+  12:05       LOAD_GLOBAL DataStruct
+  b1          LOAD_FAST 1 
+  34:01       CALL_FUNCTION 1
+  c2          STORE_FAST 2 
+  b0          LOAD_FAST 0 
+  14:0a       LOAD_METHOD IsInt
+  36:00       CALL_METHOD 0
+  44:57       POP_JUMP_IF_FALSE 23
+  b2          LOAD_FAST 2 
+  14:0a       LOAD_METHOD IsInt
+  36:00       CALL_METHOD 0
+  44:50       POP_JUMP_IF_FALSE 16
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  f2          BINARY_OP 27 __add__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  f2          BINARY_OP 27 __add__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: __iadd__
+  raw bytecode: 63 32:12:2c:55:5c:80:72:26:2e:30:2e:12:05:b1:34:01:c2:b0:14:0a:36:00:44:57:b2:14:0a:36:00:44:50:12:05:b0:14:0b:36:00:b2:14:0b:36:00:f2:34:01:63:b0:14:0d:36:00:b2:14:0d:36:00:f2:b0:18:1f:b0:63
+  prelude: (7, 0, 0, 2, 0, 0)
+  args: ['self', 'other']
+  line info: 80:72:26:2e:30:2e
+  12:05       LOAD_GLOBAL DataStruct
+  b1          LOAD_FAST 1 
+  34:01       CALL_FUNCTION 1
+  c2          STORE_FAST 2 
+  b0          LOAD_FAST 0 
+  14:0a       LOAD_METHOD IsInt
+  36:00       CALL_METHOD 0
+  44:57       POP_JUMP_IF_FALSE 23
+  b2          LOAD_FAST 2 
+  14:0a       LOAD_METHOD IsInt
+  36:00       CALL_METHOD 0
+  44:50       POP_JUMP_IF_FALSE 16
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  f2          BINARY_OP 27 __add__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  b0          LOAD_FAST 0 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  f2          BINARY_OP 27 __add__ 
+  b0          LOAD_FAST 0 
+  18:1f       STORE_ATTR value
+  b0          LOAD_FAST 0 
+  63          RETURN_VALUE 
+  children: []
+simple_name: __sub__
+  raw bytecode: 62 32:10:2d:55:5c:80:79:26:2e:30:12:05:b1:34:01:c2:b0:14:0a:36:00:44:57:b2:14:0a:36:00:44:50:12:05:b0:14:0b:36:00:b2:14:0b:36:00:f3:34:01:63:12:05:b0:14:0d:36:00:b2:14:0d:36:00:f3:34:01:63
+  prelude: (7, 0, 0, 2, 0, 0)
+  args: ['self', 'other']
+  line info: 80:79:26:2e:30
+  12:05       LOAD_GLOBAL DataStruct
+  b1          LOAD_FAST 1 
+  34:01       CALL_FUNCTION 1
+  c2          STORE_FAST 2 
+  b0          LOAD_FAST 0 
+  14:0a       LOAD_METHOD IsInt
+  36:00       CALL_METHOD 0
+  44:57       POP_JUMP_IF_FALSE 23
+  b2          LOAD_FAST 2 
+  14:0a       LOAD_METHOD IsInt
+  36:00       CALL_METHOD 0
+  44:50       POP_JUMP_IF_FALSE 16
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  f3          BINARY_OP 28 __sub__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  f3          BINARY_OP 28 __sub__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: __mul__
+  raw bytecode: 62 32:10:2e:55:5c:80:7f:26:2e:30:12:05:b1:34:01:c2:b0:14:0a:36:00:44:57:b2:14:0a:36:00:44:50:12:05:b0:14:0b:36:00:b2:14:0b:36:00:f4:34:01:63:12:05:b0:14:0d:36:00:b2:14:0d:36:00:f4:34:01:63
+  prelude: (7, 0, 0, 2, 0, 0)
+  args: ['self', 'other']
+  line info: 80:7f:26:2e:30
+  12:05       LOAD_GLOBAL DataStruct
+  b1          LOAD_FAST 1 
+  34:01       CALL_FUNCTION 1
+  c2          STORE_FAST 2 
+  b0          LOAD_FAST 0 
+  14:0a       LOAD_METHOD IsInt
+  36:00       CALL_METHOD 0
+  44:57       POP_JUMP_IF_FALSE 23
+  b2          LOAD_FAST 2 
+  14:0a       LOAD_METHOD IsInt
+  36:00       CALL_METHOD 0
+  44:50       POP_JUMP_IF_FALSE 16
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  f4          BINARY_OP 29 __mul__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  f4          BINARY_OP 29 __mul__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: __truediv__
+  raw bytecode: 30 32:0c:2f:55:5c:80:85:26:12:05:b1:34:01:c2:12:05:b0:14:0d:36:00:b2:14:0d:36:00:f7:34:01:63
+  prelude: (7, 0, 0, 2, 0, 0)
+  args: ['self', 'other']
+  line info: 80:85:26
+  12:05       LOAD_GLOBAL DataStruct
+  b1          LOAD_FAST 1 
+  34:01       CALL_FUNCTION 1
+  c2          STORE_FAST 2 
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  f7          BINARY_OP 32 __truediv__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: __lt__
+  raw bytecode: 62 32:10:30:55:5c:80:89:26:2e:30:12:05:b1:34:01:c2:b0:14:27:36:00:44:57:b2:14:27:36:00:44:50:12:05:b0:14:0d:36:00:b2:14:0d:36:00:d7:34:01:63:12:05:b0:14:12:36:00:b2:14:12:36:00:d7:34:01:63
+  prelude: (7, 0, 0, 2, 0, 0)
+  args: ['self', 'other']
+  line info: 80:89:26:2e:30
+  12:05       LOAD_GLOBAL DataStruct
+  b1          LOAD_FAST 1 
+  34:01       CALL_FUNCTION 1
+  c2          STORE_FAST 2 
+  b0          LOAD_FAST 0 
+  14:27       LOAD_METHOD IsNumber
+  36:00       CALL_METHOD 0
+  44:57       POP_JUMP_IF_FALSE 23
+  b2          LOAD_FAST 2 
+  14:27       LOAD_METHOD IsNumber
+  36:00       CALL_METHOD 0
+  44:50       POP_JUMP_IF_FALSE 16
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  d7          BINARY_OP 0 __lt__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:12       LOAD_METHOD StringValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:12       LOAD_METHOD StringValue
+  36:00       CALL_METHOD 0
+  d7          BINARY_OP 0 __lt__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: __gt__
+  raw bytecode: 62 32:10:31:55:5c:80:8f:26:2e:30:12:05:b1:34:01:c2:b0:14:27:36:00:44:57:b2:14:27:36:00:44:50:12:05:b0:14:0d:36:00:b2:14:0d:36:00:d8:34:01:63:12:05:b0:14:12:36:00:b2:14:12:36:00:d8:34:01:63
+  prelude: (7, 0, 0, 2, 0, 0)
+  args: ['self', 'other']
+  line info: 80:8f:26:2e:30
+  12:05       LOAD_GLOBAL DataStruct
+  b1          LOAD_FAST 1 
+  34:01       CALL_FUNCTION 1
+  c2          STORE_FAST 2 
+  b0          LOAD_FAST 0 
+  14:27       LOAD_METHOD IsNumber
+  36:00       CALL_METHOD 0
+  44:57       POP_JUMP_IF_FALSE 23
+  b2          LOAD_FAST 2 
+  14:27       LOAD_METHOD IsNumber
+  36:00       CALL_METHOD 0
+  44:50       POP_JUMP_IF_FALSE 16
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  d8          BINARY_OP 1 __gt__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:12       LOAD_METHOD StringValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:12       LOAD_METHOD StringValue
+  36:00       CALL_METHOD 0
+  d8          BINARY_OP 1 __gt__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: __le__
+  raw bytecode: 62 32:10:32:55:5c:80:95:26:2e:30:12:05:b1:34:01:c2:b0:14:27:36:00:44:57:b2:14:27:36:00:44:50:12:05:b0:14:0d:36:00:b2:14:0d:36:00:da:34:01:63:12:05:b0:14:12:36:00:b2:14:12:36:00:da:34:01:63
+  prelude: (7, 0, 0, 2, 0, 0)
+  args: ['self', 'other']
+  line info: 80:95:26:2e:30
+  12:05       LOAD_GLOBAL DataStruct
+  b1          LOAD_FAST 1 
+  34:01       CALL_FUNCTION 1
+  c2          STORE_FAST 2 
+  b0          LOAD_FAST 0 
+  14:27       LOAD_METHOD IsNumber
+  36:00       CALL_METHOD 0
+  44:57       POP_JUMP_IF_FALSE 23
+  b2          LOAD_FAST 2 
+  14:27       LOAD_METHOD IsNumber
+  36:00       CALL_METHOD 0
+  44:50       POP_JUMP_IF_FALSE 16
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  da          BINARY_OP 3 __le__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:12       LOAD_METHOD StringValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:12       LOAD_METHOD StringValue
+  36:00       CALL_METHOD 0
+  da          BINARY_OP 3 __le__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: __ge__
+  raw bytecode: 62 32:10:33:55:5c:80:9b:26:2e:30:12:05:b1:34:01:c2:b0:14:27:36:00:44:57:b2:14:27:36:00:44:50:12:05:b0:14:0d:36:00:b2:14:0d:36:00:db:34:01:63:12:05:b0:14:12:36:00:b2:14:12:36:00:db:34:01:63
+  prelude: (7, 0, 0, 2, 0, 0)
+  args: ['self', 'other']
+  line info: 80:9b:26:2e:30
+  12:05       LOAD_GLOBAL DataStruct
+  b1          LOAD_FAST 1 
+  34:01       CALL_FUNCTION 1
+  c2          STORE_FAST 2 
+  b0          LOAD_FAST 0 
+  14:27       LOAD_METHOD IsNumber
+  36:00       CALL_METHOD 0
+  44:57       POP_JUMP_IF_FALSE 23
+  b2          LOAD_FAST 2 
+  14:27       LOAD_METHOD IsNumber
+  36:00       CALL_METHOD 0
+  44:50       POP_JUMP_IF_FALSE 16
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  db          BINARY_OP 4 __ge__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:12       LOAD_METHOD StringValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:12       LOAD_METHOD StringValue
+  36:00       CALL_METHOD 0
+  db          BINARY_OP 4 __ge__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: __eq__
+  raw bytecode: 62 32:10:34:55:5c:80:a1:26:2e:30:12:05:b1:34:01:c2:b0:14:27:36:00:44:57:b2:14:27:36:00:44:50:12:05:b0:14:0d:36:00:b2:14:0d:36:00:d9:34:01:63:12:05:b0:14:12:36:00:b2:14:12:36:00:d9:34:01:63
+  prelude: (7, 0, 0, 2, 0, 0)
+  args: ['self', 'other']
+  line info: 80:a1:26:2e:30
+  12:05       LOAD_GLOBAL DataStruct
+  b1          LOAD_FAST 1 
+  34:01       CALL_FUNCTION 1
+  c2          STORE_FAST 2 
+  b0          LOAD_FAST 0 
+  14:27       LOAD_METHOD IsNumber
+  36:00       CALL_METHOD 0
+  44:57       POP_JUMP_IF_FALSE 23
+  b2          LOAD_FAST 2 
+  14:27       LOAD_METHOD IsNumber
+  36:00       CALL_METHOD 0
+  44:50       POP_JUMP_IF_FALSE 16
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  d9          BINARY_OP 2 __eq__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:12       LOAD_METHOD StringValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:12       LOAD_METHOD StringValue
+  36:00       CALL_METHOD 0
+  d9          BINARY_OP 2 __eq__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: __ne__
+  raw bytecode: 62 32:10:35:55:5c:80:a7:26:2e:30:12:05:b1:34:01:c2:b0:14:27:36:00:44:57:b2:14:27:36:00:44:50:12:05:b0:14:0d:36:00:b2:14:0d:36:00:dc:34:01:63:12:05:b0:14:12:36:00:b2:14:12:36:00:dc:34:01:63
+  prelude: (7, 0, 0, 2, 0, 0)
+  args: ['self', 'other']
+  line info: 80:a7:26:2e:30
+  12:05       LOAD_GLOBAL DataStruct
+  b1          LOAD_FAST 1 
+  34:01       CALL_FUNCTION 1
+  c2          STORE_FAST 2 
+  b0          LOAD_FAST 0 
+  14:27       LOAD_METHOD IsNumber
+  36:00       CALL_METHOD 0
+  44:57       POP_JUMP_IF_FALSE 23
+  b2          LOAD_FAST 2 
+  14:27       LOAD_METHOD IsNumber
+  36:00       CALL_METHOD 0
+  44:50       POP_JUMP_IF_FALSE 16
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  dc          BINARY_OP 5 __ne__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:12       LOAD_METHOD StringValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:12       LOAD_METHOD StringValue
+  36:00       CALL_METHOD 0
+  dc          BINARY_OP 5 __ne__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: __mod__
+  raw bytecode: 62 32:10:36:55:5c:80:ad:26:2e:30:12:05:b1:34:01:c2:b0:14:0a:36:00:44:57:b2:14:0a:36:00:44:50:12:05:b0:14:0b:36:00:b2:14:0b:36:00:f8:34:01:63:12:05:b0:14:0d:36:00:b2:14:0d:36:00:f8:34:01:63
+  prelude: (7, 0, 0, 2, 0, 0)
+  args: ['self', 'other']
+  line info: 80:ad:26:2e:30
+  12:05       LOAD_GLOBAL DataStruct
+  b1          LOAD_FAST 1 
+  34:01       CALL_FUNCTION 1
+  c2          STORE_FAST 2 
+  b0          LOAD_FAST 0 
+  14:0a       LOAD_METHOD IsInt
+  36:00       CALL_METHOD 0
+  44:57       POP_JUMP_IF_FALSE 23
+  b2          LOAD_FAST 2 
+  14:0a       LOAD_METHOD IsInt
+  36:00       CALL_METHOD 0
+  44:50       POP_JUMP_IF_FALSE 16
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  f8          BINARY_OP 33 __mod__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  f8          BINARY_OP 33 __mod__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: __abs__
+  raw bytecode: 43 21:0c:37:55:80:b3:27:2e:b0:14:0a:36:00:44:4e:12:05:12:5b:b0:14:0b:36:00:34:01:34:01:63:12:05:12:5b:b0:14:0d:36:00:34:01:34:01:63
+  prelude: (5, 0, 0, 1, 0, 0)
+  args: ['self']
+  line info: 80:b3:27:2e
+  b0          LOAD_FAST 0 
+  14:0a       LOAD_METHOD IsInt
+  36:00       CALL_METHOD 0
+  44:4e       POP_JUMP_IF_FALSE 14
+  12:05       LOAD_GLOBAL DataStruct
+  12:5b       LOAD_GLOBAL abs
+  b0          LOAD_FAST 0 
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  34:01       CALL_FUNCTION 1
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  12:05       LOAD_GLOBAL DataStruct
+  12:5b       LOAD_GLOBAL abs
+  b0          LOAD_FAST 0 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  34:01       CALL_FUNCTION 1
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: __ceil__
+  raw bytecode: 22 29:08:38:55:80:b8:12:05:12:04:14:39:b0:14:0d:36:00:36:01:34:01:63
+  prelude: (6, 0, 0, 1, 0, 0)
+  args: ['self']
+  line info: 80:b8
+  12:05       LOAD_GLOBAL DataStruct
+  12:04       LOAD_GLOBAL math
+  14:39       LOAD_METHOD ceil
+  b0          LOAD_FAST 0 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  36:01       CALL_METHOD 1
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: __floor__
+  raw bytecode: 22 29:08:3a:55:80:bb:12:05:12:04:14:24:b0:14:0d:36:00:36:01:34:01:63
+  prelude: (6, 0, 0, 1, 0, 0)
+  args: ['self']
+  line info: 80:bb
+  12:05       LOAD_GLOBAL DataStruct
+  12:04       LOAD_GLOBAL math
+  14:24       LOAD_METHOD floor
+  b0          LOAD_FAST 0 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  36:01       CALL_METHOD 1
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: contains
+  raw bytecode: 41 42:10:3b:55:5c:80:be:26:26:26:12:05:b1:34:01:c2:b0:14:12:36:00:c3:b2:14:12:36:00:c4:12:05:b3:14:25:b4:36:01:80:db:34:01:63
+  prelude: (9, 0, 0, 2, 0, 0)
+  args: ['self', 'other']
+  line info: 80:be:26:26:26
+  12:05       LOAD_GLOBAL DataStruct
+  b1          LOAD_FAST 1 
+  34:01       CALL_FUNCTION 1
+  c2          STORE_FAST 2 
+  b0          LOAD_FAST 0 
+  14:12       LOAD_METHOD StringValue
+  36:00       CALL_METHOD 0
+  c3          STORE_FAST 3 
+  b2          LOAD_FAST 2 
+  14:12       LOAD_METHOD StringValue
+  36:00       CALL_METHOD 0
+  c4          STORE_FAST 4 
+  12:05       LOAD_GLOBAL DataStruct
+  b3          LOAD_FAST 3 
+  14:25       LOAD_METHOD find
+  b4          LOAD_FAST 4 
+  36:01       CALL_METHOD 1
+  80          LOAD_CONST_SMALL_INT 0 
+  db          BINARY_OP 4 __ge__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: data_struct_random
+  raw bytecode: 116 62:20:09:40:41:80:c5:2e:26:26:25:28:2f:26:26:25:28:27:b0:14:0a:36:00:44:6f:b1:14:0a:36:00:44:68:b0:14:0b:36:00:c2:b1:14:0b:36:00:c3:b2:b3:d8:44:48:b3:b2:2a:02:30:02:c2:c3:12:05:12:03:14:0c:b2:b3:81:f2:36:02:34:01:63:b0:14:0d:36:00:c4:b1:14:0d:36:00:c5:b4:b5:d8:44:48:b5:b4:2a:02:30:02:c4:c5:12:03:14:03:36:00:c6:12:05:b6:b5:b4:f3:f4:b4:f2:34:01:63
+  prelude: (13, 0, 0, 2, 0, 0)
+  args: ['v1', 'v2']
+  line info: 80:c5:2e:26:26:25:28:2f:26:26:25:28:27
+  b0          LOAD_FAST 0 
+  14:0a       LOAD_METHOD IsInt
+  36:00       CALL_METHOD 0
+  44:6f       POP_JUMP_IF_FALSE 47
+  b1          LOAD_FAST 1 
+  14:0a       LOAD_METHOD IsInt
+  36:00       CALL_METHOD 0
+  44:68       POP_JUMP_IF_FALSE 40
+  b0          LOAD_FAST 0 
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  c2          STORE_FAST 2 
+  b1          LOAD_FAST 1 
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  c3          STORE_FAST 3 
+  b2          LOAD_FAST 2 
+  b3          LOAD_FAST 3 
+  d8          BINARY_OP 1 __gt__ 
+  44:48       POP_JUMP_IF_FALSE 8
+  b3          LOAD_FAST 3 
+  b2          LOAD_FAST 2 
+  2a:02       BUILD_TUPLE 2
+  30:02       UNPACK_SEQUENCE 2
+  c2          STORE_FAST 2 
+  c3          STORE_FAST 3 
+  12:05       LOAD_GLOBAL DataStruct
+  12:03       LOAD_GLOBAL random
+  14:0c       LOAD_METHOD randrange
+  b2          LOAD_FAST 2 
+  b3          LOAD_FAST 3 
+  81          LOAD_CONST_SMALL_INT 1 
+  f2          BINARY_OP 27 __add__ 
+  36:02       CALL_METHOD 2
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  b0          LOAD_FAST 0 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  c4          STORE_FAST 4 
+  b1          LOAD_FAST 1 
+  14:0d       LOAD_METHOD FloatValue
+  36:00       CALL_METHOD 0
+  c5          STORE_FAST 5 
+  b4          LOAD_FAST 4 
+  b5          LOAD_FAST 5 
+  d8          BINARY_OP 1 __gt__ 
+  44:48       POP_JUMP_IF_FALSE 8
+  b5          LOAD_FAST 5 
+  b4          LOAD_FAST 4 
+  2a:02       BUILD_TUPLE 2
+  30:02       UNPACK_SEQUENCE 2
+  c4          STORE_FAST 4 
+  c5          STORE_FAST 5 
+  12:03       LOAD_GLOBAL random
+  14:03       LOAD_METHOD random
+  36:00       CALL_METHOD 0
+  c6          STORE_FAST 6 
+  12:05       LOAD_GLOBAL DataStruct
+  b6          LOAD_FAST 6 
+  b5          LOAD_FAST 5 
+  b4          LOAD_FAST 4 
+  f3          BINARY_OP 28 __sub__ 
+  f4          BINARY_OP 29 __mul__ 
+  b4          LOAD_FAST 4 
+  f2          BINARY_OP 27 __add__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: data_struct_and
+  raw bytecode: 24 22:0a:0e:40:41:80:d4:12:05:b0:14:0f:36:00:46:05:b1:14:0f:36:00:34:01:63
+  prelude: (5, 0, 0, 2, 0, 0)
+  args: ['v1', 'v2']
+  line info: 80:d4
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  14:0f       LOAD_METHOD BoolValue
+  36:00       CALL_METHOD 0
+  46:05       JUMP_IF_FALSE_OR_POP 5
+  b1          LOAD_FAST 1 
+  14:0f       LOAD_METHOD BoolValue
+  36:00       CALL_METHOD 0
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: data_struct_or
+  raw bytecode: 38 32:0e:10:40:41:80:d8:26:26:12:05:b0:34:01:c2:12:05:b1:34:01:c3:12:05:b2:14:0f:36:00:45:05:b3:14:0f:36:00:34:01:63
+  prelude: (7, 0, 0, 2, 0, 0)
+  args: ['v1', 'v2']
+  line info: 80:d8:26:26
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  34:01       CALL_FUNCTION 1
+  c2          STORE_FAST 2 
+  12:05       LOAD_GLOBAL DataStruct
+  b1          LOAD_FAST 1 
+  34:01       CALL_FUNCTION 1
+  c3          STORE_FAST 3 
+  12:05       LOAD_GLOBAL DataStruct
+  b2          LOAD_FAST 2 
+  14:0f       LOAD_METHOD BoolValue
+  36:00       CALL_METHOD 0
+  45:05       JUMP_IF_TRUE_OR_POP 5
+  b3          LOAD_FAST 3 
+  14:0f       LOAD_METHOD BoolValue
+  36:00       CALL_METHOD 0
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: data_struct_substring
+  raw bytecode: 136 f0:04:28:11:42:43:44:45:80:de:2a:2a:2a:2a:25:28:26:25:22:26:26:2a:2a:12:05:b0:34:01:14:12:36:00:c4:12:05:b1:34:01:14:0b:36:00:c5:12:05:b2:34:01:14:0b:36:00:c6:12:05:b3:34:01:14:0b:36:00:c7:b6:b7:d8:44:48:b7:b6:2a:02:30:02:c6:c7:12:46:b4:34:01:c8:b5:82:d9:44:4e:b6:c9:b8:b7:f3:81:f3:c6:b8:b9:f3:81:f3:c7:12:17:b6:80:b8:81:f3:34:03:c6:12:17:b7:b6:b8:81:f3:34:03:c7:12:05:b4:b6:b7:b6:f3:81:f2:2e:02:55:34:01:63
+  prelude: (15, 0, 0, 4, 0, 0)
+  args: ['v1_d', 'f_d', 'start_pos_d', 'end_pos_d']
+  line info: 80:de:2a:2a:2a:2a:25:28:26:25:22:26:26:2a:2a
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  34:01       CALL_FUNCTION 1
+  14:12       LOAD_METHOD StringValue
+  36:00       CALL_METHOD 0
+  c4          STORE_FAST 4 
+  12:05       LOAD_GLOBAL DataStruct
+  b1          LOAD_FAST 1 
+  34:01       CALL_FUNCTION 1
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  c5          STORE_FAST 5 
+  12:05       LOAD_GLOBAL DataStruct
+  b2          LOAD_FAST 2 
+  34:01       CALL_FUNCTION 1
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  c6          STORE_FAST 6 
+  12:05       LOAD_GLOBAL DataStruct
+  b3          LOAD_FAST 3 
+  34:01       CALL_FUNCTION 1
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  c7          STORE_FAST 7 
+  b6          LOAD_FAST 6 
+  b7          LOAD_FAST 7 
+  d8          BINARY_OP 1 __gt__ 
+  44:48       POP_JUMP_IF_FALSE 8
+  b7          LOAD_FAST 7 
+  b6          LOAD_FAST 6 
+  2a:02       BUILD_TUPLE 2
+  30:02       UNPACK_SEQUENCE 2
+  c6          STORE_FAST 6 
+  c7          STORE_FAST 7 
+  12:46       LOAD_GLOBAL len
+  b4          LOAD_FAST 4 
+  34:01       CALL_FUNCTION 1
+  c8          STORE_FAST 8 
+  b5          LOAD_FAST 5 
+  82          LOAD_CONST_SMALL_INT 2 
+  d9          BINARY_OP 2 __eq__ 
+  44:4e       POP_JUMP_IF_FALSE 14
+  b6          LOAD_FAST 6 
+  c9          STORE_FAST 9 
+  b8          LOAD_FAST 8 
+  b7          LOAD_FAST 7 
+  f3          BINARY_OP 28 __sub__ 
+  81          LOAD_CONST_SMALL_INT 1 
+  f3          BINARY_OP 28 __sub__ 
+  c6          STORE_FAST 6 
+  b8          LOAD_FAST 8 
+  b9          LOAD_FAST 9 
+  f3          BINARY_OP 28 __sub__ 
+  81          LOAD_CONST_SMALL_INT 1 
+  f3          BINARY_OP 28 __sub__ 
+  c7          STORE_FAST 7 
+  12:17       LOAD_GLOBAL ClampD
+  b6          LOAD_FAST 6 
+  80          LOAD_CONST_SMALL_INT 0 
+  b8          LOAD_FAST 8 
+  81          LOAD_CONST_SMALL_INT 1 
+  f3          BINARY_OP 28 __sub__ 
+  34:03       CALL_FUNCTION 3
+  c6          STORE_FAST 6 
+  12:17       LOAD_GLOBAL ClampD
+  b7          LOAD_FAST 7 
+  b6          LOAD_FAST 6 
+  b8          LOAD_FAST 8 
+  81          LOAD_CONST_SMALL_INT 1 
+  f3          BINARY_OP 28 __sub__ 
+  34:03       CALL_FUNCTION 3
+  c7          STORE_FAST 7 
+  12:05       LOAD_GLOBAL DataStruct
+  b4          LOAD_FAST 4 
+  b6          LOAD_FAST 6 
+  b7          LOAD_FAST 7 
+  b6          LOAD_FAST 6 
+  f3          BINARY_OP 28 __sub__ 
+  81          LOAD_CONST_SMALL_INT 1 
+  f2          BINARY_OP 27 __add__ 
+  2e:02       BUILD_SLICE 2
+  55          LOAD_SUBSCR 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: data_struct_normalization
+  raw bytecode: 178 f1:04:34:13:47:48:49:4a:4b:80:ef:26:26:26:26:26:1f:23:29:28:29:28:29:22:29:22:2e:23:2a:12:05:b0:34:01:c5:12:05:b1:34:01:c6:12:05:b2:34:01:c7:12:05:b3:34:01:c8:12:05:b4:34:01:c9:b5:14:0a:36:00:46:1a:b6:14:0a:36:00:46:13:b7:14:0a:36:00:46:0c:b8:14:0a:36:00:46:05:b9:14:0a:36:00:ca:b6:b7:d8:14:0f:36:00:44:48:b7:b6:2a:02:30:02:c6:c7:b8:b9:d8:14:0f:36:00:44:48:b9:b8:2a:02:30:02:c8:c9:b5:b6:d7:14:0f:36:00:44:42:b8:63:b5:b7:d8:14:0f:36:00:44:42:b9:63:b5:b6:f3:b7:b6:f3:f7:b9:b8:f3:f4:b8:f2:cb:ba:44:4a:12:05:bb:14:0b:36:00:34:01:63:bb:63
+  prelude: (15, 0, 0, 5, 0, 0)
+  args: ['v_d', 'min1_d', 'max1_d', 'min2_d', 'max2_d']
+  line info: 80:ef:26:26:26:26:26:1f:23:29:28:29:28:29:22:29:22:2e:23:2a
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  34:01       CALL_FUNCTION 1
+  c5          STORE_FAST 5 
+  12:05       LOAD_GLOBAL DataStruct
+  b1          LOAD_FAST 1 
+  34:01       CALL_FUNCTION 1
+  c6          STORE_FAST 6 
+  12:05       LOAD_GLOBAL DataStruct
+  b2          LOAD_FAST 2 
+  34:01       CALL_FUNCTION 1
+  c7          STORE_FAST 7 
+  12:05       LOAD_GLOBAL DataStruct
+  b3          LOAD_FAST 3 
+  34:01       CALL_FUNCTION 1
+  c8          STORE_FAST 8 
+  12:05       LOAD_GLOBAL DataStruct
+  b4          LOAD_FAST 4 
+  34:01       CALL_FUNCTION 1
+  c9          STORE_FAST 9 
+  b5          LOAD_FAST 5 
+  14:0a       LOAD_METHOD IsInt
+  36:00       CALL_METHOD 0
+  46:1a       JUMP_IF_FALSE_OR_POP 26
+  b6          LOAD_FAST 6 
+  14:0a       LOAD_METHOD IsInt
+  36:00       CALL_METHOD 0
+  46:13       JUMP_IF_FALSE_OR_POP 19
+  b7          LOAD_FAST 7 
+  14:0a       LOAD_METHOD IsInt
+  36:00       CALL_METHOD 0
+  46:0c       JUMP_IF_FALSE_OR_POP 12
+  b8          LOAD_FAST 8 
+  14:0a       LOAD_METHOD IsInt
+  36:00       CALL_METHOD 0
+  46:05       JUMP_IF_FALSE_OR_POP 5
+  b9          LOAD_FAST 9 
+  14:0a       LOAD_METHOD IsInt
+  36:00       CALL_METHOD 0
+  ca          STORE_FAST 10 
+  b6          LOAD_FAST 6 
+  b7          LOAD_FAST 7 
+  d8          BINARY_OP 1 __gt__ 
+  14:0f       LOAD_METHOD BoolValue
+  36:00       CALL_METHOD 0
+  44:48       POP_JUMP_IF_FALSE 8
+  b7          LOAD_FAST 7 
+  b6          LOAD_FAST 6 
+  2a:02       BUILD_TUPLE 2
+  30:02       UNPACK_SEQUENCE 2
+  c6          STORE_FAST 6 
+  c7          STORE_FAST 7 
+  b8          LOAD_FAST 8 
+  b9          LOAD_FAST 9 
+  d8          BINARY_OP 1 __gt__ 
+  14:0f       LOAD_METHOD BoolValue
+  36:00       CALL_METHOD 0
+  44:48       POP_JUMP_IF_FALSE 8
+  b9          LOAD_FAST 9 
+  b8          LOAD_FAST 8 
+  2a:02       BUILD_TUPLE 2
+  30:02       UNPACK_SEQUENCE 2
+  c8          STORE_FAST 8 
+  c9          STORE_FAST 9 
+  b5          LOAD_FAST 5 
+  b6          LOAD_FAST 6 
+  d7          BINARY_OP 0 __lt__ 
+  14:0f       LOAD_METHOD BoolValue
+  36:00       CALL_METHOD 0
+  44:42       POP_JUMP_IF_FALSE 2
+  b8          LOAD_FAST 8 
+  63          RETURN_VALUE 
+  b5          LOAD_FAST 5 
+  b7          LOAD_FAST 7 
+  d8          BINARY_OP 1 __gt__ 
+  14:0f       LOAD_METHOD BoolValue
+  36:00       CALL_METHOD 0
+  44:42       POP_JUMP_IF_FALSE 2
+  b9          LOAD_FAST 9 
+  63          RETURN_VALUE 
+  b5          LOAD_FAST 5 
+  b6          LOAD_FAST 6 
+  f3          BINARY_OP 28 __sub__ 
+  b7          LOAD_FAST 7 
+  b6          LOAD_FAST 6 
+  f3          BINARY_OP 28 __sub__ 
+  f7          BINARY_OP 32 __truediv__ 
+  b9          LOAD_FAST 9 
+  b8          LOAD_FAST 8 
+  f3          BINARY_OP 28 __sub__ 
+  f4          BINARY_OP 29 __mul__ 
+  b8          LOAD_FAST 8 
+  f2          BINARY_OP 27 __add__ 
+  cb          STORE_FAST 11 
+  ba          LOAD_FAST 10 
+  44:4a       POP_JUMP_IF_FALSE 10
+  12:05       LOAD_GLOBAL DataStruct
+  bb          LOAD_FAST 11 
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  bb          LOAD_FAST 11 
+  63          RETURN_VALUE 
+  children: []
+simple_name: DegreeToRadian
+  raw bytecode: 20 19:08:14:4c:90:04:12:05:b0:12:04:13:15:f4:23:00:f7:34:01:63
+  prelude: (4, 0, 0, 1, 0, 0)
+  args: ['v']
+  line info: 90:04
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  12:04       LOAD_GLOBAL math
+  13:15       LOAD_ATTR pi
+  f4          BINARY_OP 29 __mul__ 
+  23:00       LOAD_CONST_OBJ 180.0
+  f7          BINARY_OP 32 __truediv__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: RadianToDegree
+  raw bytecode: 20 19:08:16:4c:90:08:12:05:b0:23:00:f4:12:04:13:15:f7:34:01:63
+  prelude: (4, 0, 0, 1, 0, 0)
+  args: ['v']
+  line info: 90:08
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  23:00       LOAD_CONST_OBJ 180.0
+  f4          BINARY_OP 29 __mul__ 
+  12:04       LOAD_GLOBAL math
+  13:15       LOAD_ATTR pi
+  f7          BINARY_OP 32 __truediv__ 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: ClampD
+  raw bytecode: 28 23:14:17:1f:4d:4e:90:0c:25:22:25:22:b0:b2:d8:44:42:b2:63:b0:b1:d7:44:42:b1:63:b0:63
+  prelude: (5, 0, 0, 3, 0, 0)
+  args: ['value', 'min_value', 'max_value']
+  line info: 90:0c:25:22:25:22
+  b0          LOAD_FAST 0 
+  b2          LOAD_FAST 2 
+  d8          BINARY_OP 1 __gt__ 
+  44:42       POP_JUMP_IF_FALSE 2
+  b2          LOAD_FAST 2 
+  63          RETURN_VALUE 
+  b0          LOAD_FAST 0 
+  b1          LOAD_FAST 1 
+  d7          BINARY_OP 0 __lt__ 
+  44:42       POP_JUMP_IF_FALSE 2
+  b1          LOAD_FAST 1 
+  63          RETURN_VALUE 
+  b0          LOAD_FAST 0 
+  63          RETURN_VALUE 
+  children: []
+simple_name: ClampBlock
+  raw bytecode: 57 3b:1a:18:4f:50:51:90:14:26:26:26:29:22:29:22:12:05:b0:34:01:c3:12:05:b1:34:01:c4:12:05:b2:34:01:c5:b3:b5:d8:14:0f:36:00:44:42:b5:63:b3:b4:d7:14:0f:36:00:44:42:b4:63:b3:63
+  prelude: (8, 0, 0, 3, 0, 0)
+  args: ['value_d', 'min_value_d', 'max_value_d']
+  line info: 90:14:26:26:26:29:22:29:22
+  12:05       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  34:01       CALL_FUNCTION 1
+  c3          STORE_FAST 3 
+  12:05       LOAD_GLOBAL DataStruct
+  b1          LOAD_FAST 1 
+  34:01       CALL_FUNCTION 1
+  c4          STORE_FAST 4 
+  12:05       LOAD_GLOBAL DataStruct
+  b2          LOAD_FAST 2 
+  34:01       CALL_FUNCTION 1
+  c5          STORE_FAST 5 
+  b3          LOAD_FAST 3 
+  b5          LOAD_FAST 5 
+  d8          BINARY_OP 1 __gt__ 
+  14:0f       LOAD_METHOD BoolValue
+  36:00       CALL_METHOD 0
+  44:42       POP_JUMP_IF_FALSE 2
+  b5          LOAD_FAST 5 
+  63          RETURN_VALUE 
+  b3          LOAD_FAST 3 
+  b4          LOAD_FAST 4 
+  d7          BINARY_OP 0 __lt__ 
+  14:0f       LOAD_METHOD BoolValue
+  36:00       CALL_METHOD 0
+  44:42       POP_JUMP_IF_FALSE 2
+  b4          LOAD_FAST 4 
+  63          RETURN_VALUE 
+  b3          LOAD_FAST 3 
+  63          RETURN_VALUE 
+  children: []
+simple_name: FindDataInList
+  raw bytecode: 51 3a:12:19:52:53:90:1f:26:2a:2b:2b:b1:14:12:36:00:c2:12:46:b0:34:01:80:42:51:57:c3:b0:b3:55:14:12:36:00:b2:d9:44:42:b3:63:81:e5:58:5a:d7:43:2a:59:59:7f:63
+  prelude: (8, 0, 0, 2, 0, 0)
+  args: ['list_variable', 'data']
+  line info: 90:1f:26:2a:2b:2b
+  b1          LOAD_FAST 1 
+  14:12       LOAD_METHOD StringValue
+  36:00       CALL_METHOD 0
+  c2          STORE_FAST 2 
+  12:46       LOAD_GLOBAL len
+  b0          LOAD_FAST 0 
+  34:01       CALL_FUNCTION 1
+  80          LOAD_CONST_SMALL_INT 0 
+  42:51       JUMP 17
+  57          DUP_TOP 
+  c3          STORE_FAST 3 
+  b0          LOAD_FAST 0 
+  b3          LOAD_FAST 3 
+  55          LOAD_SUBSCR 
+  14:12       LOAD_METHOD StringValue
+  36:00       CALL_METHOD 0
+  b2          LOAD_FAST 2 
+  d9          BINARY_OP 2 __eq__ 
+  44:42       POP_JUMP_IF_FALSE 2
+  b3          LOAD_FAST 3 
+  63          RETURN_VALUE 
+  81          LOAD_CONST_SMALL_INT 1 
+  e5          BINARY_OP 14 __iadd__ 
+  58          DUP_TOP_TWO 
+  5a          ROT_TWO 
+  d7          BINARY_OP 0 __lt__ 
+  43:2a       POP_JUMP_IF_TRUE -22
+  59          POP_TOP 
+  59          POP_TOP 
+  7f          LOAD_CONST_SMALL_INT -1 
+  63          RETURN_VALUE 
+  children: []
+simple_name: GetItemFromList
+  raw bytecode: 41 2a:10:1a:52:54:90:27:26:2e:27:b1:14:0b:36:00:c2:b2:80:d7:43:49:b2:12:46:b0:34:01:db:44:47:12:05:10:1b:34:01:63:b0:b2:55:63
+  prelude: (6, 0, 0, 2, 0, 0)
+  args: ['list_variable', 'index_data']
+  line info: 90:27:26:2e:27
+  b1          LOAD_FAST 1 
+  14:0b       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  c2          STORE_FAST 2 
+  b2          LOAD_FAST 2 
+  80          LOAD_CONST_SMALL_INT 0 
+  d7          BINARY_OP 0 __lt__ 
+  43:49       POP_JUMP_IF_TRUE 9
+  b2          LOAD_FAST 2 
+  12:46       LOAD_GLOBAL len
+  b0          LOAD_FAST 0 
+  34:01       CALL_FUNCTION 1
+  db          BINARY_OP 4 __ge__ 
+  44:47       POP_JUMP_IF_FALSE 7
+  12:05       LOAD_GLOBAL DataStruct
+  10:1b       LOAD_CONST_STRING 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  b0          LOAD_FAST 0 
+  b2          LOAD_FAST 2 
+  55          LOAD_SUBSCR 
+  63          RETURN_VALUE 
+  children: []
+simple_name: version
+  raw bytecode: 8 00:06:1c:90:2e:23:01:63
+  prelude: (1, 0, 0, 0, 0, 0)
+  args: []
+  line info: 90:2e
+  23:01       LOAD_CONST_OBJ 'v_2022_11_30'
+  63          RETURN_VALUE 
+  children: []
