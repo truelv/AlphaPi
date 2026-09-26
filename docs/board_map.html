@@ -38,7 +38,7 @@ strong{color:#fff}
   h2,h3{page-break-after:avoid}
 }
 </style></head><body><div class="wrap"><h1>AlphaPi-One 板卡反向工程报告</h1>
-<blockquote>数据来源：设备自带 <code>.py</code> 源码 + 反编译 <code>.mpy</code>（MicroPython mpy v6）+ 在线实测（SoftI2C 扫描 / 寄存器只读探测）。<br>工具脚本见文末「方法学」。</blockquote>
+<blockquote>数据来源：设备自带 <code>.py</code> 源码 + 反编译 <code>.mpy</code>（MicroPython mpy v6）+ 在线实测（SoftI2C 扫描 / 寄存器只读探测）。<br>工具脚本见文末「方法学」。<br><br>🔗 关联：<a href="lessons_learned.md"><code>lessons_learned.md</code></a>（踩坑与经验）·<br><a href="../projects/AlphaPiCar/README.md"><code>../projects/AlphaPiCar/README.md</code></a>（小车遥控项目）·<br><a href="README.md"><code>README.md</code></a>（文档索引）</blockquote>
 <hr>
 <h2>1. 芯片 / 固件</h2>
 <table><thead><tr><th>项</th><th>值</th></tr></thead><tbody><tr><td>MCU</td><td>ESP32，主频 <strong>240 MHz</strong></td></tr><tr><td>UID</td><td><code>b'p\x04\x1d\xb3\x82\x1c'</code></td></tr><tr><td>运行时</td><td>MicroPython（<code>.mpy</code> 版本 <strong>6</strong>）</td></tr><tr><td>内置模块</td><td><code>network / esp / esp32 / bluetooth / btree / framebuf / uctypes / neopixel / dht</code></td></tr><tr><td>缺失模块</td><td><code>urequests / umqtt / sdcard</code></td></tr></tbody></table>

@@ -3,6 +3,10 @@
 > 适用范围：ESP32 / MicroPython 板卡逆向 + 机器人遥控 + 树莓派部署。
 > 目的：把本项目踩过的坑固化成清单，**做下一个产品时直接照抄/避雷**。
 > 每条格式：**现象 → 根因 → 解决**。
+>
+> 🔗 关联：[`board_map.md`](board_map.md)（引脚/寄存器速查）·
+> [`../projects/AlphaPiCar/README.md`](../projects/AlphaPiCar/README.md)（完整可复用示例）·
+> [`README.md`](README.md)（文档索引）
 
 ---
 
@@ -107,6 +111,7 @@
 | 6.5 | 板子从 AP 改 STA 后热点消失 | `connectWifi` 会 `ap_if.active(False)` | 预期行为；STA 下板子进局域网，任何同网设备都能控 |
 | 6.6 | 忘记板子 IP | DHCP 变动 | ① 用**广播** 255.255.255.255:1000（推荐）② 路由器做 DHCP 保留 ③ 串口日志 `WIFI STA: (...)` |
 | 6.7 | 遥控长时间发指令但不动 | 丢包/顺序 | 方向指令**周期重发**（如 10Hz）+ 松手发"停"；或板端做**超时自动停**(`AUTO_STOP_MS`) |
+| 6.8 | 上位机不知道小车是否在线 | 单向 UDP，无反馈 | 板端**定期广播心跳(hb)** + 每条指令回执(ack)，上位机监听同一 UDP 端口，按"最近收到时间"判定在线 |
 
 **本项目通信协议**（UDP :1000，JSON）：
 ```json
@@ -126,6 +131,8 @@
 | 7.4 | 服务要开机自启/常驻 | | 写 **systemd** 单元到 `/etc/systemd/system/`，`systemctl enable --now` |
 | 7.5 | 树莓派跑脚本依赖第三方库 | | 优先用**纯标准库**（本项目 `car_web.py` 零依赖，PC/Pi 通用） |
 | 7.6 | 多项目混乱 | 无规范 | 约定：`/home/pi/Codes/<项目>/`+`README.md`+`systemd/`；顶层 `README.md` 做索引 |
+| 7.7 | Linux 上服务 `PermissionError` 无法绑定 1000 端口（Windows 却正常）| **<1024 是特权端口**，非 root 用户不能绑 | 给 systemd 单元加 `AmbientCapabilities=CAP_NET_BIND_SERVICE`（最小授权）；或统一改用高端口 |
+| 7.8 | PowerShell 内联命令里的中文被破坏（发"停"无效，抓到的是乱码）| PowerShell 脚本按 ANSI 读取，非 UTF-8 | 中文**别走内联命令行**：写成 UTF-8 的 `.py/.ps1` 文件再执行，或由 Python (`urllib`) 发送 |
 
 ---
 

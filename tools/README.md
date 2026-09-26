@@ -9,6 +9,18 @@
 | `usb_probe.py` | 轮询四种 DTR/RTS 组合，验证设备的电平要求 |
 | `mpy-tool.py` | MicroPython 官方 `.mpy` 反汇编工具（v1.19.1） |
 | `makeqstrdata.py` | `mpy-tool.py` 的依赖脚本 |
+| `scan_only.py` | raw-REPL 跑一段扫描代码并抓输出（即席探查） |
+| `repl_eval.py` | 在板子 REPL 运行本地 `.py` 片段（`tools/snippets/` 里有历史片段） |
+| `dump_src.py` / `decode_mpy.py` | 从板子**分块**取回文件；`.mpy` base64 取回后解码 |
+| `upload_file.py` / `upload_chunked.py` | 上传文件到板子（后者**分块**，抗 `MemoryError`） |
+| `probe_car.py` | 只读探测 I2C 外设寄存器（本项目用于 0x20 电机控制器） |
+| `reset_and_read.py` / `do_reset.py` | 复位板子并读启动日志 / 仅复位 |
+| `e2e_udp.py` / `e2e_udp_sta.py` / `e2e_broadcast.py` | UDP 遥控端到端测试（含 STA / 广播） |
+| `test_car.py` / `test_light.py` / `test_remote.py` / `test_web.py` / `test_pi_web.py` | 动作 / 灯 / 遥控 / 网页层 端到端测试 |
+| `md2html.py` | 无依赖 Markdown → HTML（含打印用浅色主题） |
+| `deploy_pi.py` | paramiko 一键部署到树莓派（含 systemd） |
+| `deploy_docs.py` | 同步文档到树莓派 `/home/pi/Codes/docs/` |
+| `AlphaPi01.xml` | 用 WLAN 直连板子热点时用的 WLAN 配置文件 |
 
 依赖：
 

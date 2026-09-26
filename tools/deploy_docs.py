@@ -26,7 +26,7 @@ sh("chmod 755 %s %s/docs" % (BASE, BASE))
 sftp = cli.open_sftp()
 for local, remote in [
     (os.path.join(LOCAL, "docs", "lessons_learned.md"), BASE + "/docs/lessons_learned.md"),
-    (os.path.join(LOCAL, "board_dump", "pi_Codes_README.md"), BASE + "/README.md"),
+    (os.path.join(LOCAL, "projects", "AlphaPiCar", "deploy", "pi_Codes_README.md"), BASE + "/README.md"),
 ]:
     with open(local, "rb") as f:
         data = f.read()

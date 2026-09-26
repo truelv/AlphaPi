@@ -2,6 +2,10 @@
 
 > 数据来源：设备自带 `.py` 源码 + 反编译 `.mpy`（MicroPython mpy v6）+ 在线实测（SoftI2C 扫描 / 寄存器只读探测）。
 > 工具脚本见文末「方法学」。
+>
+> 🔗 关联：[`lessons_learned.md`](lessons_learned.md)（踩坑与经验）·
+> [`../projects/AlphaPiCar/README.md`](../projects/AlphaPiCar/README.md)（小车遥控项目）·
+> [`README.md`](README.md)（文档索引）
 
 ---
 

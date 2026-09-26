@@ -46,11 +46,12 @@ def put(local_path, remote_path):
     print("  -> %s (%d bytes)" % (remote_path, len(data)))
 
 
-put(os.path.join(LOCAL, "car_web.py"), PROJ + "/car_web.py")
-put(os.path.join(LOCAL, "car_remote_client.py"), PROJ + "/car_remote_client.py")
-put(os.path.join(LOCAL, "board_dump", "pi_AlphaPiCar_README.md"), PROJ + "/README.md")
-put(os.path.join(LOCAL, "board_dump", "pi_alphaipi-web.service"), PROJ + "/systemd/alphaipi-web.service")
-put(os.path.join(LOCAL, "board_dump", "pi_Codes_README.md"), BASE + "/README.md")
+P = os.path.join(LOCAL, "projects", "AlphaPiCar")
+put(os.path.join(P, "host", "car_web.py"), PROJ + "/car_web.py")
+put(os.path.join(P, "host", "car_remote_client.py"), PROJ + "/car_remote_client.py")
+put(os.path.join(P, "deploy", "pi_AlphaPiCar_README.md"), PROJ + "/README.md")
+put(os.path.join(P, "deploy", "alphaipi-web.service"), PROJ + "/systemd/alphaipi-web.service")
+put(os.path.join(P, "deploy", "pi_Codes_README.md"), BASE + "/README.md")
 sftp.close()
 
 sh(cli, "cp %s/systemd/alphaipi-web.service /etc/systemd/system/alphaipi-web.service" % PROJ, sudo=True)

@@ -37,6 +37,7 @@ AP_PASSWORD = "12345678"
 TOKEN = ""                   # 若设置，客户端 token 必须一致
 DEFAULT_SPEED = 50           # 默认速度 1~100
 AUTO_STOP_MS = 0             # >0：超时无命令则自动停；0=锁存（收到"停"才停）
+HB_MS = 2000                 # 心跳间隔(ms)：定期广播状态，供上位机显示"在线"
 # =========================================
 
 MOVE = ("上", "下", "左", "右", "drive")
@@ -76,23 +77,32 @@ def _set_light(r, g, b):
         pass
 
 
+def _power(l, r):
+    """驱动左右轮。
+
+    实车左右电机接线与"逻辑左/右"相反，故此处统一对调一次：
+    对前进/后退无影响，但把左转/右转纠正过来（方向键与摇杆一并生效）。
+    """
+    car.set_all_power(DataStruct(r), DataStruct(l))
+
+
 def apply(msg):
     """执行一条命令。"""
     if msg == "上":
-        s = abs(_speed(msg)); car.set_all_power(DataStruct(s), DataStruct(s))
+        s = abs(_speed(msg)); _power(s, s)
     elif msg == "下":
-        s = abs(_speed(msg)); car.set_all_power(DataStruct(-s), DataStruct(-s))
+        s = abs(_speed(msg)); _power(-s, -s)
     elif msg == "左":
-        s = abs(_speed(msg)); car.set_all_power(DataStruct(s), DataStruct(-s))
+        s = abs(_speed(msg)); _power(s, -s)
     elif msg == "右":
-        s = abs(_speed(msg)); car.set_all_power(DataStruct(-s), DataStruct(s))
+        s = abs(_speed(msg)); _power(-s, s)
     elif msg == "drive":
         raw = str(board.getBroadcastValue(DataStruct("drive")))
         try:
             l, r = raw.split(",")
             l = max(-100, min(100, int(float(l))))
             r = max(-100, min(100, int(float(r))))
-            car.set_all_power(DataStruct(l), DataStruct(r))
+            _power(l, r)
         except Exception:
             pass
     elif msg == "停":
@@ -118,6 +128,22 @@ def start_network():
         print("WIFI AP: " + AP_SSID + " | udp 1000 | token: " + repr(TOKEN))
 
 
+def _my_ip():
+    try:
+        import network
+        return network.WLAN(network.STA_IF).ifconfig()[0]
+    except Exception:
+        return ""
+
+
+def _notify(message, value=""):
+    """向上位机广播一条状态（心跳 / 指令回执），供其显示在线状态。"""
+    try:
+        board.broadcastWithValue(DataStruct(message), DataStruct(value))
+    except Exception:
+        pass
+
+
 def main(static_buf=None):
     if static_buf is None:
         static_buf = get_buffer()
@@ -127,9 +153,11 @@ def main(static_buf=None):
         board.setToken(DataStruct(TOKEN))
     start_network()
     car.stop_motor(DataStruct(2))
-    print("remote_car ready | udp port 1000")
+    myip = _my_ip()
+    print("remote_car ready | udp port 1000 | " + myip)
 
     last_move = 0
+    last_hb = 0
     while True:
         board.Update()          # 内部收 UDP
         moved = False
@@ -137,6 +165,7 @@ def main(static_buf=None):
             if board.hasBroadcast(DataStruct(msg)):
                 apply(msg)
                 print("CMD " + msg)
+                _notify("ack", msg)
                 moved = True
                 if msg in MOVE:
                     last_move = time.ticks_ms()
@@ -144,6 +173,9 @@ def main(static_buf=None):
            time.ticks_diff(time.ticks_ms(), last_move) > AUTO_STOP_MS:
             car.stop_motor(DataStruct(2))
             last_move = 0
+        if time.ticks_diff(time.ticks_ms(), last_hb) >= HB_MS:
+            last_hb = time.ticks_ms()
+            _notify("hb", myip)
         time.sleep_ms(20)
 
 

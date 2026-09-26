@@ -11,24 +11,27 @@ AlphaPi 是核桃编程（灵犀）生态的 ESP32-S3 教育开发板。本仓�
 
 ```
 AlphaPi/
-├── firmware/          # 按固件版本归档（一个子目录 = 一代固件）
-├── projects/          # 跑在板子上的应用 / 游戏（一个项目一个子目录）
-├── tools/             # 串口、REPL、反汇编工具
-├── docs/              # 分析文档（实机报告 + 调试指南）
-└── reference/         # 官方技术参考手册
+├── firmware/          # 板子固件备份（按固件版本归档，一个子目录 = 一代固件）
+├── board_dump/        # 从板子上导出的文件（原始捕获 / 反汇编产物 / dumped）
+├── projects/          # 按项目分类的完整工程（板端 + 上位机 + 项目文档）
+├── tools/             # 串口、REPL、上传、反汇编、部署等工具
+└── docs/              # 总体性文档（分析报告、调试指南、逆向速查、经验总结、官方手册）
 ```
 
 ## 快速导航
 
 | 我想…… | 看这里 |
 |---|---|
+| **先避雷（推荐）** | [`docs/lessons_learned.md`](docs/lessons_learned.md) — 踩坑与经验总结 |
+| 查引脚 / 寄存器 | [`docs/board_map.md`](docs/board_map.md) — 逆向速查 |
 | 确认手上的板子是哪一代 | [`firmware/README.md`](firmware/README.md) |
 | 连上板子、进 REPL、看日志 | [`docs/AlphaPi_实机调试指南.md`](<docs/AlphaPi_实机调试指南.md>) |
 | 了解循迹小车（COM10） | [`docs/AlphaPi_循迹小车（COM10）分析报告.md`](<docs/AlphaPi_循迹小车（COM10）分析报告.md>) |
 | 了解游戏机（COM11） | [`docs/AlphaPi_游戏机（COM11）分析报告.md`](<docs/AlphaPi_游戏机（COM11）分析报告.md>) |
+| **玩遥控小车（AlphaPiCar）** | [`projects/AlphaPiCar/README.md`](projects/AlphaPiCar/README.md) — 网页摇杆 / UDP 协议 / 部署 |
 | 玩 / 改打砖块游戏 | [`projects/breakout/README.md`](projects/breakout/README.md) |
-| 查 API 与硬件规格 | [`docs/AlphaPi_项目分析文档.md`](<docs/AlphaPi_项目分析文档.md>) + [`reference/`](reference/) |
-| 用串口 / 反汇编工具 | [`tools/README.md`](tools/README.md) |
+| 查 API 与硬件规格 | [`docs/AlphaPi_项目分析文档.md`](<docs/AlphaPi_项目分析文档.md>) + [`docs/官方技术参考手册.md`](<docs/官方技术参考手册.md>) |
+| 用串口 / 反汇编 / 上传 / 部署工具 | [`tools/README.md`](tools/README.md) |
 
 ## 固件代际（重要）
 
@@ -61,7 +64,7 @@ python tools/repl_probe.py COM11 run "import os; print(len(os.listdir()))"
 ## 官方资料
 
 - 官网：<http://lingxi.hetao101.com/alphapi>
-- 技术参考手册：[`reference/AlphaPi_One_技术参考手册_v4.pdf`](<reference/AlphaPi_One_技术参考手册_v4.pdf>)
+- 技术参考手册：[`docs/AlphaPi_One_技术参考手册_v4.pdf`](<docs/AlphaPi_One_技术参考手册_v4.pdf>)（要点摘录见 [`docs/官方技术参考手册.md`](<docs/官方技术参考手册.md>)）
 
 ## 声明
 

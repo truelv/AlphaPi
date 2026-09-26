@@ -1,62 +1,32 @@
-# 板上项目
+# 项目
 
-本目录存放**跑在板子上的应用 / 游戏**，一个项目一个子目录。
+本目录存放**按项目分类**的完整工程，一个项目一个子目录，**每个项目自带文档**。
+项目可以是"跑在板子上的应用"，也可以是"板端 + 上位机"的整套方案。
 
-| 项目 | 目标板 | 说明 |
+| 项目 | 目标 | 说明 |
 |---|---|---|
-| [`breakout/`](breakout/) | COM11（游戏机） | 打砖块游戏，摇杆控制挡板 |
+| [`AlphaPiCar/`](AlphaPiCar/) | COM10 循迹小车 + PC/树莓派 | **网页遥控小车**：虚拟摇杆 / UDP 协议 / 电机+爪子+灯；含板端与上位机 |
+| [`breakout/`](breakout/) | COM11 游戏机 | 打砖块游戏，摇杆控制挡板 |
 
 ## 项目目录约定
 
-每个项目目录包含：
+```
+projects/<项目名>/
+├── README.md        # 项目文档：架构 / 协议 / 用法 / 部署 / 排障
+├── board/           # （如需要）烧到板子上的代码
+├── host/            # （如需要）跑在 PC / 树莓派上的上位机
+└── deploy/          # （如需要）部署资产：systemd 单元等
+```
 
-| 内容 | 说明 |
-|---|---|
-| `README.md` | 玩法、操作、部署步骤、可调参数、实现要点 |
-| 源码 | 可直接上传到板子的 `.py` |
+- 通用工具（串口 / REPL / 上传 / 反汇编 / 网页服务模板）放在 [`../tools/`](../tools/)。
+- 板载 `main.py` 的开机自启与还原方法见各项目 README。
 
-## 通用部署流程
+## 通用部署流程（板上项目示例）
 
 ```powershell
 # 0) 先关掉 MobaXterm 等串口终端（串口独占）
-# 1) 上传（板载文件名按项目需要命名，如 game.py）
 python tools/repl_probe.py COM11 put projects/breakout/breakout.py game.py
-# 2) 复位，让新代码生效（必须，否则 sys.modules 里还是旧的）
-python tools/repl_probe.py COM11 reset
+python tools/repl_probe.py COM11 reset        # 必须复位，否则 sys.modules 里还是旧代码
 ```
 
-在 REPL 里手动启动：
-
-```python
-import controlBoardAlphaPiOne as c
-c.init()
-import game
-game.Breakout().loop()
-```
-
-## 让项目开机自启
-
-把板上的 `ht_main.py` 换成调用你的项目即可：
-
-```python
-import game
-
-
-def Start(static_buf):
-    game.run(static_buf)
-```
-
-原版 `ht_main.py` 已备份在 `firmware/com11_20220912/rootfs/`，随时可还原：
-
-```powershell
-python tools/repl_probe.py COM11 put firmware/com11_20220912/rootfs/ht_main.py
-python tools/repl_probe.py COM11 reset
-```
-
-## 开发前建议
-
-1. 先看 `docs/AlphaPi_游戏机（COM11）分析报告.md` §10「实战：打砖块游戏」，
-   里面记录了屏幕 API 的**元组坐标约定**和**文字 16×16 白色**这两个硬限制
-2. 涉及硬件输入时，参考 `firmware/com11_20220912/disasm/remoteControlSensorOne.mpy.txt`
-   里的 `status_list` 索引语义
-3. 改完记得 `reset`，否则会以为"改了没反应"
+> AlphaPiCar 的板端部署见 [`AlphaPiCar/README.md`](AlphaPiCar/README.md)。
