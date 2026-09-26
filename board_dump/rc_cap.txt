@@ -1,0 +1,1 @@
+b'OKRC_START\r\nHAS_BUF=True\r\nBUF_LEN=40960\r\nBG_OK\r\nAP=(\'192.168.4.1\', \'255.255.255.0\', \'192.168.4.1\', \'0.0.0.0\')\r\n\x04Traceback (most recent call last):\r\n  File "<stdin>", line 21, in <module>\r\nAttributeError: \'module\' object has no attribute \'apply\'\r\n\x04>'

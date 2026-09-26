@@ -1,0 +1,9 @@
+READY
+L0=-93
+L1=185
+FWD_OK
+BWD_OK
+set 48 with -1
+CLAW_A_OK
+set 48 with 1
+CLAW_B_OK

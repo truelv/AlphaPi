@@ -1,0 +1,2 @@
+LEN=99
+b"OKCONF_START\r\nI2C_car sda8 scl9=['0x20']\r\nI2C_acc sda6 scl7=[]\r\nI2C_lcd sda4 scl5=[]\r\nCONF_END\r\n\x04\x04>"

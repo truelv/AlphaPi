@@ -1,0 +1,35 @@
+boot.py:import protocal as p
+boot.py:b = p.uart_read(0,1)[3]
+boot.py:if b&0x0C == 0x0C:
+boot.py:    import factory_reset
+main.py:import ht_main
+ht_main.py:import variable
+ht_main.py:import time
+ht_main.py:import math
+ht_main.py:import basic
+ht_main.py:from basic import DataStruct
+ht_main.py:from basic import wait_time
+ht_main.py:import controlBoardAlphaPiOne
+ht_main.py:def Loop1():
+ht_main.py:def Start(static_buf):
+variable.py:from basic import DataStruct
+music.py:def Update():
+pen.py:def Update():
+scan.py:import machine
+scan.py:# 已知总线脚：UART1(0=rx,3=tx) / 车用I2C(8=sda,9=scl) / SPI屏(38,39,40,41,42,45)
+scan.py:        pin = machine.Pin(p, machine.Pin.IN, machine.Pin.PULL_UP)
+scan.py:        u = pin.value()
+scan.py:        pin.init(machine.Pin.IN, machine.Pin.PULL_DOWN)
+scan.py:        d = pin.value()
+scan.py:print("=== I2C scan ===")
+scan.py:def scan_i2c(scl, sda, freq=100000):
+scan.py:        i2c = machine.SoftI2C(scl=machine.Pin(scl), sda=machine.Pin(sda), freq=freq)
+scan.py:        return i2c.scan()
+scan.py:print("车用I2C (scl=9,sda=8):", scan_i2c(9,8))
+scan.py:print("旧加速度计 (scl=7,sda=6):", scan_i2c(7,6))
+scan.py:print("手册12864 (scl=5,sda=4):", scan_i2c(5,4))
+scan.py:print("=== ADC 采样（电池/模拟量）===")
+scan.py:        adc = machine.ADC(machine.Pin(p))
+scan.py:        adc.atten(machine.ADC.ATTN_11DB)
+scan.py:        print("ADC GPIO%-2d = %d" % (p, adc.read_u16()))
+scan.py:        print("ADC GPIO%-2d ERR %s" % (p, e))

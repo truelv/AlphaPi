@@ -12,14 +12,16 @@
 
 > 本报告基于**串口实机取证**（COM10，MicroPython REPL + raw REPL 内省 + `.mpy` 反汇编），
 > 描述用户手上这块 AlphaPi One 的真实固件状态。
-> 采集日期：2026-09-13。产物保存在 `firmware/com10_20221028/rootfs/`，工具为 `tools/serial_log.py`、`tools/repl_probe.py`。
+> 采集日期：2026-09-13（首次部分导出）；**2026-09-24 重新连线完成全量备份（62 文件）**。
+> 产物保存在 `firmware/com10_20221028/rootfs/`，工具为 `tools/serial_log.py`、`tools/repl_probe.py`，
+> 全量备份用 `python -m mpremote connect COM10 fs cp -r : ./firmware/com10_20221028/rootfs/`（需先重新插拔 USB 复位板子）。
 
 ---
 
 ## 当前固件与运行状态
 
 > 板上的固件和程序都可能被替换，**引用本文数据前请先核对这里**。
-> 下表状态实测于 2026-09-13（此后该板已离线，现状未复核）。
+> 下表状态实测于 2026-09-13，并于 **2026-09-24 重新连线完成全量备份**（现状已复核，文件数 62）。
 
 | 项目 | 值 | 来源 |
 |---|---|---|
@@ -27,7 +29,7 @@
 | platform | `esp32` | REPL |
 | Board 标识 | **`AlphaPi One with ESP32S3`**（**厂商定制**固件） | 启动横幅 |
 | **开机自启程序** | `main.py` → **`ht_main.py`（683B）** ＝ *只开 Wi-Fi 热点* | 文件系统 |
-| 板上文件总数 | 60 | `os.listdir()` |
+| 板上文件总数 | 62（含 `scan.py`/`scan_out.txt` 诊断遗留） | `os.listdir()` |
 | 出厂标识 | `SW_VER: 2022102803` / `HW_NAME: ONE \| Oct 28` | `board_info()` |
 | 主控模块 | `controlBoardAlphaPiOne.mpy` → `v_2023_03_28` | `version()` |
 | Flash | 8388608（8MB），factory 分区 `0x10000` / 1376256 | `esp` / `esp32.Partition` |
@@ -66,7 +68,7 @@
 | 主控模块版本 | `controlBoardAlphaPiOne` → **`v_2023_03_28`** | `version()` |
 | basic 模块版本 | **`v_2022_11_30`** | `version()` |
 | 内存 | free 48528 / alloc 120432 | `gc` |
-| 文件数 | 60 | `os.listdir()` |
+| 文件数 | 62（含 2 个诊断遗留文件） | `os.listdir()` |
 
 > 对比：手册记录新板出厂标识为 `SW_VER: 23111501 / HW_NAME: ONE | Nov 15`，
 > 本机是 **2022-10-28 批次**，属于更早的一批。
@@ -213,7 +215,7 @@ def Start(static_buf):
 
 ---
 
-## 5. 文件系统清单（60 项）
+## 5. 文件系统清单（62 项）
 
 ```
 HZK16|267616              ST7735.mpy|8182           alert.dat|20782
@@ -228,8 +230,11 @@ remoteControlSensorOne.mpy|915                     right.dat|20782
 steeringEngineActuatorAlphaPiOne.mpy|597           sysfont.mpy|2519
 tech.dat|29422            testok|2                 variable.py|63
 wrong.dat|24812
-+ 约 30 个 *.htbmp 图片（2568B / 1448B）
+scan.py|1455              scan_out.txt|1267         （诊断遗留，非出厂）
++ 28 个 *.htbmp 图片（24×2568B，4×1448B）+ logo2.bmp（8694B）
 ```
+
+> **诊断遗留文件**（非出厂，已随全量备份保留）：`scan.py`（1455B）、`scan_out.txt`（1267B）——早期排查时写入板子。
 
 **新增的积木驱动模块**（2020 版没有）：
 
@@ -419,8 +424,8 @@ sound / time / heart / data / record）、实物（car / boy / girl / stone / go
 | `tools/serial_log.py` | 串口日志查看（`--follow` / `--no-ctrl-c` / `--hex` / `--no-dtr`，默认置 DTR） |
 | `tools/repl_probe.py` | 通过 raw REPL 读写板子（`info` / `cat` / `get` / `put` / `rm` / `ls` / `run` / `reset`，DTR 自动处理） |
 | `tools/mpy-tool.py` + `tools/makeqstrdata.py` | MicroPython 官方反汇编工具（v1.19.1） |
-| `firmware/com10_20221028/rootfs/*.py` | 板载明文源码（main / ht_main / boot / variable / music / pen / testok） |
-| `firmware/com10_20221028/rootfs/*.mpy` | 板载编译模块（controlBoardAlphaPiOne / basic / ST7735） |
+| `firmware/com10_20221028/rootfs/*` | **全量 62 文件**：7×`.py` / 9×`.mpy` / 13×`.dat` / 2×字库(`HZK16`,`gb2312`) / 29×图片(`logo2.bmp`+28×`.htbmp`) / 2×标记文本(`testok`,`scan_out.txt`) |
+| `firmware/com10_20221028/MANIFEST.md` | 逐文件 SHA256 校验清单（62 项：文件名 / 大小 / 哈希 + 复算命令） |
 | `firmware/com10_20221028/rootfs/*.mpy.txt` | 反汇编结果（391KB / 55KB / 157KB） |
 
 **常用命令**：
@@ -435,7 +440,10 @@ python tools/repl_probe.py COM10 info
 # 执行任意代码
 python tools/repl_probe.py COM10 run "import os; print(os.listdir())"
 
-# 导出文件
+# 全量备份（推荐，先重新插拔 USB 复位板子）
+python -m mpremote connect COM10 fs cp -r : ./firmware/com10_20221028/rootfs/
+
+# 单文件导出（repl_probe 方式）
 python tools/repl_probe.py COM10 get sysfont.mpy ./firmware/com10_20221028/rootfs/
 
 # 反汇编
@@ -452,7 +460,7 @@ python tools/mpy-tool.py -d firmware/com10_20221028/rootfs/xxx.mpy > firmware/co
 ### 待办
 1. 反汇编 `sysfont.mpy`、`max30102.mpy`、`autoMotionOne.mpy`、`remoteControl*.mpy`、
    `steeringEngineActuatorAlphaPiOne.mpy`，补全积木生态。
-2. 导出并备份 40 余个 `.htbmp` 图片与 `HZK16` / `gb2312` 字库（体积较大，分块导出较慢）。
+2. ~~导出并备份 40 余个 `.htbmp` 图片与 `HZK16` / `gb2312` 字库（体积较大，分块导出较慢）。~~ **已完成**：2026-09-24 用 `mpremote` 全量备份 62 个文件（含 28 个 `.htbmp`、字库 `HZK16`/`gb2312`）至 `firmware/com10_20221028/rootfs/`。
 3. 探测 `protocal` frozen 模块的行为（`check_hardware` / `board_info` / `screen_init` 输出）。
 4. 弄清 `status_list` 22 项与 `attitude_map` 的完整对应关系。
 5. ~~确认第二块板（疑似 COM11，`VID_303A:PID_4001` ESP32-S3 原生 USB）为何无输出。~~

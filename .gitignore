@@ -1,2 +1,6 @@
 .DS_Store
 
+# Python 字节码缓存（运行 tools/ 下脚本时产生）
+__pycache__/
+*.pyc
+*.pyo

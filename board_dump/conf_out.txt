@@ -1,0 +1,3 @@
+I2C_car sda8 scl9=['0x20']
+I2C_acc sda6 scl7=[]
+I2C_lcd sda4 scl5=[]

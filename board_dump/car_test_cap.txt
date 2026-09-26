@@ -1,0 +1,1 @@
+b'OKMOT_START\r\nREADY\r\nL0=-93\r\nL1=185\r\nFWD_OK\r\nBWD_OK\r\nset 48 with -1\r\nCLAW_A_OK\r\nset 48 with 1\r\nCLAW_B_OK\r\nMOT_END\r\n\x04\x04>'

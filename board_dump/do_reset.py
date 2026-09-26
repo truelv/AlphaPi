@@ -1,0 +1,11 @@
+import serial, time
+ser = serial.Serial("COM10", 115200, timeout=0.5)
+time.sleep(1.5)
+ser.write(b"\x03"); time.sleep(0.3)
+ser.write(b"\x03"); time.sleep(0.3)
+ser.reset_input_buffer()
+ser.write(b"\x01"); time.sleep(0.3)
+ser.write(b"import machine\nmachine.reset()\x04")
+time.sleep(1.0)
+ser.close()
+print("reset sent")

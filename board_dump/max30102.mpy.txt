@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "Z:\Codes\Tests\ESP32\AlphaPi\AlphaPi-my\tools\mpy-tool.py", line 1812, in <module>
+    main()
+    ~~~~^^
+  File "Z:\Codes\Tests\ESP32\AlphaPi\AlphaPi-my\tools\mpy-tool.py", line 1787, in main
+    compiled_modules = [read_mpy(file) for file in args.files]
+                        ~~~~~~~~^^^^^^
+  File "Z:\Codes\Tests\ESP32\AlphaPi\AlphaPi-my\tools\mpy-tool.py", line 1325, in read_mpy
+    with open(filename, "rb") as fileobj:
+         ~~~~^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'board_dump/max30102.mpy'

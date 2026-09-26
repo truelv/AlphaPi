@@ -1,0 +1,121 @@
+<!doctype html><html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>board_map</title><style>
+:root{--bg:#0f172a;--card:#1e293b;--fg:#e2e8f0;--mut:#94a3b8;--acc:#38bdf8;--line:#334155;--code:#0b1220;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+  font:16px/1.7 -apple-system,"Segoe UI",Roboto,"Microsoft YaHei",sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:40px 24px 96px}
+h1,h2,h3,h4{line-height:1.3;color:#f8fafc;margin:1.6em 0 .6em}
+h1{font-size:2rem;border-bottom:2px solid var(--acc);padding-bottom:.3em}
+h2{font-size:1.45rem;border-bottom:1px solid var(--line);padding-bottom:.25em}
+h3{font-size:1.15rem;color:var(--acc)}
+a{color:var(--acc)}
+code{background:var(--code);border:1px solid var(--line);border-radius:4px;
+  padding:.1em .35em;font-family:"JetBrains Mono",Consolas,monospace;font-size:.88em;color:#7dd3fc}
+pre{background:var(--code);border:1px solid var(--line);border-radius:8px;
+  padding:14px 16px;overflow:auto}
+pre code{background:none;border:none;padding:0;color:#cbd5e1}
+table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.94em}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:var(--card);color:#f1f5f9}
+tr:nth-child(even) td{background:rgba(148,163,184,.06)}
+blockquote{margin:1em 0;padding:.4em 1em;border-left:3px solid var(--acc);
+  background:rgba(56,189,248,.08);color:#cbd5e1}
+hr{border:none;border-top:1px solid var(--line);margin:2.2em 0}
+ul,ol{padding-left:1.5em}
+li{margin:.2em 0}
+strong{color:#fff}
+.meta{color:var(--mut);font-size:.85em;margin-bottom:2em}
+@media print{
+  :root{--bg:#ffffff;--card:#f1f5f9;--fg:#111827;--mut:#4b5563;--acc:#0369a1;--line:#cbd5e1;--code:#f8fafc;}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{background:#fff}
+  .wrap{max-width:none;padding:0}
+  h1,h2,h3,h4{color:#0f172a}
+  pre{border:1px solid #cbd5e1}
+  pre code{color:#0f172a}
+  table{font-size:.85em}
+  tr,td,th{page-break-inside:avoid}
+  h2,h3{page-break-after:avoid}
+}
+</style></head><body><div class="wrap"><h1>AlphaPi-One 板卡反向工程报告</h1>
+<blockquote>数据来源：设备自带 <code>.py</code> 源码 + 反编译 <code>.mpy</code>（MicroPython mpy v6）+ 在线实测（SoftI2C 扫描 / 寄存器只读探测）。<br>工具脚本见文末「方法学」。</blockquote>
+<hr>
+<h2>1. 芯片 / 固件</h2>
+<table><thead><tr><th>项</th><th>值</th></tr></thead><tbody><tr><td>MCU</td><td>ESP32，主频 <strong>240 MHz</strong></td></tr><tr><td>UID</td><td><code>b'p\x04\x1d\xb3\x82\x1c'</code></td></tr><tr><td>运行时</td><td>MicroPython（<code>.mpy</code> 版本 <strong>6</strong>）</td></tr><tr><td>内置模块</td><td><code>network / esp / esp32 / bluetooth / btree / framebuf / uctypes / neopixel / dht</code></td></tr><tr><td>缺失模块</td><td><code>urequests / umqtt / sdcard</code></td></tr></tbody></table>
+<h2>2. 启动链</h2>
+<pre><code>boot.py    → protocal.uart_read(0,1)[3]; 若 b&amp;0x0C==0x0C 则 import factory_reset; static_buf=bytearray(40960)
+main.py    → import ht_main; ht_main.Start(static_buf)
+ht_main.py → controlBoardAlphaPiOne.init()
+             InitBackground_buf(static_buf) / play_record_loop()
+             主循环：Update() / next(soundLoop) / Loop1()（开热点 aiphapione/12345678）</code></pre>
+<hr>
+<h2>3. 通信总线引脚映射（已确认）</h2>
+<table><thead><tr><th>总线</th><th>引脚</th><th>参数</th><th>确认依据</th></tr></thead><tbody><tr><td><strong>车用主控 UART</strong></td><td><code>TX=GPIO3</code>, <code>RX=GPIO0</code></td><td><strong>UART1 @ 460800</strong>，timeout 100ms</td><td>反编译 <code>machine.UART(1,460800,tx=3,rx=0)</code></td></tr><tr><td><strong>车用 I2C</strong></td><td><code>SDA=8</code>, <code>SCL=9</code></td><td><strong>SoftI2C</strong> 100 kHz</td><td><code>Init_I2c('car')</code> + 实测扫到 <code>0x20</code></td></tr><tr><td>旧加速度计 I2C</td><td><code>SDA=6</code>, <code>SCL=7</code></td><td>SoftI2C</td><td>实测无设备</td></tr><tr><td>手册12864 I2C</td><td><code>SDA=4</code>, <code>SCL=5</code></td><td>SoftI2C</td><td>实测无设备</td></tr><tr><td>SPI 屏 (ST7735)</td><td><code>SCK=41 MOSI=42 MISO=45 CS=40 DC=39 RST=38</code></td><td>硬件 <strong>SPI(2)</strong> 20 MHz mode0</td><td>反编译确认</td></tr><tr><td>NeoPixel (WS2812)</td><td><code>GPIO17</code>（3 颗）</td><td><code>neopixel.NeoPixel(Pin(17),3)</code></td><td>反编译确认</td></tr><tr><td>震动马达</td><td><code>GPIO4</code></td><td><code>WritePwm(4, v)</code></td><td>反编译确认</td></tr><tr><td>电源/使能</td><td><code>GPIO37</code> 输出高</td><td><code>Pin(37,OUT).on()</code></td><td>反编译确认</td></tr><tr><td>遥控摇杆 X</td><td><code>ADC GPIO8</code></td><td><code>1023 - ReadAdc(8)</code></td><td>反编译确认</td></tr><tr><td>遥控摇杆 Y</td><td><code>ADC GPIO7</code></td><td><code>1023 - ReadAdc(7)</code></td><td>反编译确认</td></tr><tr><td>遥控电位器</td><td><code>ADC GPIO6</code></td><td><code>ReadAdc(6)</code></td><td>反编译确认</td></tr><tr><td>遥控按键 ×4</td><td><code>GPIO 10/11/12/13</code></td><td><code>ReadPin(p, PULL_UP)</code>，低有效</td><td>反编译确认</td></tr><tr><td>转向舵机</td><td>由主程序传入的 PWM 引脚</td><td><code>machine.PWM</code> @50 Hz，500–2500µs</td><td>反编译确认（<code>servo_pin_map</code> 缓存）</td></tr></tbody></table>
+<blockquote>板子一律用 <strong><code>machine.SoftI2C</code></strong>（软件 I2C，任意 GPIO）。用硬件 <code>I2C(0, ...)</code> 会报 <code>invalid pin</code> 甚至卡死总线。<br><code>scan.py</code> 中已知总线脚集合：<code>{0,3,8,9,38,39,40,41,42,45}</code>。</blockquote>
+<hr>
+<h2>4. SPI 屏 (ST7735) 引脚</h2>
+<pre><code>spi = SPI(2, baudrate=20000000, polarity=0, phase=0,
+          sck=Pin(41), mosi=Pin(42), miso=Pin(45))
+tft = TFT(spi, 40, 39, 38)     # 驱动类 = ST7735，签名 TFT(spi, cs, dc, rst)
+tft.initr(); tft.rgb(True); tft.fill(TFT.BLACK); tft.rotation(1)</code></pre>
+<table><thead><tr><th>信号</th><th>GPIO</th></tr></thead><tbody><tr><td>SCK</td><td><strong>41</strong></td></tr><tr><td>MOSI</td><td><strong>42</strong></td></tr><tr><td>MISO</td><td><strong>45</strong></td></tr><tr><td>CS</td><td><strong>40</strong></td></tr><tr><td>DC</td><td><strong>39</strong></td></tr><tr><td>RST</td><td><strong>38</strong></td></tr></tbody></table>
+<blockquote>初始化前 <code>Pin(37, OUT).on()</code> 拉高 GPIO37（疑似屏/板载电源使能）。<br><code>43 / 44</code> 并非屏脚，属于 <code>pin_map</code>（<code>ReadPin/WritePin</code> 的 GPIO 映射表）。</blockquote>
+<hr>
+<h2>5. 车用 I2C 设备 <code>0x20</code> —— 3 轴电机控制器（深挖）</h2>
+<h3>5.1 结论</h3>
+<p><code>0x20</code> <strong>不是</strong> PCF8574 之类的简单 GPIO 扩展器，而是<strong>寄存器寻址的智能电机控制器 MCU</strong>： 固件用 <code>i2c.writeto_mem() / readfrom_mem()</code> 读写寄存器文件；寄存器按电机分块；能回读<strong>编码器位置</strong>并做 PID；实测 <code>readfrom_mem</code> 对寄存器寻址有效（PCF8574 不支持寄存器寻址，可排除）。</p>
+<h3>5.2 初始化（<code>autoMotionOne.mpy</code>）</h3>
+<pre><code>CAR_ADDR = 32                  # 0x20  控制器 I2C 地址
+i2c = controlBoardAlphaPiOne.Init_I2c(&#x27;car&#x27;)   # SoftI2C(scl=Pin(9), sda=Pin(8), freq=100000)
+if CAR_ADDR not in i2c.scan(): # 找不到 0x20 → 回退 UART 模式
+    i2c = None
+    Pin(8, OUT, value=1)
+    uart = UART(2, baudrate=38400, tx=Pin(8), rx=Pin(9), timeout=50)
+
+MOTOR_L = 32   # 0x20   左电机寄存器块基址
+MOTOR_R = 16   # 0x10   右电机寄存器块基址
+MOTOR_Z = 48   # 0x30   Z 轴（举升/关节）寄存器块基址</code></pre>
+<blockquote>关键：<strong>同一对引脚 (8/9) 既是 I2C，也是 UART 回退</strong>。0x20 不存在时改走 <code>UART2 @ 38400</code>（tx=8, rx=9）。</blockquote>
+<h3>5.3 寄存器映射（每个电机一块，基址 0x10 / 0x20 / 0x30）</h3>
+<table><thead><tr><th>偏移</th><th>读写</th><th>宽度</th><th>含义</th><th>固件调用</th></tr></thead><tbody><tr><td><code>+0x00</code></td><td>W</td><td>int32 LE（I2C 模式再追加 4 字节<strong>取反</strong>校验）</td><td>目标速度（限幅 ±1024）</td><td><code>set_speed(motor, speed)</code></td></tr><tr><td><code>+0x04</code></td><td>W</td><td>int16 LE（限幅 ±1024）</td><td>原始功率/占空</td><td><code>set_raw_power(motor, power)</code></td></tr><tr><td><code>+0x08</code></td><td>R</td><td>int32 LE + 4 字节取反</td><td>编码器位置（有符号）</td><td><code>get_position(motor)</code></td></tr><tr><td><code>+0x0C</code></td><td>W</td><td>int16</td><td>模式 / 使能</td><td><code>set_ON_OFF(motor, mode)</code>、<code>speed_mode(l,r)</code></td></tr></tbody></table>
+<p>要点：</p>
+<ul><li><code>writeto_mem(device, addr, data)</code>：<code>device</code> 恒为 <code>CAR_ADDR</code>；<code>addr = 电机基址 + 偏移</code>；失败重试（<code>OSError</code>→<code>sleep 10ms</code>→<code>print('write error')</code>）。</li><li><strong>取反校验</strong>：<code>set_speed</code> 在 I2C 模式写 <code>speed.to_bytes(4,'little') + (~speed).to_bytes(4,'little')</code>；<code>get_position</code> 读回 8 字节后校验 <code>data[0:4]==data[4:8]</code>，再 <code>int.from_bytes(..., signed=True)</code>。</li><li><code>position_mode()</code>==<code>speed_mode(True,True)</code>；<code>stop(motor)</code>==<code>set_speed(motor,0)</code>。</li></ul>
+<h3>5.4 上层 API（<code>autoMotionOne</code>）</h3>
+<pre><code>speed_mode, set_speed, set_raw_power, set_ON_OFF, stop,
+position_mode, get_position, position_pid_poll, demo_run_to, stop_mission,
+clamp, set_power, set_all_power, stop_motor, go_distance, go_distance_async,
+turn_round, turn_round_async, set_claw,
+NP_write, BrightnessUp, SetBrightness, UpdateBrightness, GetBrightness,
+setPixelColor / setPixelColorWithoutWright / packRGBd / unpackR|G|B</code></pre>
+<p>即：<strong>双驱动轮 (L/R) + 1 个 Z 轴 + 夹爪 (claw)</strong>，另含一组 WS2812 灯效控制。</p>
+<h3>5.5 全量寄存器只读实测（<code>probe_car.py</code>）</h3>
+<pre><code>scan = [&#x27;0x20&#x27;]
+0x00–0x3F 逐字节读：全部 = 00（空闲状态）
+0x28 连续 6 次读：稳定 = 00000000
+特殊：@0x20（L 速度）4 字节读 → ETIMEDOUT ；@0x24（L 功率）2 字节读 → ENODEV
+（同样地址改成逐字节读则返回 00，属总线轻微抖动/多字节读时序问题）</code></pre>
+<p>结论：0x20 在线且寄存器寻址有效；<strong>空闲时寄存器文件读回 0x00</strong>；速度/功率命令寄存器偏“写优先”，多字节读不稳定——与固件寄存器模型一致。</p>
+<h3>5.6 未定性</h3>
+<p>具体芯片型号无法从固件与只读探测 100% 确定（无原理图）。特征：I2C 0x20、3 个 16 字节寄存器块、速度/PWM/位置/模式寄存器、位置带回读与取反校验、可切 UART@38400 —— 属该车专用的<strong>电机驱动 MCU 板</strong>。</p>
+<hr>
+<h2>6. 车体链路与功能模块（反编译）</h2>
+<table><thead><tr><th>模块</th><th>作用</th><th>关键接口</th></tr></thead><tbody><tr><td><code>controlBoardAlphaPiOne.mpy</code></td><td>板级底层：UART/I2C 初始化、<code>ReadPin/WritePin/ReadAdc/WritePwm/SetPwm</code>、显示、音频、WiFi/UDP、Update 主循环</td><td><strong>UART1@460800 (tx3/rx0)</strong>；<code>Init_I2c</code>；<code>Update</code> 里 <code>uart_read(0,1)</code> 读 22 字节状态</td></tr><tr><td><code>autoMotionOne.mpy</code></td><td>车体运动：3 轴电机 + 夹爪</td><td>0x20 I2C（UART2@38400 回退）</td></tr><tr><td><code>steeringEngineActuatorAlphaPiOne.mpy</code></td><td>转向舵机</td><td><code>machine.PWM</code> @50 Hz，ClampD(500,2500)，角度 0–180°→脉宽 <code>v/180*2000+500</code></td></tr><tr><td><code>remoteControlSensorOne.mpy</code></td><td>遥控/摇杆/按键采集</td><td><code>ReadAdc(8)=X, ReadAdc(7)=Y, ReadAdc(6)=电位器</code>；按键 <code>GPIO 10/11/12/13</code>（PULL_UP 低有效）；产出 15 项 <code>status_list</code></td></tr><tr><td><code>remoteControlActuatorOne.mpy</code></td><td>RGB 灯效 + 震动</td><td><code>neopixel.NeoPixel(Pin(17),3)</code>；<code>WritePwm(4, v)</code> 震动马达；`hsl/packRGB/unpackR</td><td>G</td><td>B`</td></tr><tr><td><code>max30102.mpy</code></td><td>通用 MAX30102 心率/血氧驱动类</td><td>构造 <code>(i2c, i2c_hex_address)</code>，默认 0x57；车用总线上未扫到</td></tr><tr><td><code>ST7735.mpy</code> / <code>sysfont.mpy</code> / <code>basic.mpy</code></td><td>屏驱 / 字体 / 基础类(DataStruct 等)</td><td>—</td></tr></tbody></table>
+<hr>
+<h2>7. 其它 I2C 总线（当前未挂设备）</h2>
+<table><thead><tr><th>总线</th><th>引脚</th><th>说明</th></tr></thead><tbody><tr><td>旧加速度计</td><td>SDA=6, SCL=7</td><td>实测 <code>[]</code></td></tr><tr><td>手册12864 LCD</td><td>SDA=4, SCL=5</td><td>实测 <code>[]</code>（GPIO4 亦被用作震动马达 PWM）</td></tr></tbody></table>
+<hr>
+<h2>8. ADC（<code>ATTN_11DB</code>, <code>read_u16</code>）</h2>
+<ul><li>可用：<code>GPIO 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18</code></li><li>不可用：<code>GPIO0</code>（strapping）、<code>GPIO19–39</code>（32–39 为 ADC1，受 WiFi/BLE 占用而失败）</li></ul>
+<h2>9. GPIO 上电电平（参考）</h2>
+<ul><li>读为 <code>1</code>：<code>GPIO0, 26, 34, 35, 37, 38, 39</code></li><li>读为 <code>-</code>（取值抛异常，多为被固件配成输出/外设）：<code>GPIO19,20,22,23,24,25,27,28,29,30,31,32,33</code></li></ul>
+<hr>
+<h2>10. 设备文件清单</h2>
+<ul><li><strong>源码 <code>.py</code></strong>：<code>boot.py, main.py, ht_main.py, variable.py, music.py, pen.py, scan.py</code></li><li><strong>编译 <code>.mpy</code></strong>：<code>ST7735, basic, autoMotionOne, controlBoardAlphaPiOne, max30102, remoteControlActuatorOne, remoteControlSensorOne, steeringEngineActuatorAlphaPiOne, sysfont</code></li><li><strong>资源</strong>：<code>HZK16</code>+<code>gb2312</code>（中文字库）、<code>*.htbmp/*.bmp</code>（图形）、<code>*.dat</code>（音频）、<code>testok</code></li></ul>
+<hr>
+<h2>11. 方法学 / 工具（均在 <code>board_dump/</code>）</h2>
+<table><thead><tr><th>脚本</th><th>作用</th></tr></thead><tbody><tr><td><code>scan_only.py</code></td><td>通用 raw-REPL 跑一段扫描代码并抓输出</td></tr><tr><td><code>dump_src.py</code></td><td>拉取设备文件；<code>.mpy</code> 用 <code>ubinascii.b2a_base64</code> <strong>分块</strong>编码后取回</td></tr><tr><td><code>decode_mpy.py</code></td><td>解析 <code>full_out.txt</code> 的 base64 并落盘到 <code>dumped/</code></td></tr><tr><td><code>probe_car.py</code></td><td>只读探测车用 I2C 0x20 电机控制器寄存器</td></tr><tr><td><code>mpy-tool.py</code></td><td>官方 MicroPython 反汇编器（需同目录 <code>makeqstrdata.py</code>）</td></tr></tbody></table>
+<p>踩坑记录：</p>
+<ol><li>进 raw REPL 看运气（开串口会复位设备）；脚本用<strong>纯默认打开、不碰 DTR/RTS</strong>，多次重试。</li><li>大段代码一次性灌入会冲爆桥缓冲 → 改为<strong>分块慢发 + 丢弃回显 + <code>START/END</code> 标记</strong>框住输出。</li><li><code>.mpy</code> 整体 base64 在设备上会 <code>memory allocation failed</code> → 改<strong>分块</strong>编码。</li><li>每块 base64 <strong>各自补 <code>=</code></strong>，整体解码会在第一个 <code>=</code> 处截断 → 必须<strong>逐块解码再拼接</strong>。</li><li>MicroPython 的 <code>bytes</code> <strong>没有 <code>.hex()</code></strong> → 用 <code>ubinascii.hexlify()</code>。</li></ol>
+<hr>
+<h2>12. 待补 / 未决</h2>
+<ul><li>0x20 电机控制器的<strong>确切型号</strong>（需原理图/丝印）。</li><li>0x20 完整寄存器表（本文覆盖固件用到的偏移；全量探测空闲为 0）。</li><li><code>controlBoardAlphaPiOne.Update</code> 的 22 字节 UART 协议逐字段定义。</li><li><code>pin_map</code>（GPIO 33–55 映射表）与 <code>WritePwm</code> 的 LEDC 通道对应关系。</li></ul></div></body></html>
