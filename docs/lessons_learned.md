@@ -39,6 +39,8 @@
 | 1.8 | Windows 控制台打印中文报 `UnicodeEncodeError: 'gbk'` | 控制台是 GBK | 输出 `str(x).encode("ascii","backslashreplace").decode()`；或写文件再读 |
 | 1.9 | 遥控中途打开串口监视器，车突然停了 | 开串口复位了板子 | 运行时**不要开**串口监视器 |
 | 1.10 | 反汇编/上传脚本"时好时坏" | 进 raw REPL 依赖时序，有随机性 | 所有交互脚本**循环重试**，以标记/校验和确认成功 |
+| 1.11 | 上传报 `FAILED at offset 0`，且**板上文件被写坏**（随后 `AttributeError: no attribute 'main'`）| 上传工具的 DTR **自动探测误判**（板子刚复位时启动日志里还没有 `>>>`）→ 回退 `DTR=0` → 通信失败，但文件已被以 `'wb'` 打开 | ① 探测**重试 3 次**再回退；② 该类设备（ESP32-S3 原生 CDC）**显式传 `--dtr`**（DTR=1/RTS=0）；③ 写完**必须校验长度** |
+| 1.12 | 又踩了 1.7 的 `SO_BROADCAST` 坑（文档里早写了）| 写新代码时没先查本清单 | **动手前先在本清单检索关键词**（`socket`/`广播`/`mpy`），已有结论直接复用 |
 
 ---
 
@@ -112,6 +114,8 @@
 | 6.6 | 忘记板子 IP | DHCP 变动 | ① 用**广播** 255.255.255.255:1000（推荐）② 路由器做 DHCP 保留 ③ 串口日志 `WIFI STA: (...)` |
 | 6.7 | 遥控长时间发指令但不动 | 丢包/顺序 | 方向指令**周期重发**（如 10Hz）+ 松手发"停"；或板端做**超时自动停**(`AUTO_STOP_MS`) |
 | 6.8 | 上位机不知道小车是否在线 | 单向 UDP，无反馈 | 板端**定期广播心跳(hb)** + 每条指令回执(ack)，上位机监听同一 UDP 端口，按"最近收到时间"判定在线 |
+| 6.9 | 手柄端写了"数值变化才发"，结果**摇杆保持不动时车被判失联停车** | 摇杆**流式控制**必须与板端**失联保护**(`AUTO_STOP_MS`)配套：不发包 = 失联 | 摇杆状态**定频持续发送**（如 12.5Hz），不要只在数值变化时发 |
+| 6.10 | 第二块同族板（手柄）当遥控器，最省事做法 | 各写一套 socket 容易和板载库抢端口 | **复用同一套协议**（UDP :1000 + 同样的 JSON），手柄端只发 `drive`/按键命令；小车端代码零改动 |
 
 **本项目通信协议**（UDP :1000，JSON）：
 ```json
@@ -133,6 +137,8 @@
 | 7.6 | 多项目混乱 | 无规范 | 约定：`/home/pi/Codes/<项目>/`+`README.md`+`systemd/`；顶层 `README.md` 做索引 |
 | 7.7 | Linux 上服务 `PermissionError` 无法绑定 1000 端口（Windows 却正常）| **<1024 是特权端口**，非 root 用户不能绑 | 给 systemd 单元加 `AmbientCapabilities=CAP_NET_BIND_SERVICE`（最小授权）；或统一改用高端口 |
 | 7.8 | PowerShell 内联命令里的中文被破坏（发"停"无效，抓到的是乱码）| PowerShell 脚本按 ANSI 读取，非 UTF-8 | 中文**别走内联命令行**：写成 UTF-8 的 `.py/.ps1` 文件再执行，或由 Python (`urllib`) 发送 |
+| 7.9 | 文档同时维护 Markdown + HTML + PDF，越攒越乱、内容还对不上 | 转换产物是"第二份真相"，必然过期 | **文档只保留 Markdown**（本仓库约定）；要打印时临时转换，产物不入库 |
+| 7.10 | 一个项目里两种控制方式混放（网页 / 手柄），改一处怕影响另一处 | 没有分层，只能靠文件名区分 | 按「**被控端 / 遥控端**」分层：遥控端每种方式一个目录，各自带 README + 部署脚本，互不影响 |
 
 ---
 
@@ -151,7 +157,7 @@
 
 ---
 
-## 9. 本项目沉淀的可复用工具（`board_dump/`）
+## 9. 本项目沉淀的可复用工具（`tools/`）
 
 | 脚本 | 作用 | 复用场景 |
 |---|---|---|
@@ -161,17 +167,30 @@
 | `upload_file.py` / `upload_chunked.py` | 上传文件到板子（含分块版） | 部署板端脚本 |
 | `mpy-tool.py`(+`makeqstrdata.py`) | 官方 `.mpy` 反汇编 | 看编译模块的签名/常量 |
 | `probe_car.py` | 只读探测 I2C 外设寄存器 | 摸清任何 I2C 智能外设 |
-| `deploy_pi.py` | paramiko 部署到树莓派 + 装 systemd | 树莓派批量部署 |
-| `car_web.py` | 零依赖网页遥控（虚拟摇杆） | 任何"HTTP→UDP/串口"控制面板 |
+| `deploy_pi.py` | paramiko 部署到树莓派 + 装 systemd（现位于 `projects/AlphaPiCar/host/web/deploy/`） | 树莓派批量部署 |
+| `car_web.py` | 零依赖网页遥控（虚拟摇杆 + 在线状态） | 任何"HTTP→UDP/串口"控制面板 |
+| `remote_pad.py` | 板端摇杆遥控（比例驱动 + 屏显状态） | 任何"板子→UDP"无线手柄 |
+| `repl_probe.py` | raw REPL 读写板子文件（`put/get/ls/rm/run/reset`） | 部署/取证任意 MicroPython 板 |
 
 产品侧代码：
 
-| 文件 | 位置 | 说明 |
+| 文件 | 位置（仓库内 → 运行处） | 说明 |
 |---|---|---|
-| `remote_car.py` | 板子 `/` | 板端：连 WiFi(STA/AP) + 收 UDP + 驱动电机/爪子/灯 |
-| `car_web.py` | PC & 树莓派 | 网页遥控服务（含虚拟摇杆、急停） |
-| `car_remote_client.py` | PC & 树莓派 | 命令行遥控 |
+| `remote_car.py` | `projects/AlphaPiCar/board/` → 小车 `/` | 板端：连 WiFi(STA/AP) + 收 UDP + 驱动电机/爪子/灯 + 心跳/失联停车 |
+| `car_web.py` | `projects/AlphaPiCar/host/web/` | 网页遥控服务（虚拟摇杆、急停、在线状态） |
+| `car_remote_client.py` | `projects/AlphaPiCar/host/web/` | 命令行遥控（调试） |
+| `remote_pad.py` | `projects/AlphaPiCar/host/pad/` → 手柄板 `/` | 手柄板遥控端（摇杆比例驱动 + 4 按键 + 屏显状态） |
 | `/home/pi/Codes/AlphaPiCar/` | 树莓派 | 项目目录（README + systemd 自启） |
+
+**目录分层约定**（本项目最终形态）：
+
+```
+projects/AlphaPiCar/
+├── board/      # 被控端（小车）固件 —— 只装一次，所有遥控端共用
+└── host/       # 遥控端 —— 每套遥控方式一个目录，各自独立完整、互不影响
+    ├── web/    #   网页版（PC / 树莓派）+ deploy/
+    └── pad/    #   手柄版（手柄板固件）+ deploy_pad.py
+```
 
 ---
 

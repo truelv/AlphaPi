@@ -18,6 +18,8 @@ AlphaPi/
 └── docs/              # 总体性文档（分析报告、调试指南、逆向速查、经验总结、官方手册）
 ```
 
+> 📄 **文档只保留 Markdown**（不生成 HTML/PDF 产物；需要打印时临时转换，产物不入库）。
+
 ## 快速导航
 
 | 我想…… | 看这里 |
@@ -28,7 +30,7 @@ AlphaPi/
 | 连上板子、进 REPL、看日志 | [`docs/AlphaPi_实机调试指南.md`](<docs/AlphaPi_实机调试指南.md>) |
 | 了解循迹小车（COM10） | [`docs/AlphaPi_循迹小车（COM10）分析报告.md`](<docs/AlphaPi_循迹小车（COM10）分析报告.md>) |
 | 了解游戏机（COM11） | [`docs/AlphaPi_游戏机（COM11）分析报告.md`](<docs/AlphaPi_游戏机（COM11）分析报告.md>) |
-| **玩遥控小车（AlphaPiCar）** | [`projects/AlphaPiCar/README.md`](projects/AlphaPiCar/README.md) — 网页摇杆 / UDP 协议 / 部署 |
+| **玩遥控小车（AlphaPiCar）** | [`projects/AlphaPiCar/README.md`](projects/AlphaPiCar/README.md) — **两套遥控端（网页摇杆 / 手柄）+ UDP 协议 + 部署** |
 | 玩 / 改打砖块游戏 | [`projects/breakout/README.md`](projects/breakout/README.md) |
 | 查 API 与硬件规格 | [`docs/AlphaPi_项目分析文档.md`](<docs/AlphaPi_项目分析文档.md>) + [`docs/官方技术参考手册.md`](<docs/官方技术参考手册.md>) |
 | 用串口 / 反汇编 / 上传 / 部署工具 | [`tools/README.md`](tools/README.md) |
