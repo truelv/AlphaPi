@@ -4,3 +4,10 @@
 __pycache__/
 *.pyc
 *.pyo
+
+# ⚠️ 明文凭据（WiFi 密码 / 服务器账号密码）——严禁入库
+# 本仓库有公开 remote（github.com/truelv/AlphaPi），一旦提交即视为泄露。
+# 例：projects/AlphaPiClock/board/clock_secrets.py
+*_secrets.py
+secrets.py
+

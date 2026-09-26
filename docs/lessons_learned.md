@@ -139,6 +139,8 @@
 | 7.8 | PowerShell 内联命令里的中文被破坏（发"停"无效，抓到的是乱码）| PowerShell 脚本按 ANSI 读取，非 UTF-8 | 中文**别走内联命令行**：写成 UTF-8 的 `.py/.ps1` 文件再执行，或由 Python (`urllib`) 发送 |
 | 7.9 | 文档同时维护 Markdown + HTML + PDF，越攒越乱、内容还对不上 | 转换产物是"第二份真相"，必然过期 | **文档只保留 Markdown**（本仓库约定）；要打印时临时转换，产物不入库 |
 | 7.10 | 一个项目里两种控制方式混放（网页 / 手柄），改一处怕影响另一处 | 没有分层，只能靠文件名区分 | 按「**被控端 / 遥控端**」分层：遥控端每种方式一个目录，各自带 README + 部署脚本，互不影响 |
+| 7.11 | WiFi / SSH 密码**差点被 commit 进公开仓库**（本项目有公开 remote `github.com/truelv/AlphaPi`，而习惯又是"配置写在源码顶部"）| 凭据和代码混在同一个被跟踪的文件里 | ① 凭据**单独成文件**（如 `clock_secrets.py`），`.gitignore` 加 `*_secrets.py`；② 源码里 `try: from clock_secrets import ... / except ImportError: 空值降级`，这样别人 clone 下来不填也能跑（自动进离线模式）；③ 只入库 `*.example.py` 模板，模板里绝不写真实值；④ 写入前先 `git remote -v` 确认仓库是不是公开的 |
+| 7.12 | 想"开串口监听"看板子运行日志，结果**什么都没抓到** | USB-Serial/JTAG 的 log 与 REPL 共用同一个口：**主机没打开端口时数据直接丢**，而重新打开端口又不会复位板子 → 中间那段日志永久丢失 | 验证运行状态**别靠监听日志**：用 `repl_probe.py run` 把 REPL 抢回来**直接调函数看返回值**（如 `print(clock.wifi_connect(), clock.ntp_sync())`），这是最可靠的取证方式 |
 
 ---
 

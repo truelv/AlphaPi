@@ -30,35 +30,49 @@ AlphaPi/
 | 连上板子、进 REPL、看日志 | [`docs/AlphaPi_实机调试指南.md`](<docs/AlphaPi_实机调试指南.md>) |
 | 了解循迹小车（COM10） | [`docs/AlphaPi_循迹小车（COM10）分析报告.md`](<docs/AlphaPi_循迹小车（COM10）分析报告.md>) |
 | 了解游戏机（COM11） | [`docs/AlphaPi_游戏机（COM11）分析报告.md`](<docs/AlphaPi_游戏机（COM11）分析报告.md>) |
+| **了解量子兔（COM13）** | [`docs/AlphaPi_量子兔（COM13）分析报告.md`](<docs/AlphaPi_量子兔（COM13）分析报告.md>) — **第 1 代 ESP32-C3 实机（5×5 点阵 + WiFi/BLE）** |
 | **玩遥控小车（AlphaPiCar）** | [`projects/AlphaPiCar/README.md`](projects/AlphaPiCar/README.md) — **两套遥控端（网页摇杆 / 手柄）+ UDP 协议 + 部署** |
 | 玩 / 改打砖块游戏 | [`projects/breakout/README.md`](projects/breakout/README.md) |
+| **做联网滚动时钟** | [`projects/AlphaPiClock/README.md`](projects/AlphaPiClock/README.md) |
 | 查 API 与硬件规格 | [`docs/AlphaPi_项目分析文档.md`](<docs/AlphaPi_项目分析文档.md>) + [`docs/官方技术参考手册.md`](<docs/官方技术参考手册.md>) |
 | 用串口 / 反汇编 / 上传 / 部署工具 | [`tools/README.md`](tools/README.md) |
 
 ## 固件代际（重要）
 
-| 代际 | 显示 | 主控模块 | 存放位置 |
-|---|---|---|---|
-| 第 1 代（2020） | 5×5 点阵 LED | `control_board_v1` | `firmware/v2020_07_31/` |
-| 厂商迭代版 | — | `controlBoard` | `firmware/v1.0.3/` |
-| **第 2 代（2022-10 起）** | ST7735 TFT 160×128 | `controlBoardAlphaPiOne` | `firmware/com10_20221028/`、`firmware/com11_20220912/` |
+| 代际 | 芯片 | 显示 | 主控模块 | 存放位置 |
+|---|---|---|---|---|
+| 第 1 代（2020） | ESP32-**C3** | 5×5 点阵 LED | `control_board_v1` | `firmware/com13_20220808/`（实机）、`firmware/v2020_07_31/`（含 disasm / flash dump） |
+| 厂商迭代版 | — | — | `controlBoard` | `firmware/v1.0.3/` |
+| **第 2 代（2022-10 起）** | ESP32-**S3** | ST7735 TFT 160×128 | `controlBoardAlphaPiOne` | `firmware/com10_20221028/`、`firmware/com11_20220912/` |
 
-第 1 代与第 2 代**完全不兼容**：显示器件、UART、I2C、SPI 引脚全部不同，
+第 1 代与第 2 代**完全不兼容**：芯片、显示器件、UART、I2C、SPI 引脚全部不同，
 API 也换了一整套（`control_board_v1` → `controlBoardAlphaPiOne`）。
 
-> 仓库中的 `firmware/v2020_07_31/` 与 `firmware/v1.0.3/` 属于历史资料；
-> 本仓库真正对应"手上这块板子"的是 `firmware/com10_20221028/` 和
-> `firmware/com11_20220912/`，以及 `docs/` 下的两份实机分析报告。
+> 眼下实机在用的三块板子：
+>
+> | 板子 | 代际 | 分析报告 |
+> |---|---|---|
+> | **COM13 量子兔** | 第 1 代（ESP32-C3） | [`docs/AlphaPi_量子兔（COM13）分析报告.md`](<docs/AlphaPi_量子兔（COM13）分析报告.md>) |
+> | COM10 循迹小车 | 第 2 代（ESP32-S3） | [`docs/AlphaPi_循迹小车（COM10）分析报告.md`](<docs/AlphaPi_循迹小车（COM10）分析报告.md>) |
+> | COM11 游戏机 | 第 2 代（ESP32-S3） | [`docs/AlphaPi_游戏机（COM11）分析报告.md`](<docs/AlphaPi_游戏机（COM11）分析报告.md>) |
+>
+> `firmware/v1.0.3/` 属于历史资料。`firmware/v2020_07_31/` 虽为历史来源，
+> 但其固件经比对与实机 COM13 **逐字节同源**，故其 `disasm/` 仍在服役。
 
 ## 快速上手
 
 ```powershell
 pip install pyserial            # 必需
+pip install mpremote            # 推荐：全量导出/还原文件系统快得多
 
 # 看板子在干什么（COM11 需要 DTR=1，脚本已自动处理）
 python tools/serial_log.py COM11 115200 5
 python tools/repl_probe.py COM11 ls
 python tools/repl_probe.py COM11 run "import os; print(len(os.listdir()))"
+
+# 第 1 代（COM13 量子兔，ESP32-C3）—— USB-Serial/JTAG，无需 --dtr
+python tools/repl_probe.py COM13 info
+python -m mpremote connect COM13 fs cp -r : ./firmware/com13_20220808/rootfs
 ```
 
 串口连不上、界面全黑等问题的排查，见 [`docs/AlphaPi_实机调试指南.md`](<docs/AlphaPi_实机调试指南.md>)。
