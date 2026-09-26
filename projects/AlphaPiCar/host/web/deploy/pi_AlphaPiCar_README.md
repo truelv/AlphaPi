@@ -49,4 +49,7 @@ python3 car_web.py --port 8080
 | [`../docs/lessons_learned.md`](../docs/lessons_learned.md) | 踩坑与经验总结（强烈建议先读） |
 | [`../README.md`](../README.md) | `/home/pi/Codes` 项目索引 |
 
-> 完整的项目源码与文档（含板端 `remote_car.py`）见 Windows 工作区仓库的 `projects/AlphaPiCar/`。
+> 完整的项目源码与文档见工作区仓库的 `projects/AlphaPiCar/`：
+> `board/`（小车端固件，两套遥控端共用）、`host/web/`（本网页版源码）、`host/pad/`（手柄版遥控端）。
+>
+> ⚠️ 树莓派上**只跑网页版**；手柄版跑在另一块手柄板上，不需要树莓派。

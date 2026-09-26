@@ -14,12 +14,13 @@
 | `dump_src.py` / `decode_mpy.py` | 从板子**分块**取回文件；`.mpy` base64 取回后解码 |
 | `upload_file.py` / `upload_chunked.py` | 上传文件到板子（后者**分块**，抗 `MemoryError`） |
 | `probe_car.py` | 只读探测 I2C 外设寄存器（本项目用于 0x20 电机控制器） |
+| `pad_diag.py` | 手柄板（COM11）诊断：抓完整启动日志 + 检查 WiFi / 模块导入 / UDP 发送 |
 | `reset_and_read.py` / `do_reset.py` | 复位板子并读启动日志 / 仅复位 |
 | `e2e_udp.py` / `e2e_udp_sta.py` / `e2e_broadcast.py` | UDP 遥控端到端测试（含 STA / 广播） |
 | `test_car.py` / `test_light.py` / `test_remote.py` / `test_web.py` / `test_pi_web.py` | 动作 / 灯 / 遥控 / 网页层 端到端测试 |
-| `md2html.py` | 无依赖 Markdown → HTML（含打印用浅色主题） |
-| `deploy_pi.py` | paramiko 一键部署到树莓派（含 systemd） |
-| `deploy_docs.py` | 同步文档到树莓派 `/home/pi/Codes/docs/` |
+| `md2html.py` | 无依赖 Markdown → HTML（**可选**：本项目文档只存 Markdown，不再转 HTML/PDF） |
+| `deploy_docs.py` | 同步 **Markdown** 文档到树莓派 `/home/pi/Codes/docs/` |
+| `deploy_pi.py` / `deploy_pad.py` | 已移入项目：`projects/AlphaPiCar/host/web/deploy/` 与 `host/pad/deploy_pad.py` |
 | `AlphaPi01.xml` | 用 WLAN 直连板子热点时用的 WLAN 配置文件 |
 
 依赖：
@@ -67,7 +68,12 @@ python tools/repl_probe.py COM11 put x.py y.py      # 上传并另存为 y.py
 python tools/repl_probe.py COM11 rm y.py            # 删除板上文件
 python tools/repl_probe.py COM11 run "print(1+1)"   # 执行一段代码
 python tools/repl_probe.py COM11 reset              # 软复位（让新写入的代码生效）
+python tools/repl_probe.py COM11 put x.py --dtr     # 强制 DTR=1/RTS=0，跳过自动探测
 ```
+
+> ⚠️ **COM11（ESP32-S3 原生 USB CDC）建议一律加 `--dtr`**：自动探测在"板子刚复位、
+> 启动日志里还没出现 `>>>`"时会**误判并回退到 DTR=0**，导致通信中断——而脚本已用 `'wb'`
+> 打开文件，会把板上文件写坏（曾把 `remote_pad.py` 写空）。`put` 写完务必看 `VERIFY OK`。
 
 | 动作 | 说明 |
 |---|---|

@@ -1,4 +1,8 @@
-"""部署 AlphaPiCar 网页遥控到树莓派 (/home/pi/Codes/AlphaPiCar)。"""
+"""部署 AlphaPiCar 网页遥控到树莓派 (/home/pi/Codes/AlphaPiCar)。
+
+用法:
+    python projects/AlphaPiCar/host/web/deploy/deploy_pi.py
+"""
 import os
 import paramiko
 
@@ -7,7 +11,9 @@ USER = "pi"
 PWD = "wangchen"
 BASE = "/home/pi/Codes"
 PROJ = BASE + "/AlphaPiCar"
-LOCAL = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+HERE = os.path.dirname(os.path.abspath(__file__))        # projects/AlphaPiCar/host/web/deploy
+WEB = os.path.dirname(HERE)                              # projects/AlphaPiCar/host/web
 
 
 def run(cli, cmd, sudo=False, timeout=60):
@@ -46,12 +52,11 @@ def put(local_path, remote_path):
     print("  -> %s (%d bytes)" % (remote_path, len(data)))
 
 
-P = os.path.join(LOCAL, "projects", "AlphaPiCar")
-put(os.path.join(P, "host", "car_web.py"), PROJ + "/car_web.py")
-put(os.path.join(P, "host", "car_remote_client.py"), PROJ + "/car_remote_client.py")
-put(os.path.join(P, "deploy", "pi_AlphaPiCar_README.md"), PROJ + "/README.md")
-put(os.path.join(P, "deploy", "alphaipi-web.service"), PROJ + "/systemd/alphaipi-web.service")
-put(os.path.join(P, "deploy", "pi_Codes_README.md"), BASE + "/README.md")
+put(os.path.join(WEB, "car_web.py"), PROJ + "/car_web.py")
+put(os.path.join(WEB, "car_remote_client.py"), PROJ + "/car_remote_client.py")
+put(os.path.join(HERE, "pi_AlphaPiCar_README.md"), PROJ + "/README.md")
+put(os.path.join(HERE, "alphaipi-web.service"), PROJ + "/systemd/alphaipi-web.service")
+put(os.path.join(HERE, "pi_Codes_README.md"), BASE + "/README.md")
 sftp.close()
 
 sh(cli, "cp %s/systemd/alphaipi-web.service /etc/systemd/system/alphaipi-web.service" % PROJ, sudo=True)

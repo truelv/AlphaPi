@@ -82,7 +82,15 @@ class Repl:
         # 才把数据发给主机，而 DTR=1 正是打开端口的默认状态，所以这里不翻转即可。
         # 注意：DTR 在同一个句柄里翻转（先拉低再拉高）实测无法恢复通信，别那样做。
         # 若拿不到提示符，再拉低 DTR（部分电平转换芯片需 DTR=0 才不会自动复位）。
-        if not self._probe(True):
+        # 探测（重试 3 次）：板子刚复位时启动日志里还没有 ">>>"，一次探测容易误判，
+        # 而一旦误判回退到 DTR=0 会导致后续写入全部失败（实测会把板上文件写坏）。
+        ok = False
+        for _ in range(3):
+            if self._probe(True):
+                ok = True
+                break
+            time.sleep(0.4)
+        if not ok:
             self.ser.setDTR(False)
             self.ser.setRTS(False)
             self.dtr = False
@@ -304,24 +312,26 @@ def cmd_reset(repl, secs=2.5):
 
 
 def main():
-    if len(sys.argv) < 3:
+    # 先剥离 --dtr 之类的开关，避免它被当成位置参数（例如被误当作"目标文件名"）
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    if len(args) < 2:
         print(__doc__)
         sys.exit(1)
 
-    port = sys.argv[1]
-    action = sys.argv[2]
+    port = args[0]
+    action = args[1]
     dtr = "--dtr" in sys.argv
     repl = Repl(port, dtr=dtr)
     try:
         if action == "info":
             cmd_info(repl)
         elif action == "run":
-            out, err = repl.raw_exec(sys.argv[3], timeout=20.0)
+            out, err = repl.raw_exec(args[2], timeout=20.0)
             sys.stdout.write(out.decode("utf-8", "replace"))
             if err.strip():
                 sys.stdout.write("\n[stderr]\n" + err.decode("utf-8", "replace"))
         elif action == "cat":
-            name = sys.argv[3]
+            name = args[2]
             size = file_size(repl, name)
             print("size = %d" % size)
             offset = 0
@@ -333,17 +343,17 @@ def main():
                 offset += len(block)
             print()
         elif action == "get":
-            name = sys.argv[3]
-            out_dir = sys.argv[4] if len(sys.argv) > 4 else "./board_dump/"
+            name = args[2]
+            out_dir = args[3] if len(args) > 3 else "./board_dump/"
             dump_file(repl, name, out_dir)
         elif action == "put":
-            local = sys.argv[3]
-            remote = sys.argv[4] if len(sys.argv) > 4 else None
+            local = args[2]
+            remote = args[3] if len(args) > 3 else None
             cmd_put(repl, local, remote)
         elif action == "ls":
-            cmd_ls(repl, sys.argv[3] if len(sys.argv) > 3 else ".")
+            cmd_ls(repl, args[2] if len(args) > 2 else ".")
         elif action == "rm":
-            cmd_rm(repl, sys.argv[3])
+            cmd_rm(repl, args[2])
         elif action == "reset":
             cmd_reset(repl)
         else:
