@@ -15,6 +15,7 @@
 | `upload_file.py` / `upload_chunked.py` | 上传文件到板子（后者**分块**，抗 `MemoryError`） |
 | `probe_car.py` | 只读探测 I2C 外设寄存器（本项目用于 0x20 电机控制器） |
 | `pad_diag.py` | 手柄板（COM11）诊断：抓完整启动日志 + 检查 WiFi / 模块导入 / UDP 发送 |
+| `check_links.py` | 检查 Markdown 相对链接是否断开（文件里写 `<!-- check-links: off -->` 可整份跳过） |
 | `reset_and_read.py` / `do_reset.py` | 复位板子并读启动日志 / 仅复位 |
 | `e2e_udp.py` / `e2e_udp_sta.py` / `e2e_broadcast.py` | UDP 遥控端到端测试（含 STA / 广播） |
 | `test_car.py` / `test_light.py` / `test_remote.py` / `test_web.py` / `test_pi_web.py` | 动作 / 灯 / 遥控 / 网页层 端到端测试 |

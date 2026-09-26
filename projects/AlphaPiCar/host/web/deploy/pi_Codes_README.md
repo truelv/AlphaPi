@@ -1,3 +1,7 @@
+<!-- check-links: off -->
+<!-- 本文件部署到 /home/pi/Codes/README.md，下面的相对路径以"树莓派上的位置"为基准，
+     在 Windows 仓库里检查会误报断链，故让 tools/check_links.py 跳过本文件。 -->
+
 # /home/pi/Codes —— 项目代码仓库
 
 本目录按**项目分类**存放树莓派上的代码，每个项目一个子目录，内含独立 `README.md`。

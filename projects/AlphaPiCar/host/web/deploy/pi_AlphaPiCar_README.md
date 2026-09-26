@@ -1,3 +1,7 @@
+<!-- check-links: off -->
+<!-- 本文件部署到 /home/pi/Codes/AlphaPiCar/README.md，下面的相对路径以"树莓派上的位置"为基准，
+     在 Windows 仓库里检查会误报断链，故让 tools/check_links.py 跳过本文件。 -->
+
 # AlphaPiCar —— AlphaPi-One 智能小车 · 网页遥控（树莓派）
 
 本目录是部署在树莓派上的运行副本。浏览器打开即可用**虚拟摇杆 + 按钮**控制小车。

@@ -31,11 +31,15 @@
 
 ```powershell
 # 1) 先关掉 MobaXterm 串口会话（串口独占）
-# 2) 上传
-python tools/repl_probe.py COM11 put projects/breakout/breakout.py game.py
+# 2) 上传（COM11 是 ESP32-S3 原生 USB CDC，务必加 --dtr）
+python tools/repl_probe.py COM11 put projects/breakout/breakout.py game.py --dtr
 # 3) 复位使新代码生效
-python tools/repl_probe.py COM11 reset
+python tools/repl_probe.py COM11 reset --dtr
 ```
+
+> ⚠️ **COM11 只有一块板**：本项目与 [`../AlphaPiCar/host/pad/`](../AlphaPiCar/host/pad/)（手柄遥控固件）
+> 都跑在它上面，`main.py` 会互相覆盖。
+> 若板上当前装的是手柄遥控固件，按下面"启动游戏"的方式在 REPL 里临时跑游戏即可（Ctrl-C 停手柄固件后 `import game`）。
 
 启动游戏（在 REPL 里，或 MobaXterm 中）：
 

@@ -5,12 +5,18 @@
     python repl_probe.py COM10 cat protocol.py          # 打印板上文件内容
     python repl_probe.py COM10 get protocol.py ./board/ # 分块导出到本地目录
     python repl_probe.py COM10 run "import os; print(os.listdir())" --dtr
-    python repl_probe.py COM11 info           # 游戏机：DTR 已自动处理，无需 --dtr
+    python repl_probe.py COM11 info --dtr                # 系统信息（COM11 建议一律加 --dtr）
     python repl_probe.py COM11 ls --dtr                  # 列出板上文件
     python repl_probe.py COM11 put ht_main.py --dtr      # 上传本地文件覆盖板上同名文件
     python repl_probe.py COM11 put ht_main.py game.py --dtr   # 另存为别的名字
     python repl_probe.py COM11 rm game.py --dtr          # 删除板上文件
     python repl_probe.py COM11 reset --dtr               # 软复位，让新代码生效
+
+重要（COM11 = ESP32-S3 原生 USB CDC）:
+    **一律显式加 `--dtr`**（DTR=1 / RTS=0）。不加时本脚本会"自动探测"，
+    而板子刚复位、启动日志里还没出现 >>> 时探测会误判并回退到 DTR=0 ——
+    通信随之中断，但文件已被以 'wb' 打开，会把板上文件写坏（实测写空过 remote_pad.py）。
+    `put` 完成后务必确认输出里有 `VERIFY OK`。
 
 改代码的标准流程:
     1) get 把板上原文件导回本地做备份
