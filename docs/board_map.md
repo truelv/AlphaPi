@@ -256,17 +256,19 @@ def ReadAdc(pin_port_d):
 | `heartRateAndOxygenSensorOne` | `InitHeartRateSensor(端口)` | `r` = **SDA**，`t` = **SCL**，SoftI2C@100k，MAX30102 **`0x57`** |
 
 > ⚠️ 三者抢同一批脚（端口 1–4），**同一时刻只能插一个**。
+>
+> 物理丝印口（见 §13.5）：超声波 = **P9/P10**；红外接收器 / 心率血氧 = **P11/P12**（各占一对相邻口，二选一）。
 
 ### 13.3 单线传感器（端口 = GPIO 号）
 
-| 传感器 | 调用 | 类型 |
-|---|---|---|
-| 人体红外 | `read_infrared_sensor(端口)` | 数字（`ReadPin`） |
-| 红外测距 | `readInfraredDistanceSensor(端口)` | **模拟**（`ReadAdc`） |
-| 温湿度 DHT11 | `ReadTemperatureOrHumidity(端口, key)` | 数字（`key`：0=温度，1=湿度） |
-| RGB 灯板 / LED | `InitNP(端口[, 灯珠数])` | 数字（WS2812） |
-| 舵机 | `setSteeringEngineAngle(端口, 角度)` | PWM 50 Hz / 500–2500 µs |
-| 触摸 / 雨滴 / 数码管 / 颜色 / 点读 | 无官方模块 | 自己写 |
+| 传感器 | 调用 | 类型 | 丝印口 |
+|---|---|---|---|
+| 人体红外 | `read_infrared_sensor(端口)` | 数字（`ReadPin`） | — |
+| 红外测距 | `readInfraredDistanceSensor(端口)` | **模拟**（`ReadAdc`） | **P2** |
+| 温湿度 DHT11 | `ReadTemperatureOrHumidity(端口, key)` | 数字（`key`：0=温度，1=湿度） | **P1** |
+| RGB 灯板 / LED | `InitNP(端口[, 灯珠数])` | 数字（WS2812） | — |
+| 舵机 | `setSteeringEngineAngle(端口, 角度)` | PWM 50 Hz / 500–2500 µs | **P1** |
+| 触摸 / 雨滴 / 数码管 / 颜色 / 点读 | 无官方模块 | 自己写 | — |
 
 > **电机是例外**：`autoMotionOne` 走 `Init_I2c('car')`（GPIO8/9 的**车扩展板** I2C `0x20`），
 > **不是** PH2.0 扇出板；底板「电机口」只是 GPIO 扇出，须 `WritePwm` + 外置驱动模块。
@@ -287,16 +289,57 @@ def ReadAdc(pin_port_d):
 **冲突示例**：手柄板上把超声波接到端口 1、2 → 与 4 个按键（GPIO10–13）打架；
 接端口 3 的 `r=GPIO17` 又与板载灯带冲突。→ 这批双线传感器更适合 GPIO 富余的小车板。
 
-### 13.5 待实测：底板的「P 口 → GPIO」物理映射
+### 13.5 已核对：扩展板「P 口」物理接线（2026-10-23）
 
-固件只给出 GPIO 号，**底板丝印 `P1..P20` 与 GPIO 的对应关系必须实测**：
+固件只给出 GPIO 号；底板/扩展板丝印口与传感器的对应关系经**实物接线核对**如下：
 
-```powershell
-python tools/pin_finder.py COM11 --sec 240 --delay 20   # 对地短接法（推荐）
-python tools/pin_sweeper.py COM11                        # 逐脚翻转 + 万用表
+| 丝印口 | 线制 | 传感器 | 固件语义 |
+|---|---|---|---|
+| **P1** | 单线 | **舵机** 或 **温湿度（DHT11）**（二选一） | PWM 50 Hz / 数字温湿度 |
+| **P2** | 单线 | **红外测距** | 模拟（`ReadAdc`） |
+| **P9 + P10** | 双线 | **超声波** | `t`=trig、`r`=echo |
+| **P11 + P12** | 双线 | **红外接收器** 或 **心率血氧（MAX30102）**（二选一） | 红外：`t`=SCL、`r`=SDA，`0x22`；心率：`r`=SDA、`t`=SCL，`0x57` |
+
+> 尚未补全：各 `P 口 ↔ GPIO 号`的逐口对应。需要精确到 GPIO 时用
+> `pin_finder.py`（对地短接法）/ `pin_sweeper.py`（逐脚翻转 + 万用表）实测：
+> ```powershell
+> python tools/pin_finder.py COM11 --sec 240 --delay 20   # 对地短接法（推荐）
+> python tools/pin_sweeper.py COM11                        # 逐脚翻转 + 万用表
+> ```
+
+### 13.6 推荐接线与安装方式
+
+**照此插，模块与端口一一对应：**
+
+| 丝印口 | 模块 | 积木 / API |
+|---|---|---|
+| P1 | 舵机（或温湿度） | `setSteeringEngineAngle(端口, 角度)` |
+| P2 | 红外测距 | `readInfraredDistanceSensor(端口)` |
+| P9 / P10 | 超声波 | `readUltrasonicSensorNum(端口)` |
+| P11 / P12 | 红外接收器（或心率血氧） | `InitIr(端口)` / `InitHeartRateSensor(端口)` |
+
+> P11/P12 上的**红外接收器可匹配普通小型红外遥控器**（玩具遥控器 / 家电遥控器即可），
+> 不需要厂商专用遥控——这是给小车/作品加"遥控器控制"的最省事路径。
+
+**「舵机 + 超声波」扫描云台**：把超声波传感器用舵机支架固定在**舵机输出臂顶端**，
+舵机转动即可带着传感器一起转，组成一个低成本「扫描雷达」：
+
+- 舵机接 **P1**，超声波接 **P9/P10**
+- 每隔固定角度读一次距离，即可得到距离–角度剖面：
+
+```python
+for ang in range(0, 181, 15):
+    steeringEngineActuatorAlphaPiOne.setSteeringEngineAngle(1, ang)
+    time.sleep_ms(150)                       # 等舵机转到位
+    d = ultrasonicSensorAlphaPiOne.readUltrasonicSensorNum(1)
+    print(ang, d)
 ```
 
-### 13.6 验证工具
+- 剖面数据可直接画到 ST7735 屏上，做成简易超声波扫描显示
+- 注意：P1 是单线口，**舵机与温湿度不能同时插**；双线口 P9/P10、P11/P12
+  与 §13.2 的固件端口 1–4 抢同一批 GPIO，**同一时刻各插一个**
+
+### 13.7 验证工具
 
 接上传感器后**只读**验证（不写寄存器、不驱动执行器）：
 
