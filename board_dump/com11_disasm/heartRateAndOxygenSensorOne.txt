@@ -1,0 +1,812 @@
+mpy_source_file: firmware\com11_20220912\rootfs\heartRateAndOxygenSensorOne.mpy
+source_file: .\heartRateAndOxygenSensorOne.py
+header: 4d:06:00:1f
+qstr_table[69]:
+    .\heartRateAndOxygenSensorOne.py
+    <module>
+    SoftI2C
+    Pin
+    machine
+    MAX30102
+    MAX30105_PULSE_AMP_MEDIUM
+    max30102
+    DataStruct
+    basic
+    PinPair
+    controlBoardAlphaPiOne
+    calc_pr
+    append
+    InitHeartRateSensor
+    IntValue
+    sda
+    r
+    scl
+    t
+    pull
+    PULL_UP
+    freq
+    i2c
+    i2c_address
+    scan
+    check_part_id
+    setup_sensor
+    set_sample_rate
+    set_fifo_average
+    set_active_leds_amplitude
+    ReadOxygen
+    data_struct_random
+    ReadHeartRateSensor
+    clearScreen
+    screen_width
+    check
+    pop_red_from_storage
+    tft
+    pixel
+    BLACK
+    ClampD
+    screen_height
+    RED
+    available
+    Update
+    ReadCurrentValue
+    ReadNewestHeartRateSensor
+    version
+    c
+    heart_rate_sensor
+    data_red
+    avg_red
+    avg_ir
+    last_heart_rate
+    next_index
+    data
+    end
+    avg
+    hr
+    len
+    max
+    min
+    int
+    sum
+    pin_pair
+    print
+    key_d
+    draw_points
+obj_table: ['Sensor not found.', 'I2C device ID not corresponding to MAX30102 or MAX30105.', 'v_2022_12_01']
+simple_name: <module>
+  raw bytecode: 163 10:36:01:32:32:2c:26:2c:66:88:30:63:84:18:64:20:84:2a:29:23:23:23:63:84:12:84:09:84:09:80:10:02:10:03:2a:02:1b:04:1c:02:16:02:1c:03:16:03:59:80:10:05:10:06:2a:02:1b:07:1c:05:16:05:1c:06:16:06:59:80:10:08:2a:01:1b:09:1c:08:16:08:59:80:51:1b:09:16:09:80:10:0a:2a:01:1b:0b:1c:0a:16:0a:59:80:51:1b:0b:16:31:80:2a:01:53:33:00:16:0c:51:17:32:32:01:16:0e:32:02:16:1f:32:03:16:21:80:2b:01:22:81:20:f4:17:33:80:17:34:80:17:35:80:17:36:80:17:37:32:04:16:2d:32:05:16:2e:32:06:16:2f:32:07:16:30:51:63
+  prelude: (3, 0, 0, 0, 0, 0)
+  args: []
+  line info: 32:32:2c:26:2c:66:88:30:63:84:18:64:20:84:2a:29:23:23:23:63:84:12:84:09:84:09
+  80          LOAD_CONST_SMALL_INT 0 
+  10:02       LOAD_CONST_STRING SoftI2C
+  10:03       LOAD_CONST_STRING Pin
+  2a:02       BUILD_TUPLE 2
+  1b:04       IMPORT_NAME machine
+  1c:02       IMPORT_FROM SoftI2C
+  16:02       STORE_NAME SoftI2C
+  1c:03       IMPORT_FROM Pin
+  16:03       STORE_NAME Pin
+  59          POP_TOP 
+  80          LOAD_CONST_SMALL_INT 0 
+  10:05       LOAD_CONST_STRING MAX30102
+  10:06       LOAD_CONST_STRING MAX30105_PULSE_AMP_MEDIUM
+  2a:02       BUILD_TUPLE 2
+  1b:07       IMPORT_NAME max30102
+  1c:05       IMPORT_FROM MAX30102
+  16:05       STORE_NAME MAX30102
+  1c:06       IMPORT_FROM MAX30105_PULSE_AMP_MEDIUM
+  16:06       STORE_NAME MAX30105_PULSE_AMP_MEDIUM
+  59          POP_TOP 
+  80          LOAD_CONST_SMALL_INT 0 
+  10:08       LOAD_CONST_STRING DataStruct
+  2a:01       BUILD_TUPLE 1
+  1b:09       IMPORT_NAME basic
+  1c:08       IMPORT_FROM DataStruct
+  16:08       STORE_NAME DataStruct
+  59          POP_TOP 
+  80          LOAD_CONST_SMALL_INT 0 
+  51          LOAD_CONST_NONE 
+  1b:09       IMPORT_NAME basic
+  16:09       STORE_NAME basic
+  80          LOAD_CONST_SMALL_INT 0 
+  10:0a       LOAD_CONST_STRING PinPair
+  2a:01       BUILD_TUPLE 1
+  1b:0b       IMPORT_NAME controlBoardAlphaPiOne
+  1c:0a       IMPORT_FROM PinPair
+  16:0a       STORE_NAME PinPair
+  59          POP_TOP 
+  80          LOAD_CONST_SMALL_INT 0 
+  51          LOAD_CONST_NONE 
+  1b:0b       IMPORT_NAME controlBoardAlphaPiOne
+  16:31       STORE_NAME c
+  80          LOAD_CONST_SMALL_INT 0 
+  2a:01       BUILD_TUPLE 1
+  53          LOAD_NULL 
+  33:00       MAKE_FUNCTION_DEFARGS 0
+  16:0c       STORE_NAME calc_pr
+  51          LOAD_CONST_NONE 
+  17:32       STORE_GLOBAL heart_rate_sensor
+  32:01       MAKE_FUNCTION 1
+  16:0e       STORE_NAME InitHeartRateSensor
+  32:02       MAKE_FUNCTION 2
+  16:1f       STORE_NAME ReadOxygen
+  32:03       MAKE_FUNCTION 3
+  16:21       STORE_NAME ReadHeartRateSensor
+  80          LOAD_CONST_SMALL_INT 0 
+  2b:01       BUILD_LIST 1
+  22:81:20    LOAD_CONST_SMALL_INT 160
+  f4          BINARY_OP 29 __mul__ 
+  17:33       STORE_GLOBAL data_red
+  80          LOAD_CONST_SMALL_INT 0 
+  17:34       STORE_GLOBAL avg_red
+  80          LOAD_CONST_SMALL_INT 0 
+  17:35       STORE_GLOBAL avg_ir
+  80          LOAD_CONST_SMALL_INT 0 
+  17:36       STORE_GLOBAL last_heart_rate
+  80          LOAD_CONST_SMALL_INT 0 
+  17:37       STORE_GLOBAL next_index
+  32:04       MAKE_FUNCTION 4
+  16:2d       STORE_NAME Update
+  32:05       MAKE_FUNCTION 5
+  16:2e       STORE_NAME ReadCurrentValue
+  32:06       MAKE_FUNCTION 6
+  16:2f       STORE_NAME ReadNewestHeartRateSensor
+  32:07       MAKE_FUNCTION 7
+  16:30       STORE_NAME version
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: ['calc_pr', 'InitHeartRateSensor', 'ReadOxygen', 'ReadHeartRateSensor', 'Update', 'ReadCurrentValue', 'ReadNewestHeartRateSensor', 'version']
+simple_name: calc_pr
+  raw bytecode: 319 b0:15:56:0c:38:39:3a:3b:80:09:26:36:22:26:26:44:25:44:4e:23:23:2a:29:23:22:28:22:29:22:44:24:2d:23:25:22:27:48:24:4a:2a:2c:3c:2f:32:42:44:12:3c:b0:34:01:c4:b0:b1:81:f3:b4:f2:b4:f8:55:22:b6:58:d7:43:47:b2:22:b6:58:d7:44:42:80:63:12:3d:b0:34:01:c5:12:3e:b0:34:01:c6:b5:b6:f3:c7:b3:80:d9:44:44:8f:c8:42:4e:12:3f:b3:22:3c:f4:22:3c:f6:84:f6:34:01:c8:2b:00:c9:2b:00:ca:b8:b1:f2:81:f3:b4:f2:b4:f8:cb:b8:d1:b1:f2:b4:f2:b4:f8:cc:42:cd:80:52:cd:bb:b8:f3:b4:f2:b4:f8:ce:42:57:b0:be:55:b0:bb:55:d8:44:46:50:cd:42:53:42:48:be:81:e5:ce:be:b4:eb:ce:be:bb:b8:f2:b4:f8:dc:43:20:bd:44:56:bb:b9:dd:44:42:42:5d:b9:14:0d:bb:36:01:59:bb:b8:81:f3:e5:cb:42:44:bb:81:e5:cb:bb:b4:eb:cb:bb:bc:dc:43:ad:7f:12:3c:b9:34:01:83:db:44:cf:80:12:3c:b9:34:01:81:f3:81:42:57:57:cb:ba:14:0d:b9:bb:55:b9:bb:81:f3:55:f3:b4:f2:b4:f8:36:01:59:81:e5:58:5a:d7:43:24:59:59:12:3d:ba:34:01:12:3e:ba:34:01:f3:8f:d7:44:54:22:3c:22:32:f4:12:40:ba:34:01:12:3c:ba:34:01:f7:f7:c3:b3:63:80:63:42:42:80:63:51:63
+  prelude: (23, 0, 0, 4, 0, 1)
+  args: ['data', 'end', 'avg', 'hr']
+  line info: 80:09:26:36:22:26:26:44:25:44:4e:23:23:2a:29:23:22:28:22:29:22:44:24:2d:23:25:22:27:48:24:4a:2a:2c:3c:2f:32:42:44
+  12:3c       LOAD_GLOBAL len
+  b0          LOAD_FAST 0 
+  34:01       CALL_FUNCTION 1
+  c4          STORE_FAST 4 
+  b0          LOAD_FAST 0 
+  b1          LOAD_FAST 1 
+  81          LOAD_CONST_SMALL_INT 1 
+  f3          BINARY_OP 28 __sub__ 
+  b4          LOAD_FAST 4 
+  f2          BINARY_OP 27 __add__ 
+  b4          LOAD_FAST 4 
+  f8          BINARY_OP 33 __mod__ 
+  55          LOAD_SUBSCR 
+  22:b6:58    LOAD_CONST_SMALL_INT 7000
+  d7          BINARY_OP 0 __lt__ 
+  43:47       POP_JUMP_IF_TRUE 7
+  b2          LOAD_FAST 2 
+  22:b6:58    LOAD_CONST_SMALL_INT 7000
+  d7          BINARY_OP 0 __lt__ 
+  44:42       POP_JUMP_IF_FALSE 2
+  80          LOAD_CONST_SMALL_INT 0 
+  63          RETURN_VALUE 
+  12:3d       LOAD_GLOBAL max
+  b0          LOAD_FAST 0 
+  34:01       CALL_FUNCTION 1
+  c5          STORE_FAST 5 
+  12:3e       LOAD_GLOBAL min
+  b0          LOAD_FAST 0 
+  34:01       CALL_FUNCTION 1
+  c6          STORE_FAST 6 
+  b5          LOAD_FAST 5 
+  b6          LOAD_FAST 6 
+  f3          BINARY_OP 28 __sub__ 
+  c7          STORE_FAST 7 
+  b3          LOAD_FAST 3 
+  80          LOAD_CONST_SMALL_INT 0 
+  d9          BINARY_OP 2 __eq__ 
+  44:44       POP_JUMP_IF_FALSE 4
+  8f          LOAD_CONST_SMALL_INT 15 
+  c8          STORE_FAST 8 
+  42:4e       JUMP 14
+  12:3f       LOAD_GLOBAL int
+  b3          LOAD_FAST 3 
+  22:3c       LOAD_CONST_SMALL_INT 60
+  f4          BINARY_OP 29 __mul__ 
+  22:3c       LOAD_CONST_SMALL_INT 60
+  f6          BINARY_OP 31 __floordiv__ 
+  84          LOAD_CONST_SMALL_INT 4 
+  f6          BINARY_OP 31 __floordiv__ 
+  34:01       CALL_FUNCTION 1
+  c8          STORE_FAST 8 
+  2b:00       BUILD_LIST 0
+  c9          STORE_FAST 9 
+  2b:00       BUILD_LIST 0
+  ca          STORE_FAST 10 
+  b8          LOAD_FAST 8 
+  b1          LOAD_FAST 1 
+  f2          BINARY_OP 27 __add__ 
+  81          LOAD_CONST_SMALL_INT 1 
+  f3          BINARY_OP 28 __sub__ 
+  b4          LOAD_FAST 4 
+  f2          BINARY_OP 27 __add__ 
+  b4          LOAD_FAST 4 
+  f8          BINARY_OP 33 __mod__ 
+  cb          STORE_FAST 11 
+  b8          LOAD_FAST 8 
+  d1          UNARY_OP 1 __neg__ 
+  b1          LOAD_FAST 1 
+  f2          BINARY_OP 27 __add__ 
+  b4          LOAD_FAST 4 
+  f2          BINARY_OP 27 __add__ 
+  b4          LOAD_FAST 4 
+  f8          BINARY_OP 33 __mod__ 
+  cc          STORE_FAST 12 
+  42:cd:80    JUMP 77
+  52          LOAD_CONST_TRUE 
+  cd          STORE_FAST 13 
+  bb          LOAD_FAST 11 
+  b8          LOAD_FAST 8 
+  f3          BINARY_OP 28 __sub__ 
+  b4          LOAD_FAST 4 
+  f2          BINARY_OP 27 __add__ 
+  b4          LOAD_FAST 4 
+  f8          BINARY_OP 33 __mod__ 
+  ce          STORE_FAST 14 
+  42:57       JUMP 23
+  b0          LOAD_FAST 0 
+  be          LOAD_FAST 14 
+  55          LOAD_SUBSCR 
+  b0          LOAD_FAST 0 
+  bb          LOAD_FAST 11 
+  55          LOAD_SUBSCR 
+  d8          BINARY_OP 1 __gt__ 
+  44:46       POP_JUMP_IF_FALSE 6
+  50          LOAD_CONST_FALSE 
+  cd          STORE_FAST 13 
+  42:53       JUMP 19
+  42:48       JUMP 8
+  be          LOAD_FAST 14 
+  81          LOAD_CONST_SMALL_INT 1 
+  e5          BINARY_OP 14 __iadd__ 
+  ce          STORE_FAST 14 
+  be          LOAD_FAST 14 
+  b4          LOAD_FAST 4 
+  eb          BINARY_OP 20 __imod__ 
+  ce          STORE_FAST 14 
+  be          LOAD_FAST 14 
+  bb          LOAD_FAST 11 
+  b8          LOAD_FAST 8 
+  f2          BINARY_OP 27 __add__ 
+  b4          LOAD_FAST 4 
+  f8          BINARY_OP 33 __mod__ 
+  dc          BINARY_OP 5 __ne__ 
+  43:20       POP_JUMP_IF_TRUE -32
+  bd          LOAD_FAST 13 
+  44:56       POP_JUMP_IF_FALSE 22
+  bb          LOAD_FAST 11 
+  b9          LOAD_FAST 9 
+  dd          BINARY_OP 6 <in> 
+  44:42       POP_JUMP_IF_FALSE 2
+  42:5d       JUMP 29
+  b9          LOAD_FAST 9 
+  14:0d       LOAD_METHOD append
+  bb          LOAD_FAST 11 
+  36:01       CALL_METHOD 1
+  59          POP_TOP 
+  bb          LOAD_FAST 11 
+  b8          LOAD_FAST 8 
+  81          LOAD_CONST_SMALL_INT 1 
+  f3          BINARY_OP 28 __sub__ 
+  e5          BINARY_OP 14 __iadd__ 
+  cb          STORE_FAST 11 
+  42:44       JUMP 4
+  bb          LOAD_FAST 11 
+  81          LOAD_CONST_SMALL_INT 1 
+  e5          BINARY_OP 14 __iadd__ 
+  cb          STORE_FAST 11 
+  bb          LOAD_FAST 11 
+  b4          LOAD_FAST 4 
+  eb          BINARY_OP 20 __imod__ 
+  cb          STORE_FAST 11 
+  bb          LOAD_FAST 11 
+  bc          LOAD_FAST 12 
+  dc          BINARY_OP 5 __ne__ 
+  43:ad:7f    POP_JUMP_IF_TRUE -83
+  12:3c       LOAD_GLOBAL len
+  b9          LOAD_FAST 9 
+  34:01       CALL_FUNCTION 1
+  83          LOAD_CONST_SMALL_INT 3 
+  db          BINARY_OP 4 __ge__ 
+  44:cf:80    POP_JUMP_IF_FALSE 79
+  12:3c       LOAD_GLOBAL len
+  b9          LOAD_FAST 9 
+  34:01       CALL_FUNCTION 1
+  81          LOAD_CONST_SMALL_INT 1 
+  f3          BINARY_OP 28 __sub__ 
+  81          LOAD_CONST_SMALL_INT 1 
+  42:57       JUMP 23
+  57          DUP_TOP 
+  cb          STORE_FAST 11 
+  ba          LOAD_FAST 10 
+  14:0d       LOAD_METHOD append
+  b9          LOAD_FAST 9 
+  bb          LOAD_FAST 11 
+  55          LOAD_SUBSCR 
+  b9          LOAD_FAST 9 
+  bb          LOAD_FAST 11 
+  81          LOAD_CONST_SMALL_INT 1 
+  f3          BINARY_OP 28 __sub__ 
+  55          LOAD_SUBSCR 
+  f3          BINARY_OP 28 __sub__ 
+  b4          LOAD_FAST 4 
+  f2          BINARY_OP 27 __add__ 
+  b4          LOAD_FAST 4 
+  f8          BINARY_OP 33 __mod__ 
+  36:01       CALL_METHOD 1
+  59          POP_TOP 
+  81          LOAD_CONST_SMALL_INT 1 
+  e5          BINARY_OP 14 __iadd__ 
+  58          DUP_TOP_TWO 
+  5a          ROT_TWO 
+  d7          BINARY_OP 0 __lt__ 
+  43:24       POP_JUMP_IF_TRUE -28
+  59          POP_TOP 
+  59          POP_TOP 
+  12:3d       LOAD_GLOBAL max
+  ba          LOAD_FAST 10 
+  34:01       CALL_FUNCTION 1
+  12:3e       LOAD_GLOBAL min
+  ba          LOAD_FAST 10 
+  34:01       CALL_FUNCTION 1
+  f3          BINARY_OP 28 __sub__ 
+  8f          LOAD_CONST_SMALL_INT 15 
+  d7          BINARY_OP 0 __lt__ 
+  44:54       POP_JUMP_IF_FALSE 20
+  22:3c       LOAD_CONST_SMALL_INT 60
+  22:32       LOAD_CONST_SMALL_INT 50
+  f4          BINARY_OP 29 __mul__ 
+  12:40       LOAD_GLOBAL sum
+  ba          LOAD_FAST 10 
+  34:01       CALL_FUNCTION 1
+  12:3c       LOAD_GLOBAL len
+  ba          LOAD_FAST 10 
+  34:01       CALL_FUNCTION 1
+  f7          BINARY_OP 32 __truediv__ 
+  f7          BINARY_OP 32 __truediv__ 
+  c3          STORE_FAST 3 
+  b3          LOAD_FAST 3 
+  63          RETURN_VALUE 
+  80          LOAD_CONST_SMALL_INT 0 
+  63          RETURN_VALUE 
+  42:42       JUMP 2
+  80          LOAD_CONST_SMALL_INT 0 
+  63          RETURN_VALUE 
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: []
+simple_name: InitHeartRateSensor
+  raw bytecode: 179 51:2c:0e:41:80:3c:2a:27:22:20:31:5c:2a:2d:27:23:22:48:27:23:22:27:2a:28:12:08:b0:34:01:14:0f:36:00:c1:b1:12:0a:dd:d3:44:42:51:63:12:02:10:10:12:03:12:0a:b1:55:10:11:55:34:01:10:12:12:03:12:0a:b1:55:10:13:55:10:14:12:03:13:15:34:82:01:10:16:22:86:8d:20:34:86:00:c2:12:05:10:17:b2:34:82:00:17:32:12:32:13:18:b2:14:19:36:00:dd:d3:44:4c:12:42:23:00:34:01:59:51:17:32:51:63:12:32:14:1a:36:00:43:4c:12:42:23:01:34:01:59:51:17:32:51:63:12:32:14:1b:36:00:59:12:32:14:1c:22:83:10:36:01:59:12:32:14:1d:88:36:01:59:12:32:14:1e:12:06:36:01:59:51:63
+  prelude: (11, 0, 0, 1, 0, 0)
+  args: ['pin_pair']
+  line info: 80:3c:2a:27:22:20:31:5c:2a:2d:27:23:22:48:27:23:22:27:2a:28
+  12:08       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  34:01       CALL_FUNCTION 1
+  14:0f       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  c1          STORE_FAST 1 
+  b1          LOAD_FAST 1 
+  12:0a       LOAD_GLOBAL PinPair
+  dd          BINARY_OP 6 <in> 
+  d3          UNARY_OP 3 <not> 
+  44:42       POP_JUMP_IF_FALSE 2
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  12:02       LOAD_GLOBAL SoftI2C
+  10:10       LOAD_CONST_STRING sda
+  12:03       LOAD_GLOBAL Pin
+  12:0a       LOAD_GLOBAL PinPair
+  b1          LOAD_FAST 1 
+  55          LOAD_SUBSCR 
+  10:11       LOAD_CONST_STRING r
+  55          LOAD_SUBSCR 
+  34:01       CALL_FUNCTION 1
+  10:12       LOAD_CONST_STRING scl
+  12:03       LOAD_GLOBAL Pin
+  12:0a       LOAD_GLOBAL PinPair
+  b1          LOAD_FAST 1 
+  55          LOAD_SUBSCR 
+  10:13       LOAD_CONST_STRING t
+  55          LOAD_SUBSCR 
+  10:14       LOAD_CONST_STRING pull
+  12:03       LOAD_GLOBAL Pin
+  13:15       LOAD_ATTR PULL_UP
+  34:82:01    CALL_FUNCTION 257
+  10:16       LOAD_CONST_STRING freq
+  22:86:8d:20 LOAD_CONST_SMALL_INT 100000
+  34:86:00    CALL_FUNCTION 768
+  c2          STORE_FAST 2 
+  12:05       LOAD_GLOBAL MAX30102
+  10:17       LOAD_CONST_STRING i2c
+  b2          LOAD_FAST 2 
+  34:82:00    CALL_FUNCTION 256
+  17:32       STORE_GLOBAL heart_rate_sensor
+  12:32       LOAD_GLOBAL heart_rate_sensor
+  13:18       LOAD_ATTR i2c_address
+  b2          LOAD_FAST 2 
+  14:19       LOAD_METHOD scan
+  36:00       CALL_METHOD 0
+  dd          BINARY_OP 6 <in> 
+  d3          UNARY_OP 3 <not> 
+  44:4c       POP_JUMP_IF_FALSE 12
+  12:42       LOAD_GLOBAL print
+  23:00       LOAD_CONST_OBJ 'Sensor not found.'
+  34:01       CALL_FUNCTION 1
+  59          POP_TOP 
+  51          LOAD_CONST_NONE 
+  17:32       STORE_GLOBAL heart_rate_sensor
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  12:32       LOAD_GLOBAL heart_rate_sensor
+  14:1a       LOAD_METHOD check_part_id
+  36:00       CALL_METHOD 0
+  43:4c       POP_JUMP_IF_TRUE 12
+  12:42       LOAD_GLOBAL print
+  23:01       LOAD_CONST_OBJ 'I2C device ID not corresponding to MAX30102 or MAX30105.'
+  34:01       CALL_FUNCTION 1
+  59          POP_TOP 
+  51          LOAD_CONST_NONE 
+  17:32       STORE_GLOBAL heart_rate_sensor
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  12:32       LOAD_GLOBAL heart_rate_sensor
+  14:1b       LOAD_METHOD setup_sensor
+  36:00       CALL_METHOD 0
+  59          POP_TOP 
+  12:32       LOAD_GLOBAL heart_rate_sensor
+  14:1c       LOAD_METHOD set_sample_rate
+  22:83:10    LOAD_CONST_SMALL_INT 400
+  36:01       CALL_METHOD 1
+  59          POP_TOP 
+  12:32       LOAD_GLOBAL heart_rate_sensor
+  14:1d       LOAD_METHOD set_fifo_average
+  88          LOAD_CONST_SMALL_INT 8 
+  36:01       CALL_METHOD 1
+  59          POP_TOP 
+  12:32       LOAD_GLOBAL heart_rate_sensor
+  14:1e       LOAD_METHOD set_active_leds_amplitude
+  12:06       LOAD_GLOBAL MAX30105_PULSE_AMP_MEDIUM
+  36:01       CALL_METHOD 1
+  59          POP_TOP 
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: []
+simple_name: ReadOxygen
+  raw bytecode: 30 20:06:1f:80:54:12:09:14:20:12:08:22:80:61:34:01:12:08:22:80:63:34:01:36:02:14:0f:36:00:63
+  prelude: (5, 0, 0, 0, 0, 0)
+  args: []
+  line info: 80:54
+  12:09       LOAD_GLOBAL basic
+  14:20       LOAD_METHOD data_struct_random
+  12:08       LOAD_GLOBAL DataStruct
+  22:80:61    LOAD_CONST_SMALL_INT 97
+  34:01       CALL_FUNCTION 1
+  12:08       LOAD_GLOBAL DataStruct
+  22:80:63    LOAD_CONST_SMALL_INT 99
+  34:01       CALL_FUNCTION 1
+  36:02       CALL_METHOD 2
+  14:0f       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  63          RETURN_VALUE 
+  children: []
+simple_name: ReadHeartRateSensor
+  raw bytecode: 337 7a:54:21:43:44:80:58:2a:26:22:25:25:23:27:20:29:29:22:22:22:22:23:27:23:2a:25:25:25:4d:2b:24:2d:35:2b:3f:35:24:27:22:24:2c:29:25:35:12:08:b0:34:01:14:0f:36:00:c2:12:32:51:de:44:42:80:63:b2:81:d9:44:45:12:1f:34:00:63:b1:44:47:12:31:14:22:36:00:59:80:2b:01:22:81:20:f4:17:33:80:2b:01:12:31:13:23:f4:c3:80:c4:80:c5:80:c6:80:c7:42:da:81:12:32:14:24:36:00:59:42:c7:81:12:32:14:25:36:00:12:33:b4:56:b7:80:d9:44:45:12:33:b4:55:c7:b5:80:d9:44:4d:12:40:12:33:34:01:b4:81:f2:f6:c6:42:4b:12:40:12:33:34:01:22:81:20:f6:c6:b1:44:e1:80:b5:22:81:20:f4:b4:f2:12:31:13:23:f8:c8:12:31:13:26:14:27:b8:b3:b8:55:2a:02:12:31:13:26:13:28:36:02:59:b7:85:f4:12:33:b4:55:f2:86:f6:c7:12:09:14:29:12:31:13:2a:b7:12:33:b4:55:f3:22:80:40:f2:f3:80:12:31:13:2a:81:f3:36:03:b3:b8:56:12:31:13:26:14:27:b8:b3:b8:55:2a:02:12:31:13:26:13:2b:36:02:59:b4:81:e5:c4:b4:22:81:20:d9:44:46:80:c4:b5:81:e5:c5:b5:81:d8:44:5b:b4:a8:f8:80:d9:44:54:12:0c:12:33:b4:b6:34:03:c9:b9:80:d8:44:46:12:3f:b9:34:01:63:12:32:14:2c:36:00:43:b0:7e:b5:83:d7:43:a0:7e:80:63
+  prelude: (16, 0, 0, 2, 0, 0)
+  args: ['key_d', 'draw_points']
+  line info: 80:58:2a:26:22:25:25:23:27:20:29:29:22:22:22:22:23:27:23:2a:25:25:25:4d:2b:24:2d:35:2b:3f:35:24:27:22:24:2c:29:25:35
+  12:08       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  34:01       CALL_FUNCTION 1
+  14:0f       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  c2          STORE_FAST 2 
+  12:32       LOAD_GLOBAL heart_rate_sensor
+  51          LOAD_CONST_NONE 
+  de          BINARY_OP 7 <is> 
+  44:42       POP_JUMP_IF_FALSE 2
+  80          LOAD_CONST_SMALL_INT 0 
+  63          RETURN_VALUE 
+  b2          LOAD_FAST 2 
+  81          LOAD_CONST_SMALL_INT 1 
+  d9          BINARY_OP 2 __eq__ 
+  44:45       POP_JUMP_IF_FALSE 5
+  12:1f       LOAD_GLOBAL ReadOxygen
+  34:00       CALL_FUNCTION 0
+  63          RETURN_VALUE 
+  b1          LOAD_FAST 1 
+  44:47       POP_JUMP_IF_FALSE 7
+  12:31       LOAD_GLOBAL c
+  14:22       LOAD_METHOD clearScreen
+  36:00       CALL_METHOD 0
+  59          POP_TOP 
+  80          LOAD_CONST_SMALL_INT 0 
+  2b:01       BUILD_LIST 1
+  22:81:20    LOAD_CONST_SMALL_INT 160
+  f4          BINARY_OP 29 __mul__ 
+  17:33       STORE_GLOBAL data_red
+  80          LOAD_CONST_SMALL_INT 0 
+  2b:01       BUILD_LIST 1
+  12:31       LOAD_GLOBAL c
+  13:23       LOAD_ATTR screen_width
+  f4          BINARY_OP 29 __mul__ 
+  c3          STORE_FAST 3 
+  80          LOAD_CONST_SMALL_INT 0 
+  c4          STORE_FAST 4 
+  80          LOAD_CONST_SMALL_INT 0 
+  c5          STORE_FAST 5 
+  80          LOAD_CONST_SMALL_INT 0 
+  c6          STORE_FAST 6 
+  80          LOAD_CONST_SMALL_INT 0 
+  c7          STORE_FAST 7 
+  42:da:81    JUMP 218
+  12:32       LOAD_GLOBAL heart_rate_sensor
+  14:24       LOAD_METHOD check
+  36:00       CALL_METHOD 0
+  59          POP_TOP 
+  42:c7:81    JUMP 199
+  12:32       LOAD_GLOBAL heart_rate_sensor
+  14:25       LOAD_METHOD pop_red_from_storage
+  36:00       CALL_METHOD 0
+  12:33       LOAD_GLOBAL data_red
+  b4          LOAD_FAST 4 
+  56          STORE_SUBSCR 
+  b7          LOAD_FAST 7 
+  80          LOAD_CONST_SMALL_INT 0 
+  d9          BINARY_OP 2 __eq__ 
+  44:45       POP_JUMP_IF_FALSE 5
+  12:33       LOAD_GLOBAL data_red
+  b4          LOAD_FAST 4 
+  55          LOAD_SUBSCR 
+  c7          STORE_FAST 7 
+  b5          LOAD_FAST 5 
+  80          LOAD_CONST_SMALL_INT 0 
+  d9          BINARY_OP 2 __eq__ 
+  44:4d       POP_JUMP_IF_FALSE 13
+  12:40       LOAD_GLOBAL sum
+  12:33       LOAD_GLOBAL data_red
+  34:01       CALL_FUNCTION 1
+  b4          LOAD_FAST 4 
+  81          LOAD_CONST_SMALL_INT 1 
+  f2          BINARY_OP 27 __add__ 
+  f6          BINARY_OP 31 __floordiv__ 
+  c6          STORE_FAST 6 
+  42:4b       JUMP 11
+  12:40       LOAD_GLOBAL sum
+  12:33       LOAD_GLOBAL data_red
+  34:01       CALL_FUNCTION 1
+  22:81:20    LOAD_CONST_SMALL_INT 160
+  f6          BINARY_OP 31 __floordiv__ 
+  c6          STORE_FAST 6 
+  b1          LOAD_FAST 1 
+  44:e1:80    POP_JUMP_IF_FALSE 97
+  b5          LOAD_FAST 5 
+  22:81:20    LOAD_CONST_SMALL_INT 160
+  f4          BINARY_OP 29 __mul__ 
+  b4          LOAD_FAST 4 
+  f2          BINARY_OP 27 __add__ 
+  12:31       LOAD_GLOBAL c
+  13:23       LOAD_ATTR screen_width
+  f8          BINARY_OP 33 __mod__ 
+  c8          STORE_FAST 8 
+  12:31       LOAD_GLOBAL c
+  13:26       LOAD_ATTR tft
+  14:27       LOAD_METHOD pixel
+  b8          LOAD_FAST 8 
+  b3          LOAD_FAST 3 
+  b8          LOAD_FAST 8 
+  55          LOAD_SUBSCR 
+  2a:02       BUILD_TUPLE 2
+  12:31       LOAD_GLOBAL c
+  13:26       LOAD_ATTR tft
+  13:28       LOAD_ATTR BLACK
+  36:02       CALL_METHOD 2
+  59          POP_TOP 
+  b7          LOAD_FAST 7 
+  85          LOAD_CONST_SMALL_INT 5 
+  f4          BINARY_OP 29 __mul__ 
+  12:33       LOAD_GLOBAL data_red
+  b4          LOAD_FAST 4 
+  55          LOAD_SUBSCR 
+  f2          BINARY_OP 27 __add__ 
+  86          LOAD_CONST_SMALL_INT 6 
+  f6          BINARY_OP 31 __floordiv__ 
+  c7          STORE_FAST 7 
+  12:09       LOAD_GLOBAL basic
+  14:29       LOAD_METHOD ClampD
+  12:31       LOAD_GLOBAL c
+  13:2a       LOAD_ATTR screen_height
+  b7          LOAD_FAST 7 
+  12:33       LOAD_GLOBAL data_red
+  b4          LOAD_FAST 4 
+  55          LOAD_SUBSCR 
+  f3          BINARY_OP 28 __sub__ 
+  22:80:40    LOAD_CONST_SMALL_INT 64
+  f2          BINARY_OP 27 __add__ 
+  f3          BINARY_OP 28 __sub__ 
+  80          LOAD_CONST_SMALL_INT 0 
+  12:31       LOAD_GLOBAL c
+  13:2a       LOAD_ATTR screen_height
+  81          LOAD_CONST_SMALL_INT 1 
+  f3          BINARY_OP 28 __sub__ 
+  36:03       CALL_METHOD 3
+  b3          LOAD_FAST 3 
+  b8          LOAD_FAST 8 
+  56          STORE_SUBSCR 
+  12:31       LOAD_GLOBAL c
+  13:26       LOAD_ATTR tft
+  14:27       LOAD_METHOD pixel
+  b8          LOAD_FAST 8 
+  b3          LOAD_FAST 3 
+  b8          LOAD_FAST 8 
+  55          LOAD_SUBSCR 
+  2a:02       BUILD_TUPLE 2
+  12:31       LOAD_GLOBAL c
+  13:26       LOAD_ATTR tft
+  13:2b       LOAD_ATTR RED
+  36:02       CALL_METHOD 2
+  59          POP_TOP 
+  b4          LOAD_FAST 4 
+  81          LOAD_CONST_SMALL_INT 1 
+  e5          BINARY_OP 14 __iadd__ 
+  c4          STORE_FAST 4 
+  b4          LOAD_FAST 4 
+  22:81:20    LOAD_CONST_SMALL_INT 160
+  d9          BINARY_OP 2 __eq__ 
+  44:46       POP_JUMP_IF_FALSE 6
+  80          LOAD_CONST_SMALL_INT 0 
+  c4          STORE_FAST 4 
+  b5          LOAD_FAST 5 
+  81          LOAD_CONST_SMALL_INT 1 
+  e5          BINARY_OP 14 __iadd__ 
+  c5          STORE_FAST 5 
+  b5          LOAD_FAST 5 
+  81          LOAD_CONST_SMALL_INT 1 
+  d8          BINARY_OP 1 __gt__ 
+  44:5b       POP_JUMP_IF_FALSE 27
+  b4          LOAD_FAST 4 
+  a8          LOAD_CONST_SMALL_INT 40 
+  f8          BINARY_OP 33 __mod__ 
+  80          LOAD_CONST_SMALL_INT 0 
+  d9          BINARY_OP 2 __eq__ 
+  44:54       POP_JUMP_IF_FALSE 20
+  12:0c       LOAD_GLOBAL calc_pr
+  12:33       LOAD_GLOBAL data_red
+  b4          LOAD_FAST 4 
+  b6          LOAD_FAST 6 
+  34:03       CALL_FUNCTION 3
+  c9          STORE_FAST 9 
+  b9          LOAD_FAST 9 
+  80          LOAD_CONST_SMALL_INT 0 
+  d8          BINARY_OP 1 __gt__ 
+  44:46       POP_JUMP_IF_FALSE 6
+  12:3f       LOAD_GLOBAL int
+  b9          LOAD_FAST 9 
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  12:32       LOAD_GLOBAL heart_rate_sensor
+  14:2c       LOAD_METHOD available
+  36:00       CALL_METHOD 0
+  43:b0:7e    POP_JUMP_IF_TRUE -208
+  b5          LOAD_FAST 5 
+  83          LOAD_CONST_SMALL_INT 3 
+  d7          BINARY_OP 0 __lt__ 
+  43:a0:7e    POP_JUMP_IF_TRUE -224
+  80          LOAD_CONST_SMALL_INT 0 
+  63          RETURN_VALUE 
+  children: []
+simple_name: Update
+  raw bytecode: 108 20:22:2d:80:89:20:20:20:20:20:28:27:22:2b:26:28:2b:23:28:12:32:51:de:d3:44:cf:80:12:32:14:24:36:00:59:42:7d:12:32:14:25:36:00:12:33:12:37:56:12:37:81:e5:17:37:12:37:22:81:20:d9:44:4e:12:40:12:33:34:01:12:37:f6:17:34:80:17:37:12:37:a8:f8:80:d9:44:4e:12:0c:12:33:12:37:12:34:12:36:34:04:17:36:12:32:14:2c:36:00:43:ba:7f:51:63
+  prelude: (5, 0, 0, 0, 0, 0)
+  args: []
+  line info: 80:89:20:20:20:20:20:28:27:22:2b:26:28:2b:23:28
+  12:32       LOAD_GLOBAL heart_rate_sensor
+  51          LOAD_CONST_NONE 
+  de          BINARY_OP 7 <is> 
+  d3          UNARY_OP 3 <not> 
+  44:cf:80    POP_JUMP_IF_FALSE 79
+  12:32       LOAD_GLOBAL heart_rate_sensor
+  14:24       LOAD_METHOD check
+  36:00       CALL_METHOD 0
+  59          POP_TOP 
+  42:7d       JUMP 61
+  12:32       LOAD_GLOBAL heart_rate_sensor
+  14:25       LOAD_METHOD pop_red_from_storage
+  36:00       CALL_METHOD 0
+  12:33       LOAD_GLOBAL data_red
+  12:37       LOAD_GLOBAL next_index
+  56          STORE_SUBSCR 
+  12:37       LOAD_GLOBAL next_index
+  81          LOAD_CONST_SMALL_INT 1 
+  e5          BINARY_OP 14 __iadd__ 
+  17:37       STORE_GLOBAL next_index
+  12:37       LOAD_GLOBAL next_index
+  22:81:20    LOAD_CONST_SMALL_INT 160
+  d9          BINARY_OP 2 __eq__ 
+  44:4e       POP_JUMP_IF_FALSE 14
+  12:40       LOAD_GLOBAL sum
+  12:33       LOAD_GLOBAL data_red
+  34:01       CALL_FUNCTION 1
+  12:37       LOAD_GLOBAL next_index
+  f6          BINARY_OP 31 __floordiv__ 
+  17:34       STORE_GLOBAL avg_red
+  80          LOAD_CONST_SMALL_INT 0 
+  17:37       STORE_GLOBAL next_index
+  12:37       LOAD_GLOBAL next_index
+  a8          LOAD_CONST_SMALL_INT 40 
+  f8          BINARY_OP 33 __mod__ 
+  80          LOAD_CONST_SMALL_INT 0 
+  d9          BINARY_OP 2 __eq__ 
+  44:4e       POP_JUMP_IF_FALSE 14
+  12:0c       LOAD_GLOBAL calc_pr
+  12:33       LOAD_GLOBAL data_red
+  12:37       LOAD_GLOBAL next_index
+  12:34       LOAD_GLOBAL avg_red
+  12:36       LOAD_GLOBAL last_heart_rate
+  34:04       CALL_FUNCTION 4
+  17:36       STORE_GLOBAL last_heart_rate
+  12:32       LOAD_GLOBAL heart_rate_sensor
+  14:2c       LOAD_METHOD available
+  36:00       CALL_METHOD 0
+  43:ba:7f    POP_JUMP_IF_TRUE -70
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: []
+simple_name: ReadCurrentValue
+  raw bytecode: 32 10:0e:2e:80:9b:20:20:26:48:12:37:80:d8:44:48:12:33:12:37:81:f3:55:63:12:33:22:81:1f:55:63:51:63
+  prelude: (3, 0, 0, 0, 0, 0)
+  args: []
+  line info: 80:9b:20:20:26:48
+  12:37       LOAD_GLOBAL next_index
+  80          LOAD_CONST_SMALL_INT 0 
+  d8          BINARY_OP 1 __gt__ 
+  44:48       POP_JUMP_IF_FALSE 8
+  12:33       LOAD_GLOBAL data_red
+  12:37       LOAD_GLOBAL next_index
+  81          LOAD_CONST_SMALL_INT 1 
+  f3          BINARY_OP 28 __sub__ 
+  55          LOAD_SUBSCR 
+  63          RETURN_VALUE 
+  12:33       LOAD_GLOBAL data_red
+  22:81:1f    LOAD_CONST_SMALL_INT 159
+  55          LOAD_SUBSCR 
+  63          RETURN_VALUE 
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: []
+simple_name: ReadNewestHeartRateSensor
+  raw bytecode: 39 19:10:2f:43:80:a4:2a:25:20:47:12:08:b0:34:01:14:0f:36:00:c1:b1:80:d9:44:47:12:3f:12:36:34:01:63:12:1f:34:00:63:51:63
+  prelude: (4, 0, 0, 1, 0, 0)
+  args: ['key_d']
+  line info: 80:a4:2a:25:20:47
+  12:08       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  34:01       CALL_FUNCTION 1
+  14:0f       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  c1          STORE_FAST 1 
+  b1          LOAD_FAST 1 
+  80          LOAD_CONST_SMALL_INT 0 
+  d9          BINARY_OP 2 __eq__ 
+  44:47       POP_JUMP_IF_FALSE 7
+  12:3f       LOAD_GLOBAL int
+  12:36       LOAD_GLOBAL last_heart_rate
+  34:01       CALL_FUNCTION 1
+  63          RETURN_VALUE 
+  12:1f       LOAD_GLOBAL ReadOxygen
+  34:00       CALL_FUNCTION 0
+  63          RETURN_VALUE 
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: []
+simple_name: version
+  raw bytecode: 8 00:06:30:80:ad:23:02:63
+  prelude: (1, 0, 0, 0, 0, 0)
+  args: []
+  line info: 80:ad
+  23:02       LOAD_CONST_OBJ 'v_2022_12_01'
+  63          RETURN_VALUE 
+  children: []

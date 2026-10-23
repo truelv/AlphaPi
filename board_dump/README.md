@@ -10,6 +10,7 @@
 | `dumped/` | 从板上分块取回并解码的 `.mpy` 原件 |
 | `game/` | 从板上导出的一组示例固件文件（另一版本） |
 | `controlBoardAlphaPiOne.mpy` / `max30102.mpy.txt` 等 | 单个模块的原件/反汇编 |
+| `com11_disasm/` | COM11 积木传感器/执行器模块的反汇编（超声波 / 红外 / 温湿度 / 心率血氧 / RGB / 电机…），端口契约依据见 [`../docs/board_map.md`](../docs/board_map.md) §13 |
 
 - **固件的"正式备份"**放在 [`../firmware/`](../firmware/)（按版本归档），本目录是**探查过程中的原始产物**。
 - 生成/处理这些文件的工具在 [`../tools/`](../tools/)。

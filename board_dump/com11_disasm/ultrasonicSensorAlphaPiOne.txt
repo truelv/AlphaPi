@@ -1,0 +1,356 @@
+mpy_source_file: firmware\com11_20220912\rootfs\ultrasonicSensorAlphaPiOne.mpy
+source_file: .\ultrasonicSensorAlphaPiOne.py
+header: 4d:06:00:1f
+qstr_table[24]:
+    .\ultrasonicSensorAlphaPiOne.py
+    <module>
+    time
+    Pin
+    machine
+    wait_time
+    basic
+    DataStruct
+    t
+    r
+    version
+    readUltrasonicSensorNum
+    IntValue
+    OUT
+    IN
+    PULL_DOWN
+    value
+    sleep_us
+    ticks_us
+    ticks_diff
+    readUltrasonicSensorNumAsync
+    UltrasonicPort
+    pin_pair
+    next
+obj_table: ['v_2022_09_01_1']
+simple_name: <module>
+  raw bytecode: 126 18:1e:01:26:2c:2c:4c:64:20:22:2c:2c:2c:6f:40:84:15:80:51:1b:02:16:02:80:10:03:2a:01:1b:04:1c:03:16:03:59:80:10:05:2a:01:1b:06:1c:05:16:05:59:80:10:07:2a:01:1b:06:1c:07:16:07:59:32:00:16:0a:2c:04:2c:02:8a:10:08:62:8b:10:09:62:81:62:2c:02:8c:10:08:62:8d:10:09:62:82:62:2c:02:8e:10:08:62:91:10:09:62:83:62:2c:02:92:10:08:62:22:30:10:09:62:84:62:16:15:32:01:16:0b:32:02:16:14:51:63
+  prelude: (4, 0, 0, 0, 0, 0)
+  args: []
+  line info: 26:2c:2c:4c:64:20:22:2c:2c:2c:6f:40:84:15
+  80          LOAD_CONST_SMALL_INT 0 
+  51          LOAD_CONST_NONE 
+  1b:02       IMPORT_NAME time
+  16:02       STORE_NAME time
+  80          LOAD_CONST_SMALL_INT 0 
+  10:03       LOAD_CONST_STRING Pin
+  2a:01       BUILD_TUPLE 1
+  1b:04       IMPORT_NAME machine
+  1c:03       IMPORT_FROM Pin
+  16:03       STORE_NAME Pin
+  59          POP_TOP 
+  80          LOAD_CONST_SMALL_INT 0 
+  10:05       LOAD_CONST_STRING wait_time
+  2a:01       BUILD_TUPLE 1
+  1b:06       IMPORT_NAME basic
+  1c:05       IMPORT_FROM wait_time
+  16:05       STORE_NAME wait_time
+  59          POP_TOP 
+  80          LOAD_CONST_SMALL_INT 0 
+  10:07       LOAD_CONST_STRING DataStruct
+  2a:01       BUILD_TUPLE 1
+  1b:06       IMPORT_NAME basic
+  1c:07       IMPORT_FROM DataStruct
+  16:07       STORE_NAME DataStruct
+  59          POP_TOP 
+  32:00       MAKE_FUNCTION 0
+  16:0a       STORE_NAME version
+  2c:04       BUILD_MAP 4
+  2c:02       BUILD_MAP 2
+  8a          LOAD_CONST_SMALL_INT 10 
+  10:08       LOAD_CONST_STRING t
+  62          STORE_MAP 
+  8b          LOAD_CONST_SMALL_INT 11 
+  10:09       LOAD_CONST_STRING r
+  62          STORE_MAP 
+  81          LOAD_CONST_SMALL_INT 1 
+  62          STORE_MAP 
+  2c:02       BUILD_MAP 2
+  8c          LOAD_CONST_SMALL_INT 12 
+  10:08       LOAD_CONST_STRING t
+  62          STORE_MAP 
+  8d          LOAD_CONST_SMALL_INT 13 
+  10:09       LOAD_CONST_STRING r
+  62          STORE_MAP 
+  82          LOAD_CONST_SMALL_INT 2 
+  62          STORE_MAP 
+  2c:02       BUILD_MAP 2
+  8e          LOAD_CONST_SMALL_INT 14 
+  10:08       LOAD_CONST_STRING t
+  62          STORE_MAP 
+  91          LOAD_CONST_SMALL_INT 17 
+  10:09       LOAD_CONST_STRING r
+  62          STORE_MAP 
+  83          LOAD_CONST_SMALL_INT 3 
+  62          STORE_MAP 
+  2c:02       BUILD_MAP 2
+  92          LOAD_CONST_SMALL_INT 18 
+  10:08       LOAD_CONST_STRING t
+  62          STORE_MAP 
+  22:30       LOAD_CONST_SMALL_INT 48
+  10:09       LOAD_CONST_STRING r
+  62          STORE_MAP 
+  84          LOAD_CONST_SMALL_INT 4 
+  62          STORE_MAP 
+  16:15       STORE_NAME UltrasonicPort
+  32:01       MAKE_FUNCTION 1
+  16:0b       STORE_NAME readUltrasonicSensorNum
+  32:02       MAKE_FUNCTION 2
+  16:14       STORE_NAME readUltrasonicSensorNumAsync
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: ['version', 'readUltrasonicSensorNum', 'readUltrasonicSensorNumAsync']
+simple_name: version
+  raw bytecode: 8 00:06:0a:60:60:23:00:63
+  prelude: (1, 0, 0, 0, 0, 0)
+  args: []
+  line info: 60:60
+  23:00       LOAD_CONST_OBJ 'v_2022_09_01_1'
+  63          RETURN_VALUE 
+  children: []
+simple_name: readUltrasonicSensorNum
+  raw bytecode: 194 59:2a:0b:16:80:13:2a:27:22:30:34:27:29:27:28:22:32:28:27:22:32:2e:2e:12:07:b0:34:01:14:0c:36:00:c1:b1:12:15:dd:d3:44:42:7f:63:12:03:12:15:b1:55:10:08:55:12:03:13:0d:34:02:c2:12:03:12:15:b1:55:10:09:55:12:03:13:0e:12:03:13:0f:34:03:c3:b2:14:10:81:36:01:59:12:02:14:11:22:32:36:01:59:b2:14:10:80:36:01:59:12:05:22:82:2c:34:01:c4:42:42:42:40:12:17:b4:34:01:44:49:b3:14:10:36:00:80:d9:43:2e:12:05:22:82:2c:34:01:c4:12:02:14:12:36:00:c5:42:42:42:40:12:17:b4:34:01:44:49:b3:14:10:36:00:81:d9:43:2e:12:02:14:13:12:02:14:12:36:00:b5:36:02:c6:b6:22:82:54:f4:82:f7:22:87:68:f7:8a:f7:c7:b7:63
+  prelude: (12, 0, 0, 1, 0, 0)
+  args: ['pin_pair']
+  line info: 80:13:2a:27:22:30:34:27:29:27:28:22:32:28:27:22:32:2e:2e
+  12:07       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  34:01       CALL_FUNCTION 1
+  14:0c       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  c1          STORE_FAST 1 
+  b1          LOAD_FAST 1 
+  12:15       LOAD_GLOBAL UltrasonicPort
+  dd          BINARY_OP 6 <in> 
+  d3          UNARY_OP 3 <not> 
+  44:42       POP_JUMP_IF_FALSE 2
+  7f          LOAD_CONST_SMALL_INT -1 
+  63          RETURN_VALUE 
+  12:03       LOAD_GLOBAL Pin
+  12:15       LOAD_GLOBAL UltrasonicPort
+  b1          LOAD_FAST 1 
+  55          LOAD_SUBSCR 
+  10:08       LOAD_CONST_STRING t
+  55          LOAD_SUBSCR 
+  12:03       LOAD_GLOBAL Pin
+  13:0d       LOAD_ATTR OUT
+  34:02       CALL_FUNCTION 2
+  c2          STORE_FAST 2 
+  12:03       LOAD_GLOBAL Pin
+  12:15       LOAD_GLOBAL UltrasonicPort
+  b1          LOAD_FAST 1 
+  55          LOAD_SUBSCR 
+  10:09       LOAD_CONST_STRING r
+  55          LOAD_SUBSCR 
+  12:03       LOAD_GLOBAL Pin
+  13:0e       LOAD_ATTR IN
+  12:03       LOAD_GLOBAL Pin
+  13:0f       LOAD_ATTR PULL_DOWN
+  34:03       CALL_FUNCTION 3
+  c3          STORE_FAST 3 
+  b2          LOAD_FAST 2 
+  14:10       LOAD_METHOD value
+  81          LOAD_CONST_SMALL_INT 1 
+  36:01       CALL_METHOD 1
+  59          POP_TOP 
+  12:02       LOAD_GLOBAL time
+  14:11       LOAD_METHOD sleep_us
+  22:32       LOAD_CONST_SMALL_INT 50
+  36:01       CALL_METHOD 1
+  59          POP_TOP 
+  b2          LOAD_FAST 2 
+  14:10       LOAD_METHOD value
+  80          LOAD_CONST_SMALL_INT 0 
+  36:01       CALL_METHOD 1
+  59          POP_TOP 
+  12:05       LOAD_GLOBAL wait_time
+  22:82:2c    LOAD_CONST_SMALL_INT 300
+  34:01       CALL_FUNCTION 1
+  c4          STORE_FAST 4 
+  42:42       JUMP 2
+  42:40       JUMP 0
+  12:17       LOAD_GLOBAL next
+  b4          LOAD_FAST 4 
+  34:01       CALL_FUNCTION 1
+  44:49       POP_JUMP_IF_FALSE 9
+  b3          LOAD_FAST 3 
+  14:10       LOAD_METHOD value
+  36:00       CALL_METHOD 0
+  80          LOAD_CONST_SMALL_INT 0 
+  d9          BINARY_OP 2 __eq__ 
+  43:2e       POP_JUMP_IF_TRUE -18
+  12:05       LOAD_GLOBAL wait_time
+  22:82:2c    LOAD_CONST_SMALL_INT 300
+  34:01       CALL_FUNCTION 1
+  c4          STORE_FAST 4 
+  12:02       LOAD_GLOBAL time
+  14:12       LOAD_METHOD ticks_us
+  36:00       CALL_METHOD 0
+  c5          STORE_FAST 5 
+  42:42       JUMP 2
+  42:40       JUMP 0
+  12:17       LOAD_GLOBAL next
+  b4          LOAD_FAST 4 
+  34:01       CALL_FUNCTION 1
+  44:49       POP_JUMP_IF_FALSE 9
+  b3          LOAD_FAST 3 
+  14:10       LOAD_METHOD value
+  36:00       CALL_METHOD 0
+  81          LOAD_CONST_SMALL_INT 1 
+  d9          BINARY_OP 2 __eq__ 
+  43:2e       POP_JUMP_IF_TRUE -18
+  12:02       LOAD_GLOBAL time
+  14:13       LOAD_METHOD ticks_diff
+  12:02       LOAD_GLOBAL time
+  14:12       LOAD_METHOD ticks_us
+  36:00       CALL_METHOD 0
+  b5          LOAD_FAST 5 
+  36:02       CALL_METHOD 2
+  c6          STORE_FAST 6 
+  b6          LOAD_FAST 6 
+  22:82:54    LOAD_CONST_SMALL_INT 340
+  f4          BINARY_OP 29 __mul__ 
+  82          LOAD_CONST_SMALL_INT 2 
+  f7          BINARY_OP 32 __truediv__ 
+  22:87:68    LOAD_CONST_SMALL_INT 1000
+  f7          BINARY_OP 32 __truediv__ 
+  8a          LOAD_CONST_SMALL_INT 10 
+  f7          BINARY_OP 32 __truediv__ 
+  c7          STORE_FAST 7 
+  b7          LOAD_FAST 7 
+  63          RETURN_VALUE 
+  children: []
+simple_name: readUltrasonicSensorNumAsync
+  raw bytecode: 217 e1:40:32:14:16:80:28:2a:27:23:30:34:27:29:27:22:28:22:33:28:27:22:22:33:23:2e:2e:45:12:07:b0:34:01:14:0c:36:00:c1:b1:12:15:dd:d3:44:43:80:67:59:12:03:12:15:b1:55:10:08:55:12:03:13:0d:34:02:c2:12:03:12:15:b1:55:10:09:55:12:03:13:0e:12:03:13:0f:34:03:c3:b2:14:10:81:36:01:59:12:02:14:11:22:32:36:01:59:b2:14:10:80:36:01:59:50:c4:12:05:22:82:2c:34:01:c5:42:43:7f:67:59:12:17:b5:34:01:44:49:b3:14:10:36:00:80:d9:43:2d:12:05:22:82:2c:34:01:c5:12:02:14:12:36:00:c6:42:45:52:c4:7f:67:59:12:17:b5:34:01:44:49:b3:14:10:36:00:81:d9:43:2b:b4:44:61:12:02:14:13:12:02:14:12:36:00:b6:36:02:c7:b7:22:82:54:f4:82:f7:22:87:68:f7:8a:f7:c8:b8:67:59:42:43:80:67:59:51:63
+  prelude: (13, 0, 1, 1, 0, 0)
+  args: ['pin_pair']
+  line info: 80:28:2a:27:23:30:34:27:29:27:22:28:22:33:28:27:22:22:33:23:2e:2e:45
+  12:07       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  34:01       CALL_FUNCTION 1
+  14:0c       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  c1          STORE_FAST 1 
+  b1          LOAD_FAST 1 
+  12:15       LOAD_GLOBAL UltrasonicPort
+  dd          BINARY_OP 6 <in> 
+  d3          UNARY_OP 3 <not> 
+  44:43       POP_JUMP_IF_FALSE 3
+  80          LOAD_CONST_SMALL_INT 0 
+  67          YIELD_VALUE 
+  59          POP_TOP 
+  12:03       LOAD_GLOBAL Pin
+  12:15       LOAD_GLOBAL UltrasonicPort
+  b1          LOAD_FAST 1 
+  55          LOAD_SUBSCR 
+  10:08       LOAD_CONST_STRING t
+  55          LOAD_SUBSCR 
+  12:03       LOAD_GLOBAL Pin
+  13:0d       LOAD_ATTR OUT
+  34:02       CALL_FUNCTION 2
+  c2          STORE_FAST 2 
+  12:03       LOAD_GLOBAL Pin
+  12:15       LOAD_GLOBAL UltrasonicPort
+  b1          LOAD_FAST 1 
+  55          LOAD_SUBSCR 
+  10:09       LOAD_CONST_STRING r
+  55          LOAD_SUBSCR 
+  12:03       LOAD_GLOBAL Pin
+  13:0e       LOAD_ATTR IN
+  12:03       LOAD_GLOBAL Pin
+  13:0f       LOAD_ATTR PULL_DOWN
+  34:03       CALL_FUNCTION 3
+  c3          STORE_FAST 3 
+  b2          LOAD_FAST 2 
+  14:10       LOAD_METHOD value
+  81          LOAD_CONST_SMALL_INT 1 
+  36:01       CALL_METHOD 1
+  59          POP_TOP 
+  12:02       LOAD_GLOBAL time
+  14:11       LOAD_METHOD sleep_us
+  22:32       LOAD_CONST_SMALL_INT 50
+  36:01       CALL_METHOD 1
+  59          POP_TOP 
+  b2          LOAD_FAST 2 
+  14:10       LOAD_METHOD value
+  80          LOAD_CONST_SMALL_INT 0 
+  36:01       CALL_METHOD 1
+  59          POP_TOP 
+  50          LOAD_CONST_FALSE 
+  c4          STORE_FAST 4 
+  12:05       LOAD_GLOBAL wait_time
+  22:82:2c    LOAD_CONST_SMALL_INT 300
+  34:01       CALL_FUNCTION 1
+  c5          STORE_FAST 5 
+  42:43       JUMP 3
+  7f          LOAD_CONST_SMALL_INT -1 
+  67          YIELD_VALUE 
+  59          POP_TOP 
+  12:17       LOAD_GLOBAL next
+  b5          LOAD_FAST 5 
+  34:01       CALL_FUNCTION 1
+  44:49       POP_JUMP_IF_FALSE 9
+  b3          LOAD_FAST 3 
+  14:10       LOAD_METHOD value
+  36:00       CALL_METHOD 0
+  80          LOAD_CONST_SMALL_INT 0 
+  d9          BINARY_OP 2 __eq__ 
+  43:2d       POP_JUMP_IF_TRUE -19
+  12:05       LOAD_GLOBAL wait_time
+  22:82:2c    LOAD_CONST_SMALL_INT 300
+  34:01       CALL_FUNCTION 1
+  c5          STORE_FAST 5 
+  12:02       LOAD_GLOBAL time
+  14:12       LOAD_METHOD ticks_us
+  36:00       CALL_METHOD 0
+  c6          STORE_FAST 6 
+  42:45       JUMP 5
+  52          LOAD_CONST_TRUE 
+  c4          STORE_FAST 4 
+  7f          LOAD_CONST_SMALL_INT -1 
+  67          YIELD_VALUE 
+  59          POP_TOP 
+  12:17       LOAD_GLOBAL next
+  b5          LOAD_FAST 5 
+  34:01       CALL_FUNCTION 1
+  44:49       POP_JUMP_IF_FALSE 9
+  b3          LOAD_FAST 3 
+  14:10       LOAD_METHOD value
+  36:00       CALL_METHOD 0
+  81          LOAD_CONST_SMALL_INT 1 
+  d9          BINARY_OP 2 __eq__ 
+  43:2b       POP_JUMP_IF_TRUE -21
+  b4          LOAD_FAST 4 
+  44:61       POP_JUMP_IF_FALSE 33
+  12:02       LOAD_GLOBAL time
+  14:13       LOAD_METHOD ticks_diff
+  12:02       LOAD_GLOBAL time
+  14:12       LOAD_METHOD ticks_us
+  36:00       CALL_METHOD 0
+  b6          LOAD_FAST 6 
+  36:02       CALL_METHOD 2
+  c7          STORE_FAST 7 
+  b7          LOAD_FAST 7 
+  22:82:54    LOAD_CONST_SMALL_INT 340
+  f4          BINARY_OP 29 __mul__ 
+  82          LOAD_CONST_SMALL_INT 2 
+  f7          BINARY_OP 32 __truediv__ 
+  22:87:68    LOAD_CONST_SMALL_INT 1000
+  f7          BINARY_OP 32 __truediv__ 
+  8a          LOAD_CONST_SMALL_INT 10 
+  f7          BINARY_OP 32 __truediv__ 
+  c8          STORE_FAST 8 
+  b8          LOAD_FAST 8 
+  67          YIELD_VALUE 
+  59          POP_TOP 
+  42:43       JUMP 3
+  80          LOAD_CONST_SMALL_INT 0 
+  67          YIELD_VALUE 
+  59          POP_TOP 
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: []

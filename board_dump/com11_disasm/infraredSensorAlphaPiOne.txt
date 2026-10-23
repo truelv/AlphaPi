@@ -1,0 +1,63 @@
+mpy_source_file: firmware\com11_20220912\rootfs\infraredSensorAlphaPiOne.mpy
+source_file: .\infraredSensorAlphaPiOne.py
+header: 4d:06:00:1f
+qstr_table[10]:
+    .\infraredSensorAlphaPiOne.py
+    <module>
+    controlBoardAlphaPiOne
+    DataStruct
+    basic
+    read_infrared_sensor
+    IntValue
+    ReadPin
+    version
+    pin_port
+obj_table: ['v_2022_09_01_1']
+simple_name: <module>
+  raw bytecode: 35 08:0a:01:26:6c:64:40:80:51:1b:02:16:02:80:10:03:2a:01:1b:04:1c:03:16:03:59:32:00:16:05:32:01:16:08:51:63
+  prelude: (2, 0, 0, 0, 0, 0)
+  args: []
+  line info: 26:6c:64:40
+  80          LOAD_CONST_SMALL_INT 0 
+  51          LOAD_CONST_NONE 
+  1b:02       IMPORT_NAME controlBoardAlphaPiOne
+  16:02       STORE_NAME controlBoardAlphaPiOne
+  80          LOAD_CONST_SMALL_INT 0 
+  10:03       LOAD_CONST_STRING DataStruct
+  2a:01       BUILD_TUPLE 1
+  1b:04       IMPORT_NAME basic
+  1c:03       IMPORT_FROM DataStruct
+  16:03       STORE_NAME DataStruct
+  59          POP_TOP 
+  32:00       MAKE_FUNCTION 0
+  16:05       STORE_NAME read_infrared_sensor
+  32:01       MAKE_FUNCTION 1
+  16:08       STORE_NAME version
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: ['read_infrared_sensor', 'version']
+simple_name: read_infrared_sensor
+  raw bytecode: 25 21:0a:05:09:60:40:2a:12:03:b0:34:01:14:06:36:00:c1:12:02:14:07:b1:36:01:63
+  prelude: (5, 0, 0, 1, 0, 0)
+  args: ['pin_port']
+  line info: 60:40:2a
+  12:03       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  34:01       CALL_FUNCTION 1
+  14:06       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  c1          STORE_FAST 1 
+  12:02       LOAD_GLOBAL controlBoardAlphaPiOne
+  14:07       LOAD_METHOD ReadPin
+  b1          LOAD_FAST 1 
+  36:01       CALL_METHOD 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: version
+  raw bytecode: 8 00:06:08:80:0a:23:00:63
+  prelude: (1, 0, 0, 0, 0, 0)
+  args: []
+  line info: 80:0a
+  23:00       LOAD_CONST_OBJ 'v_2022_09_01_1'
+  63          RETURN_VALUE 
+  children: []

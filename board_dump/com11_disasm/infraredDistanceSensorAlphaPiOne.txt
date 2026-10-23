@@ -1,0 +1,63 @@
+mpy_source_file: firmware\com11_20220912\rootfs\infraredDistanceSensorAlphaPiOne.mpy
+source_file: .\infraredDistanceSensorAlphaPiOne.py
+header: 4d:06:00:1f
+qstr_table[10]:
+    .\infraredDistanceSensorAlphaPiOne.py
+    <module>
+    DataStruct
+    basic
+    controlBoardAlphaPiOne
+    readInfraredDistanceSensor
+    IntValue
+    ReadAdc
+    version
+    pin_port_d
+obj_table: ['v_2022_09_01_1']
+simple_name: <module>
+  raw bytecode: 36 08:0c:01:2c:66:20:64:40:80:10:02:2a:01:1b:03:1c:02:16:02:59:80:51:1b:04:16:04:32:00:16:05:32:01:16:08:51:63
+  prelude: (2, 0, 0, 0, 0, 0)
+  args: []
+  line info: 2c:66:20:64:40
+  80          LOAD_CONST_SMALL_INT 0 
+  10:02       LOAD_CONST_STRING DataStruct
+  2a:01       BUILD_TUPLE 1
+  1b:03       IMPORT_NAME basic
+  1c:02       IMPORT_FROM DataStruct
+  16:02       STORE_NAME DataStruct
+  59          POP_TOP 
+  80          LOAD_CONST_SMALL_INT 0 
+  51          LOAD_CONST_NONE 
+  1b:04       IMPORT_NAME controlBoardAlphaPiOne
+  16:04       STORE_NAME controlBoardAlphaPiOne
+  32:00       MAKE_FUNCTION 0
+  16:05       STORE_NAME readInfraredDistanceSensor
+  32:01       MAKE_FUNCTION 1
+  16:08       STORE_NAME version
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: ['readInfraredDistanceSensor', 'version']
+simple_name: readInfraredDistanceSensor
+  raw bytecode: 25 21:0a:05:09:60:60:2a:12:02:b0:34:01:14:06:36:00:c1:12:04:14:07:b1:36:01:63
+  prelude: (5, 0, 0, 1, 0, 0)
+  args: ['pin_port_d']
+  line info: 60:60:2a
+  12:02       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  34:01       CALL_FUNCTION 1
+  14:06       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  c1          STORE_FAST 1 
+  12:04       LOAD_GLOBAL controlBoardAlphaPiOne
+  14:07       LOAD_METHOD ReadAdc
+  b1          LOAD_FAST 1 
+  36:01       CALL_METHOD 1
+  63          RETURN_VALUE 
+  children: []
+simple_name: version
+  raw bytecode: 8 00:06:08:80:0b:23:00:63
+  prelude: (1, 0, 0, 0, 0, 0)
+  args: []
+  line info: 80:0b
+  23:00       LOAD_CONST_OBJ 'v_2022_09_01_1'
+  63          RETURN_VALUE 
+  children: []

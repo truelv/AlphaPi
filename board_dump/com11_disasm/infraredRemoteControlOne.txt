@@ -1,0 +1,273 @@
+mpy_source_file: firmware\com11_20220912\rootfs\infraredRemoteControlOne.mpy
+source_file: .\infraredRemoteControlOne.py
+header: 4d:06:00:1f
+qstr_table[45]:
+    .\infraredRemoteControlOne.py
+    <module>
+    DataStruct
+    basic
+    SoftI2C
+    Pin
+    machine
+    PinPair
+    controlBoardAlphaPiOne
+    1
+    2
+    3
+    4
+    5
+    6
+    7
+    8
+    9
+    *
+    0
+    #
+    up
+    down
+    left
+    right
+    ok
+    Update
+    readfrom_mem
+    InitIr
+    IntValue
+    scl
+    t
+    sda
+    r
+    freq
+    IsButtonOn
+    StringValue
+    version
+    ir_i2c
+    button_map
+    last_cmd
+    OSError
+    pin_pair
+    button_d
+    refresh
+obj_table: ['v_2022_11_10']
+simple_name: <module>
+  raw bytecode: 190 10:3c:01:2c:32:4c:23:22:26:26:26:26:26:26:24:24:24:24:24:24:24:26:24:26:46:63:84:0b:84:0d:88:0a:80:10:02:2a:01:1b:03:1c:02:16:02:59:80:10:04:10:05:2a:02:1b:06:1c:04:16:04:1c:05:16:05:59:80:10:07:2a:01:1b:08:1c:07:16:07:59:51:17:26:2c:11:22:80:45:10:09:62:22:80:46:10:0a:62:22:80:47:10:0b:62:22:80:44:10:0c:62:22:80:40:10:0d:62:22:80:43:10:0e:62:87:10:0f:62:95:10:10:62:89:10:11:62:96:10:12:62:99:10:13:62:8d:10:14:62:98:10:15:62:22:80:52:10:16:62:88:10:17:62:22:80:5a:10:18:62:9c:10:19:62:16:27:80:17:28:32:00:16:1a:32:01:16:1c:50:2a:01:53:33:02:16:23:32:03:16:25:51:63
+  prelude: (3, 0, 0, 0, 0, 0)
+  args: []
+  line info: 2c:32:4c:23:22:26:26:26:26:26:26:24:24:24:24:24:24:24:26:24:26:46:63:84:0b:84:0d:88:0a
+  80          LOAD_CONST_SMALL_INT 0 
+  10:02       LOAD_CONST_STRING DataStruct
+  2a:01       BUILD_TUPLE 1
+  1b:03       IMPORT_NAME basic
+  1c:02       IMPORT_FROM DataStruct
+  16:02       STORE_NAME DataStruct
+  59          POP_TOP 
+  80          LOAD_CONST_SMALL_INT 0 
+  10:04       LOAD_CONST_STRING SoftI2C
+  10:05       LOAD_CONST_STRING Pin
+  2a:02       BUILD_TUPLE 2
+  1b:06       IMPORT_NAME machine
+  1c:04       IMPORT_FROM SoftI2C
+  16:04       STORE_NAME SoftI2C
+  1c:05       IMPORT_FROM Pin
+  16:05       STORE_NAME Pin
+  59          POP_TOP 
+  80          LOAD_CONST_SMALL_INT 0 
+  10:07       LOAD_CONST_STRING PinPair
+  2a:01       BUILD_TUPLE 1
+  1b:08       IMPORT_NAME controlBoardAlphaPiOne
+  1c:07       IMPORT_FROM PinPair
+  16:07       STORE_NAME PinPair
+  59          POP_TOP 
+  51          LOAD_CONST_NONE 
+  17:26       STORE_GLOBAL ir_i2c
+  2c:11       BUILD_MAP 17
+  22:80:45    LOAD_CONST_SMALL_INT 69
+  10:09       LOAD_CONST_STRING 1
+  62          STORE_MAP 
+  22:80:46    LOAD_CONST_SMALL_INT 70
+  10:0a       LOAD_CONST_STRING 2
+  62          STORE_MAP 
+  22:80:47    LOAD_CONST_SMALL_INT 71
+  10:0b       LOAD_CONST_STRING 3
+  62          STORE_MAP 
+  22:80:44    LOAD_CONST_SMALL_INT 68
+  10:0c       LOAD_CONST_STRING 4
+  62          STORE_MAP 
+  22:80:40    LOAD_CONST_SMALL_INT 64
+  10:0d       LOAD_CONST_STRING 5
+  62          STORE_MAP 
+  22:80:43    LOAD_CONST_SMALL_INT 67
+  10:0e       LOAD_CONST_STRING 6
+  62          STORE_MAP 
+  87          LOAD_CONST_SMALL_INT 7 
+  10:0f       LOAD_CONST_STRING 7
+  62          STORE_MAP 
+  95          LOAD_CONST_SMALL_INT 21 
+  10:10       LOAD_CONST_STRING 8
+  62          STORE_MAP 
+  89          LOAD_CONST_SMALL_INT 9 
+  10:11       LOAD_CONST_STRING 9
+  62          STORE_MAP 
+  96          LOAD_CONST_SMALL_INT 22 
+  10:12       LOAD_CONST_STRING *
+  62          STORE_MAP 
+  99          LOAD_CONST_SMALL_INT 25 
+  10:13       LOAD_CONST_STRING 0
+  62          STORE_MAP 
+  8d          LOAD_CONST_SMALL_INT 13 
+  10:14       LOAD_CONST_STRING #
+  62          STORE_MAP 
+  98          LOAD_CONST_SMALL_INT 24 
+  10:15       LOAD_CONST_STRING up
+  62          STORE_MAP 
+  22:80:52    LOAD_CONST_SMALL_INT 82
+  10:16       LOAD_CONST_STRING down
+  62          STORE_MAP 
+  88          LOAD_CONST_SMALL_INT 8 
+  10:17       LOAD_CONST_STRING left
+  62          STORE_MAP 
+  22:80:5a    LOAD_CONST_SMALL_INT 90
+  10:18       LOAD_CONST_STRING right
+  62          STORE_MAP 
+  9c          LOAD_CONST_SMALL_INT 28 
+  10:19       LOAD_CONST_STRING ok
+  62          STORE_MAP 
+  16:27       STORE_NAME button_map
+  80          LOAD_CONST_SMALL_INT 0 
+  17:28       STORE_GLOBAL last_cmd
+  32:00       MAKE_FUNCTION 0
+  16:1a       STORE_NAME Update
+  32:01       MAKE_FUNCTION 1
+  16:1c       STORE_NAME InitIr
+  50          LOAD_CONST_FALSE 
+  2a:01       BUILD_TUPLE 1
+  53          LOAD_NULL 
+  33:02       MAKE_FUNCTION_DEFARGS 2
+  16:23       STORE_NAME IsButtonOn
+  32:03       MAKE_FUNCTION 3
+  16:25       STORE_NAME version
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: ['Update', 'InitIr', 'IsButtonOn', 'version']
+simple_name: Update
+  raw bytecode: 56 34:12:1a:80:1c:20:26:22:22:53:29:12:26:51:de:44:42:51:63:48:0c:12:26:14:1b:a2:80:82:36:03:c0:4a:10:57:12:29:df:44:49:59:80:2b:01:82:f4:c0:4a:01:5d:b0:80:55:17:28:51:63
+  prelude: (7, 1, 0, 0, 0, 0)
+  args: []
+  line info: 80:1c:20:26:22:22:53:29
+  12:26       LOAD_GLOBAL ir_i2c
+  51          LOAD_CONST_NONE 
+  de          BINARY_OP 7 <is> 
+  44:42       POP_JUMP_IF_FALSE 2
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  48:0c       SETUP_EXCEPT 12
+  12:26       LOAD_GLOBAL ir_i2c
+  14:1b       LOAD_METHOD readfrom_mem
+  a2          LOAD_CONST_SMALL_INT 34 
+  80          LOAD_CONST_SMALL_INT 0 
+  82          LOAD_CONST_SMALL_INT 2 
+  36:03       CALL_METHOD 3
+  c0          STORE_FAST 0 
+  4a:10       POP_EXCEPT_JUMP 16
+  57          DUP_TOP 
+  12:29       LOAD_GLOBAL OSError
+  df          BINARY_OP 8 <exception match> 
+  44:49       POP_JUMP_IF_FALSE 9
+  59          POP_TOP 
+  80          LOAD_CONST_SMALL_INT 0 
+  2b:01       BUILD_LIST 1
+  82          LOAD_CONST_SMALL_INT 2 
+  f4          BINARY_OP 29 __mul__ 
+  c0          STORE_FAST 0 
+  4a:01       POP_EXCEPT_JUMP 1
+  5d          END_FINALLY 
+  b0          LOAD_FAST 0 
+  80          LOAD_CONST_SMALL_INT 0 
+  55          LOAD_SUBSCR 
+  17:28       STORE_GLOBAL last_cmd
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: []
+simple_name: InitIr
+  raw bytecode: 79 5d:16:1c:2a:80:27:20:2a:27:22:22:31:77:12:02:b0:34:01:14:1d:36:00:c1:b1:12:07:dd:d3:44:42:51:63:49:28:12:04:10:1e:12:05:12:07:b1:55:10:1f:55:34:01:10:20:12:05:12:07:b1:55:10:21:55:34:01:10:22:22:86:8d:20:34:86:00:17:26:51:51:63:5d:51:63
+  prelude: (12, 1, 0, 1, 0, 0)
+  args: ['pin_pair']
+  line info: 80:27:20:2a:27:22:22:31:77
+  12:02       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  34:01       CALL_FUNCTION 1
+  14:1d       LOAD_METHOD IntValue
+  36:00       CALL_METHOD 0
+  c1          STORE_FAST 1 
+  b1          LOAD_FAST 1 
+  12:07       LOAD_GLOBAL PinPair
+  dd          BINARY_OP 6 <in> 
+  d3          UNARY_OP 3 <not> 
+  44:42       POP_JUMP_IF_FALSE 2
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  49:28       SETUP_FINALLY 40
+  12:04       LOAD_GLOBAL SoftI2C
+  10:1e       LOAD_CONST_STRING scl
+  12:05       LOAD_GLOBAL Pin
+  12:07       LOAD_GLOBAL PinPair
+  b1          LOAD_FAST 1 
+  55          LOAD_SUBSCR 
+  10:1f       LOAD_CONST_STRING t
+  55          LOAD_SUBSCR 
+  34:01       CALL_FUNCTION 1
+  10:20       LOAD_CONST_STRING sda
+  12:05       LOAD_GLOBAL Pin
+  12:07       LOAD_GLOBAL PinPair
+  b1          LOAD_FAST 1 
+  55          LOAD_SUBSCR 
+  10:21       LOAD_CONST_STRING r
+  55          LOAD_SUBSCR 
+  34:01       CALL_FUNCTION 1
+  10:22       LOAD_CONST_STRING freq
+  22:86:8d:20 LOAD_CONST_SMALL_INT 100000
+  34:86:00    CALL_FUNCTION 768
+  17:26       STORE_GLOBAL ir_i2c
+  51          LOAD_CONST_NONE 
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  5d          END_FINALLY 
+  51          LOAD_CONST_NONE 
+  63          RETURN_VALUE 
+  children: []
+simple_name: IsButtonOn
+  raw bytecode: 48 aa:01:16:23:2b:2c:80:34:2a:26:20:23:25:28:12:02:b0:34:01:14:24:36:00:c2:b2:12:27:dd:44:50:b1:44:45:12:1a:34:00:59:12:28:12:27:b2:55:d9:63:50:63
+  prelude: (6, 0, 0, 2, 0, 1)
+  args: ['button_d', 'refresh']
+  line info: 80:34:2a:26:20:23:25:28
+  12:02       LOAD_GLOBAL DataStruct
+  b0          LOAD_FAST 0 
+  34:01       CALL_FUNCTION 1
+  14:24       LOAD_METHOD StringValue
+  36:00       CALL_METHOD 0
+  c2          STORE_FAST 2 
+  b2          LOAD_FAST 2 
+  12:27       LOAD_GLOBAL button_map
+  dd          BINARY_OP 6 <in> 
+  44:50       POP_JUMP_IF_FALSE 16
+  b1          LOAD_FAST 1 
+  44:45       POP_JUMP_IF_FALSE 5
+  12:1a       LOAD_GLOBAL Update
+  34:00       CALL_FUNCTION 0
+  59          POP_TOP 
+  12:28       LOAD_GLOBAL last_cmd
+  12:27       LOAD_GLOBAL button_map
+  b2          LOAD_FAST 2 
+  55          LOAD_SUBSCR 
+  d9          BINARY_OP 2 __eq__ 
+  63          RETURN_VALUE 
+  50          LOAD_CONST_FALSE 
+  63          RETURN_VALUE 
+  children: []
+simple_name: version
+  raw bytecode: 8 00:06:25:80:3e:23:00:63
+  prelude: (1, 0, 0, 0, 0, 0)
+  args: []
+  line info: 80:3e
+  23:00       LOAD_CONST_OBJ 'v_2022_11_10'
+  63          RETURN_VALUE 
+  children: []

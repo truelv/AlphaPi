@@ -14,6 +14,9 @@
 | `dump_src.py` / `decode_mpy.py` | 从板子**分块**取回文件；`.mpy` base64 取回后解码 |
 | `upload_file.py` / `upload_chunked.py` | 上传文件到板子（后者**分块**，抗 `MemoryError`） |
 | `probe_car.py` | 只读探测 I2C 外设寄存器（本项目用于 0x20 电机控制器） |
+| `pin_finder.py` / `pin_sweeper.py` | 测扩展板「P 口 → GPIO」映射（对地短接法 / 逐脚翻转 + 万用表） |
+| `probe_expansion.py` | 扩展板只读探测：多组 SoftI2C 引脚对扫描 + 全 GPIO 指纹（ADC / 上下拉） |
+| `probe_sensors.py` | 接上积木传感器后只读验证：端口 ADC / 数字电平 / 双线端口 I2C 扫描 |
 | `pad_diag.py` | 手柄板（COM11）诊断：抓完整启动日志 + 检查 WiFi / 模块导入 / UDP 发送 |
 | `check_links.py` | 检查 Markdown 相对链接是否断开（文件里写 `<!-- check-links: off -->` 可整份跳过） |
 | `reset_and_read.py` / `do_reset.py` | 复位板子并读启动日志 / 仅复位 |
@@ -119,6 +122,32 @@ python tools/mpy-tool.py -d firmware/com11_20220912/rootfs/basic.mpy > basic.mpy
 ```
 
 已有反汇编产物的位置：各固件目录下的 `disasm/`。
+
+---
+
+## probe_sensors.py
+
+给 PH2.0 扩展板接上积木传感器后，**只读**验证「固件端口号 / GPIO」上能看到什么
+（不写寄存器、不驱动执行器）。端口号约定见 [`../docs/board_map.md`](../docs/board_map.md) §13。
+
+```powershell
+python tools/probe_sensors.py COM11 scan           # 全端口：ADC(10 位) + 上/下拉电平
+python tools/probe_sensors.py COM11 adc 1,2,5,6    # 指定端口的模拟量（0-1023）
+python tools/probe_sensors.py COM11 pin 4,10,11    # 指定端口的数字电平
+python tools/probe_sensors.py COM11 i2c 1          # 双线端口 n 扫 I2C（r=SDA, t=SCL）
+python tools/probe_sensors.py COM11 pair           # 只打印端口契约表（不连板子）
+```
+
+判读要点：
+
+| 现象 | 含义 |
+|---|---|
+| `adc` 随环境变化 | 模拟类传感器在线（雨滴 / 红外测距 / 电位器） |
+| `pullup` 与 `pulldown` 读到**同一个值** | 该脚被外部器件拉住（有东西接线） |
+| `i2c` 扫到地址 | I2C 类在线（心率血氧 `0x57`、红外接收 `0x22`） |
+
+> 手柄板上 GPIO10–13 是按键、GPIO17 是板载灯带；屏占 33–42，别往那儿接。
+> 输出同时落盘 `board_dump/sensor_probe.txt`。
 
 ---
 

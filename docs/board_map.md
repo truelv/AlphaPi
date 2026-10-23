@@ -211,4 +211,97 @@ scan = ['0x20']
 - 0x20 电机控制器的**确切型号**（需原理图/丝印）。
 - 0x20 完整寄存器表（本文覆盖固件用到的偏移；全量探测空闲为 0）。
 - `controlBoardAlphaPiOne.Update` 的 22 字节 UART 协议逐字段定义。
-- `pin_map`（GPIO 33–55 映射表）与 `WritePwm` 的 LEDC 通道对应关系。
+- ~~`pin_map` 是「GPIO 33–55 映射表」~~ **已解决**：`pin_map` 不是换算表，其实现是
+  `pin_map[port] = Pin(port)`，**端口号即 GPIO 号**（见 §13.1）。
+- `WritePwm` 的 LEDC 通道对应关系。
+
+---
+
+## 13. 扩展板（PH2.0 扇出）与积木传感器端口契约
+
+> 来源：COM11 固件 `controlBoardAlphaPiOne.mpy` + 各传感器 `*.mpy` 的反汇编
+> （产物见 `board_dump/com11_disasm/`）。本节回答「官方积木传感器该插哪个口」。
+
+### 13.1 核心结论：端口号 == GPIO 号
+
+固件 `ReadPin / WritePin / ReadAdc / WritePwm` 的参数**就是 GPIO 号**；
+`pin_map` 只是「端口 → Pin 对象」的惰性缓存，**不是换算表**：
+
+```python
+# controlBoardAlphaPiOne.mpy 反汇编还原
+def ReadAdc(pin_port_d):
+    port = DataStruct(pin_port_d).IntValue()
+    pin_map[port] = Pin(port)          # ← 端口号直接当 GPIO 用
+    adc = ADC(pin_map[port]); adc.atten(ADC.ATTN_11DB)
+    return adc.read_u16() >> 6         # 16 位 → 10 位
+```
+
+同类：温湿度 `dht.DHT11(Pin(端口))`、舵机 `PWM(Pin(端口))`、RGB `NeoPixel(Pin(端口), n)`。
+
+**推论**：积木里选「端口 N」= 驱动 **GPIO N**。底板丝印若就是 GPIO 号，则「P N 口」直接对应。
+
+### 13.2 双线端口 `PinPair`（超声波 / 红外接收 / 心率血氧 共用）
+
+| 端口 | `t` | `r` |
+|---|---|---|
+| 1 | GPIO10 | GPIO11 |
+| 2 | GPIO12 | GPIO13 |
+| 3 | GPIO14 | GPIO17 |
+| 4 | GPIO18 | GPIO48 |
+
+| 模块 | 入口 | 端口含义 |
+|---|---|---|
+| `ultrasonicSensorAlphaPiOne` | `readUltrasonicSensorNum(端口)` | `t` = trig，`r` = echo |
+| `infraredRemoteControlOne` | `InitIr(端口)` | `t` = **SCL**，`r` = **SDA**，SoftI2C@100k，从机 **`0x22`** |
+| `heartRateAndOxygenSensorOne` | `InitHeartRateSensor(端口)` | `r` = **SDA**，`t` = **SCL**，SoftI2C@100k，MAX30102 **`0x57`** |
+
+> ⚠️ 三者抢同一批脚（端口 1–4），**同一时刻只能插一个**。
+
+### 13.3 单线传感器（端口 = GPIO 号）
+
+| 传感器 | 调用 | 类型 |
+|---|---|---|
+| 人体红外 | `read_infrared_sensor(端口)` | 数字（`ReadPin`） |
+| 红外测距 | `readInfraredDistanceSensor(端口)` | **模拟**（`ReadAdc`） |
+| 温湿度 DHT11 | `ReadTemperatureOrHumidity(端口, key)` | 数字（`key`：0=温度，1=湿度） |
+| RGB 灯板 / LED | `InitNP(端口[, 灯珠数])` | 数字（WS2812） |
+| 舵机 | `setSteeringEngineAngle(端口, 角度)` | PWM 50 Hz / 500–2500 µs |
+| 触摸 / 雨滴 / 数码管 / 颜色 / 点读 | 无官方模块 | 自己写 |
+
+> **电机是例外**：`autoMotionOne` 走 `Init_I2c('car')`（GPIO8/9 的**车扩展板** I2C `0x20`），
+> **不是** PH2.0 扇出板；底板「电机口」只是 GPIO 扇出，须 `WritePwm` + 外置驱动模块。
+
+### 13.4 主板自身已占用的 GPIO（接扩展板前必看）
+
+| GPIO | 占用 |
+|---|---|
+| 0 / 3 | N32 UART（rx / tx） |
+| 4 | 震动马达（PWM） |
+| 6 / 7 / 8 | 摇杆 X / Y + 电位器（ADC，手柄板） |
+| 10–13 | 4 个按键（手柄板）——同时是双线端口 1、2 |
+| 17 | 板载 WS2812——同时是双线端口 3 的 `r` |
+| 33–42 | SPI 屏 / 电源使能 |
+| 19 / 20 | USB D- / D+ |
+| 26–32 | Flash / PSRAM |
+
+**冲突示例**：手柄板上把超声波接到端口 1、2 → 与 4 个按键（GPIO10–13）打架；
+接端口 3 的 `r=GPIO17` 又与板载灯带冲突。→ 这批双线传感器更适合 GPIO 富余的小车板。
+
+### 13.5 待实测：底板的「P 口 → GPIO」物理映射
+
+固件只给出 GPIO 号，**底板丝印 `P1..P20` 与 GPIO 的对应关系必须实测**：
+
+```powershell
+python tools/pin_finder.py COM11 --sec 240 --delay 20   # 对地短接法（推荐）
+python tools/pin_sweeper.py COM11                        # 逐脚翻转 + 万用表
+```
+
+### 13.6 验证工具
+
+接上传感器后**只读**验证（不写寄存器、不驱动执行器）：
+
+```powershell
+python tools/probe_sensors.py COM11 scan           # 全端口 ADC + 上下拉电平
+python tools/probe_sensors.py COM11 i2c 1          # 双线端口 1 扫 I2C
+python tools/probe_sensors.py COM11 pair           # 打印端口契约表
+```
